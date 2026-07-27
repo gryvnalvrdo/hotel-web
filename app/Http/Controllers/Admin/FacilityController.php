@@ -12,11 +12,45 @@ class FacilityController extends Controller
 {
     public function index()
     {
-        $homeFacilities = HomeFacility::orderBy('id')->get();
+        $homeFacilities = HomeFacility::with('images')->orderBy('id')->get();
         $roomFacilities = RoomFacility::with('room')->orderBy('id', 'desc')->get();
         $rooms          = Room::orderBy('name')->get();
 
         return view('admin.facilities.index', compact('homeFacilities', 'roomFacilities', 'rooms'));
+    }
+
+    public function updateHome(Request $request, $id)
+    {
+        $request->validate([
+            'title'       => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        $hf = HomeFacility::findOrFail($id);
+        $hf->update([
+            'title'       => $request->title,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('admin.facilities.index')->with('success', 'Fasilitas umum hotel berhasil diperbarui.');
+    }
+
+    public function updateRoom(Request $request, $id)
+    {
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'icon'     => 'required|string|max:100',
+            'category' => 'required|string|max:50',
+        ]);
+
+        $rf = RoomFacility::findOrFail($id);
+        $rf->update([
+            'facility_name' => $request->name,
+            'icon'          => $request->icon ?? 'bi bi-check2-circle',
+            'category'      => $request->category,
+        ]);
+
+        return redirect()->route('admin.facilities.index')->with('success', 'Fasilitas kamar berhasil diperbarui.');
     }
 
     public function storeHome(Request $request)

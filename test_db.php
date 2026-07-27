@@ -1,9 +1,15 @@
 <?php
 require 'vendor/autoload.php';
-\ = require_once 'bootstrap/app.php';
-\ = \->make(Illuminate\Contracts\Console\Kernel::class);
-\->bootstrap();
-\ = DB::table('room_images')->limit(5)->get();
-foreach(\ as \) {
-    echo \->file_path . \"\n\";
+$app = require_once 'bootstrap/app.php';
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$kernel->bootstrap();
+$tables = Illuminate\Support\Facades\DB::select('SHOW TABLES');
+foreach ($tables as $table) {
+    foreach ($table as $key => $name) {
+        if ($name == 'migrations') continue;
+        $create = Illuminate\Support\Facades\DB::select("SHOW CREATE TABLE " . $name . "")[0];
+        foreach ($create as $k => $v) {
+            if ($k == 'Create Table') echo $v . "\n\n";
+        }
+    }
 }

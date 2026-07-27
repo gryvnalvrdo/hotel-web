@@ -31,7 +31,9 @@ Route::prefix('admin')->name('admin.')->middleware([\App\Http\Middleware\AdminAu
     Route::resource('rooms', \App\Http\Controllers\Admin\RoomController::class);
     Route::get('facilities', [\App\Http\Controllers\Admin\FacilityController::class, 'index'])->name('facilities.index');
     Route::post('facilities/home', [\App\Http\Controllers\Admin\FacilityController::class, 'storeHome'])->name('facilities.storeHome');
+    Route::put('facilities/home/{id}', [\App\Http\Controllers\Admin\FacilityController::class, 'updateHome'])->name('facilities.updateHome');
     Route::post('facilities/room', [\App\Http\Controllers\Admin\FacilityController::class, 'storeRoom'])->name('facilities.storeRoom');
+    Route::put('facilities/room/{id}', [\App\Http\Controllers\Admin\FacilityController::class, 'updateRoom'])->name('facilities.updateRoom');
     Route::delete('facilities/home/{id}', [\App\Http\Controllers\Admin\FacilityController::class, 'destroyHome'])->name('facilities.destroyHome');
     Route::delete('facilities/room/{id}', [\App\Http\Controllers\Admin\FacilityController::class, 'destroyRoom'])->name('facilities.destroyRoom');
     Route::get('bookings', [\App\Http\Controllers\Admin\BookingController::class, 'index'])->name('bookings.index');
