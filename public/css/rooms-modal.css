@@ -1,0 +1,474 @@
+/* =========================
+   MODAL OVERLAY
+========================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 10, 30, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.05);
+  transition: all 0.4s ease-in-out;
+  z-index: 9999;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* =========================
+   MODAL CONTENT
+========================= */
+.modal-content {
+  background: rgba(12, 25, 55, 0.95);
+  display: flex;
+  flex-direction: row;
+  width: 92%;
+  max-width: 1100px;
+  max-height: 90vh;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(247, 201, 72, 0.35);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  position: relative;
+}
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* =========================
+   TOMBOL CLOSE (GLOBAL STYLE)
+========================= */
+.modal-close {
+  position: absolute;
+  top: 12px;   /* agak rapat ke atas */
+  right: 12px; /* rapat ke kanan */
+  font-size: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;  /* cukup tinggi supaya di atas gambar */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* Hover effect */
+.modal-close:hover {
+  background: rgba(212, 175, 55, 0.9); /* gold elegan */
+  color: #000;
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+
+/* =========================
+   LEFT COLUMN (SLIDER)
+========================= */
+.modal-left {
+  flex: 1.2;
+  background: rgba(12, 25, 55, 0.95);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
+  height: 100%;
+}
+.modal-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Slider wrapper */
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(247, 201, 72, 0.25);
+}
+.slider .slides img {
+  border-radius: 0;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+.slider .slides img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+/* Slider arrows */
+.slider .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.55);  /* kasih warna solid biar kontras */
+  border: 1px solid rgba(247,201,72,0.4);
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(247,201,72,0.2);
+  opacity: 1;              /* pastikan selalu full opacity */
+  visibility: visible;     /* selalu terlihat */
+}
+
+.slider .arrow:hover {
+  background: linear-gradient(135deg, #f7c948, #fff4ce);
+  color: #0a1932;
+}
+.slider .prev { left: 12px; }
+.slider .next { right: 12px; }
+
+/* Counter */
+.slide-counter {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(247,201,72,0.35);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* =========================
+   SLIDER IMAGE (lebih tinggi)
+========================= */
+.modal-content .slider img {
+  height: 480px;          /* sebelumnya 360px */
+  width: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* =========================
+   ROOM TITLE (Room)
+========================= */
+.room-title {
+  text-align: left;
+  padding: 0;               /* reset padding container */
+  margin: 0;                /* biar tidak geser */
+  background: #0a1f44 rgb(10, 31, 68);
+}
+
+.room-title h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #f7c948;                 /* gold lembut */
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(247,201,72,0.35); /* garis tipis dekoratif */
+  display: inline-block;          /* supaya garis tidak full width */
+}
+
+/* Optional hover halus */
+.room-title h3:hover {
+  color: #fff4ce;
+  border-color: rgba(247,201,72,0.6);
+}
+
+/* =========================
+   ROOM TITLE (Modal)
+========================= */
+.room-title-modal {
+  background: rgba(12, 25, 55, 0.95);       /* sama dengan modal-right */
+  color: #fff;
+  padding: 15px 20px;
+  text-align: left;
+}
+
+.room-title-modal h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+}
+
+
+/* =========================
+   THUMBNAILS (lebih besar)
+========================= */
+.thumbnails {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  background: rgba(12, 25, 55, 0.95);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(247,201,72,0.7) transparent;
+}
+
+.thumbnails::-webkit-scrollbar { 
+  height: 8px;
+}
+.thumbnails::-webkit-scrollbar-track {
+  background: #081428;
+  border-radius: 10px;
+}
+.thumbnails::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #d4af37, #f7c948);
+  border-radius: 10px;
+}
+
+.thumbnails img {
+  flex: 0 0 auto;
+  width: 100px;           /* sebelumnya 80px */
+  height: 75px;           /* sebelumnya 60px */
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 1px solid rgba(247,201,72,0.35);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, opacity 0.3s ease, border 0.3s ease;
+}
+
+.thumbnails img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.thumbnails img.active {
+  opacity: 1;
+  border: 2px solid #f7c948;
+  box-shadow: 0 0 12px rgba(247,201,72,0.6);
+}
+
+/* =========================
+   RIGHT COLUMN (INFO)
+========================= */
+.modal-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(12, 25, 55, 0.95);
+  max-height: 90vh;
+}
+.modal-right h3 {
+  color: #f7c948;
+  margin: 22px 26px 12px;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+/* Scrollable body */
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 26px 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(247,201,72,0.7) #081428;
+}
+.modal-body::-webkit-scrollbar { width: 8px; }
+.modal-body::-webkit-scrollbar-track {
+  background: #081428;
+  border-radius: 10px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #f7c948);
+  border-radius: 10px;
+}
+
+/* Section heading */
+.modal-body h4 {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  border-bottom: 1px solid rgba(247, 201, 72, 0.35);
+  padding-bottom: 5px;
+}
+
+/* Info grid */
+.room-info-grid,
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+  gap: 12px 20px;
+  margin-bottom: 20px;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ddd;
+  font-size: 0.95rem;
+}
+.info-item i {
+  color: #f7c948;
+  font-size: 1.2rem;
+}
+.facility-grid span {
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+/* Facility list */
+.facility-list {
+  list-style: none;
+  margin: 10px 0 22px;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 20px;
+}
+.facility-list li {
+  position: relative;
+  padding-left: 18px;
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.facility-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f7c948;
+}
+
+/* Paragraph */
+.modal-body p {
+  color: #ddd;
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+/* =========================
+   FOOTER
+========================= */
+/* =========================
+   FOOTER (DESKTOP)
+========================= */
+.modal-footer {
+  padding: 16px 26px;
+  background: rgba(12, 25, 55, 0.95);
+  border-top: 1px solid rgba(247,201,72,0.35);
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;   /* Ubah jadi atas–bawah */
+  align-items: stretch;     /* Biar full width */
+  gap: 12px;
+}
+
+.room-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f7c948;
+  text-align: left;
+}
+
+.btn-book-modal {
+  background: #f7c948;
+  border: none;
+  padding: 14px 22px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  width: 100%;              /* tombol full lebar */
+  text-align: center;
+}
+
+.btn-book-modal:hover {
+  background: #fff;
+  box-shadow: 0 0 14px #f7c948;
+}
+
+/* =========================
+   IMAGE POPUP (Lightbox)
+========================= */
+  .image-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease;
+    z-index: 100000;
+  }
+
+  .image-popup.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .image-popup-content {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 80%;   /* gambar 80% dari container */
+  height: 100%;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* potong biar seragam */
+  border-radius: 14px;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+/* Tombol Close nempel ke gambar */
+.image-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  text-align: center;
+  line-height: 34px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.image-popup-close:hover {
+  background: rgba(212,175,55,0.95);
+  color: #000;
+  transform: rotate(90deg) scale(1.1);
+}

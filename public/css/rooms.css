@@ -1,0 +1,255 @@
+/* =========================
+   ROOMS SECTION
+========================= */
+body.modal-open {
+  overflow: hidden;
+}
+
+.rooms-section {
+  padding: 100px 5% 60px;
+  background: #001d3d;
+  color: #fff;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  letter-spacing: 1px;
+  position: relative;
+}
+.section-title::after { 
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 12px auto 0;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* =========================
+   ROOM CARD
+========================= */
+.room-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 50px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(247, 201, 72, 0.6), 
+              0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.room-left {
+  flex: 1 1 45%;
+  position: relative;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-right {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hilangkan bullet pada amenities */
+.amenities {
+  list-style: none; /* hilangkan bullet */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 8px 14px;
+  margin-top: 10px;
+  padding-left: 0; /* pastikan tidak ada padding default */
+}
+
+.amenities li {
+  font-size: .95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.amenities li i {
+  color: var(--gold);
+}
+
+
+/* =========================
+   SLIDER
+========================= */
+.slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #001d3d;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* tampilkan full gambar tanpa crop */
+  flex-shrink: 0;
+  display: block;
+  border-radius: 15px;
+  background: #001d3d;
+}
+
+/* Dots */
+.dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 6;
+}
+
+.dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid #f7c948;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dots span.active {
+  background: #f7c948;
+  box-shadow: 0 0 10px rgba(247, 201, 72, 0.8);
+  transform: scale(1.2);
+}
+
+.dots span:hover {
+  background: #ffdd75;
+}
+
+/* SEMBUNYIKAN default */
+.dots {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* MUNCUL saat hover slider */
+.slider:hover .dots {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =========================
+   ROOM INFO
+========================= */
+.room-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f7c948;
+  margin-bottom: 10px;
+}
+
+.room-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+.room-facilities {
+  list-style: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.room-facilities li {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #eee;
+}
+
+.room-footer {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #f7c948;
+  font-weight: 600;
+}
+
+.room-price small {
+  font-size: 0.9rem;
+  color: #ffdd75;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.room-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-detail,
+.btn-book {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid #f7c948;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+/* View Detail */
+.btn-detail {
+  background: transparent;
+  color: #f7c948;
+}
+
+.btn-detail:hover {
+  background: #f7c948;
+  color: #001d3d;
+  box-shadow: 0 0 12px rgba(247, 201, 72, 0.8);
+}
+
+/* Book Now */
+.btn-book {
+  background: #f7c948;
+  color: #001d3d;
+}
+
+.btn-book:hover {
+  background: #001d3d;
+  color: #f7c948;
+  box-shadow: 0 0 12px rgba(247, 201, 72, 0.8);
+}

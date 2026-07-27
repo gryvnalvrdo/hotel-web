@@ -1,0 +1,634 @@
+/*---------- Hero (Slider) with <img> ---------- */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;  /* penuh 1 layar di desktop */
+    overflow: hidden;
+  }
+
+  .hero .slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+  }
+
+  .hero .slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  /* Gambar pakai object-fit supaya seragam */
+  .hero .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* penuh, proporsional */
+    object-position: center;
+    display: block;
+  }
+
+  /* Overlay */
+  .hero .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.45) 100%);
+    z-index: 2;
+  }
+
+  /* Text di atas gambar */
+  .hero .hero-text {
+    position: absolute;
+    bottom: 15%;
+    left: 35%;
+    transform: translateX(-50%);
+    color: #fff;
+    z-index: 3;
+    width: 90%;
+    max-width: 800px;
+  }
+
+  /* ---------- Dots Navigation ---------- */
+  .hero .dots {
+    position: absolute;
+    bottom: 30px;         /* jarak dari bawah */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;           /* lebih tinggi dari overlay & gambar */
+  }
+
+  .hero .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .hero .dot.active {
+    background: #d4af37;   /* warna emas biar elegan */
+    transform: scale(1.2);
+  }
+
+
+  /* ---------- Generic Sections ---------- */
+  .section { padding: 80px 20px; text-align: center; }
+
+  /* ---------- Section Titles (Global) ---------- */
+  .section-head {
+    text-align: center;
+    margin-bottom: 40px; /* konsisten semua */
+  }
+  .section-head h2 {
+    color: var(--gold);
+    margin-bottom: 15px;
+  }
+  .section-head p {
+    color: #f0f0f0;
+    margin: 0;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  /* Title */
+  .section-title {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 800;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .section-title::after { 
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--gold);
+    margin: 12px auto 0;
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  /* =========================
+    ROOMS (Enhanced Dark Theme)
+  ========================= */
+  .rooms {
+    background: linear-gradient(180deg, var(--navy-dark) 0%, #021228 100%);
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  /* Grid */
+  .room-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Card — dark glass style */
+  .room-card {
+    background: linear-gradient(145deg, rgba(15,45,80,0.85) 0%, rgba(5,25,50,0.95) 100%);
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeSlideUp .8s ease forwards;
+  }
+  .room-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(212,175,55,0.15), 0 8px 24px rgba(0,0,0,0.4);
+    border-color: rgba(212,175,55,0.45);
+  }
+
+  /* Reveal animation */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .room-card[data-delay="0"]   { animation-delay: .1s; }
+  .room-card[data-delay="100"] { animation-delay: .25s; }
+  .room-card[data-delay="200"] { animation-delay: .4s; }
+  .room-card[data-delay="300"] { animation-delay: .55s; }
+  .room-card[data-delay="400"] { animation-delay: .7s; }
+
+  /* Media */
+  .room-media {
+    position: relative;
+    overflow: hidden;
+  }
+  .room-media img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    transition: transform .8s cubic-bezier(.2,.6,.2,1);
+  }
+  .room-card:hover .room-media img {
+    transform: scale(1.08);
+  }
+
+  /* Floating BOOK NOW ribbon */
+  .book-ribbon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-decoration: none;
+    font-weight: 800;
+    color: var(--navy-dark);
+    background: radial-gradient(80% 120% at 30% 20%, #ffe7a3 0%, var(--gold) 70%);
+    box-shadow: 0 8px 20px rgba(212,175,55,.4);
+    transition: transform .25s ease, box-shadow .25s ease;
+    z-index: 3;
+  }
+  .book-ribbon:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 28px rgba(212,175,55,.6);
+  }
+  .book-ribbon i { font-size: 18px; margin-bottom: 3px; }
+  .book-ribbon span { line-height: 1.05; text-align: center; font-size: .75rem; letter-spacing: .5px; }
+
+  /* Body */
+  .room-body { padding: 20px; }
+  .room-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .room-body h3 {
+    color: var(--gold-light);
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: var(--font-serif);
+  }
+
+  /* Tags */
+  .room-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .room-tags .tag {
+    background: rgba(212,175,55,0.12);
+    color: var(--gold-light);
+    border: 1px solid rgba(212,175,55,0.3);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 600;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  /* Amenities */
+  .amenities {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 8px 14px;
+    margin-top: 12px;
+  }
+  .amenities li { color: #b8c8dc; font-size: .88rem; display: flex; align-items: center; gap: 8px; }
+  .amenities i { color: var(--gold); flex-shrink: 0; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(16px); }
+  .reveal.show { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
+
+
+  /* ---------- Map / Location ---------- */
+  .map-container { margin: 20px auto; max-width: 900px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); width: 80%; max-width: 100%;   margin-top: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);}
+  .map-container iframe { width: 100%; height: 500px; border: none; display: block; }
+
+  /* Buttons */
+  .btn-more, .btn-learn {
+    display: inline-block; padding: 10px 20px; background: linear-gradient(45deg, var(--navy), var(--navy-2));
+    color: var(--white); border: none; border-radius: 50px; cursor: pointer; font-size: .92rem; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .3s ease; margin-bottom: 20px;
+  }
+  .btn-more:hover, .btn-learn:hover { background: var(--gold); color: var(--navy); box-shadow: 0 10px 22px rgba(212,175,55,.25); transform: translateY(-1px); }
+  .btn-more:focus, .btn-learn:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+
+  @keyframes fadeIn { from { opacity: 0; transform: scale(.96);} to { opacity: 1; transform: scale(1);} }
+  @keyframes modalSlide { 0% { transform: translateX(0);} 33% { transform: translateX(-100%);} 66% { transform: translateX(-200%);} 100% { transform: translateX(0);} }
+
+  /* =========================
+    FACILITIES SECTION
+  ========================= */
+  #facilities {   
+    text-align: center;  
+    padding-bottom: 10px;
+  }
+
+  .facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    justify-items: center; /* item rata tengah kolom */
+    align-items: stretch;  /* tinggi tiap card seragam */
+    justify-content: center; /* ⬅️ supaya baris terakhir selalu di tengah */
+  }
+
+  /* Facility Card */
+  .facility-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    text-align: center;
+    max-width: 320px;
+    margin: auto;
+    overflow: hidden;
+    transition: transform .3s ease, box-shadow .3s ease;
+    padding-bottom: 1rem;
+
+    display: flex;              /* flex column supaya isi bisa “didorong ke bawah” */
+    flex-direction: column;
+    justify-content: space-between;
+
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeSlideUp .8s ease forwards;
+
+    height: 100%; /* ⬅️ biar ikut tinggi baris */
+  }
+
+  /* Hover effect */
+  .facility-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Gambar fix di atas */
+  .facility-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    transition: transform .3s ease, filter .3s ease;
+  }
+  .facility-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(.92);
+  }
+
+  /* Konten di tengah */
+  .facility-card h3 {
+    margin: 1rem 0 0.5rem;
+    color: var(--navy);
+  }
+
+  .facility-card p {
+    font-size: .95rem;
+    color: #333;
+    padding: 0 12px;
+    margin-bottom: 1rem;
+
+    flex-grow: 1; /* isi teks “ngisi” ruang kosong */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Tombol tetap rata bawah */
+  .facility-card .see-more-btn {
+    background: var(--navy);
+    color: var(--gold);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center; /* tombol selalu rata tengah bawah */
+  }
+  .facility-card .see-more-btn:hover {
+    background: var(--navy-2);
+    transform: scale(1.05);
+  }
+
+  /* Fade + Slide animation */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+    
+
+  /* 🔥 Staggered Animation */
+  .facility-card:nth-child(1) { animation-delay: 0.1s; }
+  .facility-card:nth-child(2) { animation-delay: 0.2s; }
+  .facility-card:nth-child(3) { animation-delay: 0.3s; }
+  .facility-card:nth-child(4) { animation-delay: 0.4s; }
+  .facility-card:nth-child(5) { animation-delay: 0.5s; }
+  .facility-card:nth-child(6) { animation-delay: 0.6s; }
+  .facility-card:nth-child(7) { animation-delay: 0.7s; }
+  .facility-card:nth-child(8) { animation-delay: 0.8s; }
+  .facility-card:nth-child(9) { animation-delay: 0.9s; }
+  .facility-card:nth-child(10) { animation-delay: 1s; }
+
+  /* ===============================
+    Modal Overlay
+  =============================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+  z-index: 100000;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+  /* ===============================
+    Modal Content
+  =============================== */
+  .modal-content {
+    position: relative;
+    width: 60vw;
+    height: 80vh;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    overflow: hidden;
+    border-radius: 14px;
+    overflow: hidden;   /* pastikan sudut luar tetap rounded */
+    max-width: 90%;
+    max-height: 90vh;
+  }
+
+/* =========================
+   MODAL CLOSE - DESKTOP
+========================= */
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+
+  .modal-close:hover {
+    background: rgba(212, 175, 55, 0.9); /* gold elegan */
+    color: #000;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  }
+
+
+  /* ===============================
+    Carousel
+  =============================== */
+  .carousel-container {
+    position: relative; /* biar arrow ngikut parent ini */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel-slide {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 85vh;         /* tinggi seragam */
+    object-fit: cover;    /* isi penuh, crop sesuai container */
+    border-radius: inherit; /* ikut border radius parent */
+    display: block;
+  }
+
+
+  /* ===============================
+    Navigasi (Prev / Next)
+  =============================== */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(247, 201, 72, 0.4);
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.3s, color 0.3s;
+    z-index: 20; /* di atas gambar */
+    box-shadow: 0 0 10px rgba(247, 201, 72, 0.25);
+  }
+
+  .arrow:hover {
+    background: linear-gradient(135deg, #f7c948, #fff4ce);
+    color: #0a1932;
+    transform: translateY(-50%) scale(1.15);
+  }
+
+  /* posisi dalam gambar */
+  .prev { left: 20px; }
+  .next { right: 20px; }
+
+  /* ---------- Divider (global) ---------- */
+  .section-divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px auto; /* lebih rapat, tidak 80px */
+  }
+
+  .section-divider::before,
+  .section-divider::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+
+  .section-divider::after {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .section-divider span {
+    font-family: "Cinzel Decorative", serif;
+    font-size: 18px;
+    color: var(--gold);
+    padding: 0 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* --- Our Location section fix --- */
+  .location {
+    margin: 50px auto 30px auto; /* tidak terlalu jauh */
+    text-align: center;
+    max-width: 1200px;
+    margin-bottom: 70px;
+  }
+  .location .section-title {
+    margin: 0 0 10px 0; /* hilangkan jarak ekstra */
+  }
+  .location .tagline {
+    margin-bottom: 20px;
+  }
+
+/* =========================
+   IMAGE POPUP (Lightbox)
+========================= */
+  .image-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease;
+    z-index: 100000;
+  }
+
+  .image-popup.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .image-popup-content {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 80%;   /* gambar 80% dari container */
+  height: 100%;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* potong biar seragam */
+  border-radius: 14px;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+/* Tombol Close nempel ke gambar */
+.image-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  text-align: center;
+  line-height: 34px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.image-popup-close:hover {
+  background: rgba(212,175,55,0.95);
+  color: #000;
+  transform: rotate(90deg) scale(1.1);
+}

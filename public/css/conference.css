@@ -1,0 +1,406 @@
+/* ===============================
+   Conference Section
+=================================*/
+.conference-section {
+  padding: 100px 7% 60px; /* Jarak dari header */
+  background: #001d3d;
+  text-align: center;
+  color: #fff;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  letter-spacing: 1px;
+  position: relative;
+}
+.section-title::after { 
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 12px auto 0;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* ===============================
+   Rooms Grid
+=================================*/
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+/* ===============================
+   Room Card
+=================================*/
+.room-card {
+  background: linear-gradient(145deg, #012a4a, #003566);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+  color: #f8f9fa;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px 4px rgba(255, 214, 10, 0.6); /* glow emas */
+}
+
+.room-card h3 {
+  margin-bottom: 18px;
+  font-size: 1.4rem;
+  color: #ffd60a; /* judul ruangan aksen emas */
+  border-bottom: 1px solid rgba(255,214,10,0.4);
+  padding-bottom: 8px;
+}
+
+.room-info {
+  margin-top: 18px;
+  font-size: 1rem;
+  color: #e0e0e0;
+  text-align: left;
+}
+
+/* ===============================
+   Slider
+=================================*/
+.room-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Tombol Prev & Next selalu muncul */
+.room-slider .prev,
+.room-slider .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.room-slider .prev { left: 12px; }
+.room-slider .next { right: 12px; }
+
+.room-slider .prev:hover,
+.room-slider .next:hover {
+  background: #ffd60a;
+  color: #001d3d;
+  box-shadow: 0 0 12px rgba(255,214,10,0.8);
+}
+
+/* =========================
+   IMAGE POPUP (Lightbox)
+========================= */
+.image-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+  z-index: 100000;
+}
+
+/* Saat aktif */
+.image-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Fade-out */
+.image-popup.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 🎬 Animasi popup (zoom + fade) */
+.image-popup.fade-in .image-popup-content {
+  animation: popupFadeIn 0.4s ease forwards;
+}
+
+.image-popup.fade-out .image-popup-content {
+  animation: popupFadeOut 0.35s ease forwards;
+}
+
+
+/* Keyframes animasi */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes popupFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* =========================
+   POPUP CONTENT
+========================= */
+.image-popup-content {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Wrapper untuk gambar */
+.image-wrapper {
+  position: relative;
+  width: 80%;   /* gambar 80% dari container */
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Gambar */
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+.image-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  text-align: center;
+  line-height: 34px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 30;
+}
+
+.image-popup-close:hover {
+  background: rgba(212,175,55,0.95);
+  color: #000;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* =========================
+   PREV & NEXT BUTTONS
+========================= */
+.image-popup-prev,
+.image-popup-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(247, 201, 72, 0.4);
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s, color 0.3s;
+  z-index: 20;
+  box-shadow: 0 0 10px rgba(247, 201, 72, 0.25);
+}
+
+.image-popup-prev {
+  left: 16px;
+}
+
+.image-popup-next {
+  right: 16px;
+}
+
+.image-popup-prev:hover,
+.image-popup-next:hover {
+  background: linear-gradient(135deg, #f7c948, #fff4ce);
+  color: #0a1932;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* =========================
+   SLIDES CONTAINER
+========================= */
+.popup-slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.popup-slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 14px;
+}
+
+/* ===============================
+   Slider Dots
+=================================*/
+.slider-dots {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.slider-dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background: rgba(255, 215, 0, 0.4); /* emas transparan */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #FFD700; /* outline emas biar lebih jelas */
+}
+
+.slider-dots span:hover {
+  background: #FFD700;
+  transform: scale(1.2);
+}
+
+.slider-dots .active {
+  background: #FFD700;
+  box-shadow: 0 0 8px #FFD700; /* glow emas di dot aktif */
+}
+
+/* Tambahan untuk auto-slide */
+.room-card:hover .slides {
+  transition: transform 0.6s ease-in-out;
+}
+
+/* ===============================
+   Room Info Wrapper
+=================================*/
+.room-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px; /* tinggi total biar konsisten */
+}
+
+/* ===============================
+   Room Info Grid (Hotel Style)
+=================================*/
+.info-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;  /* dorong ke bawah */
+  margin-bottom: 10px;
+  justify-content: space-between;
+  min-height: 60px; /* grid konsisten */
+}
+
+.info-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  backdrop-filter: blur(8px);
+
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #f8f9fa;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+
+  /* stabilkan tinggi */
+  min-height: 48px;
+}
+
+.info-item i {
+  color: #FFD700;
+  font-size: 1.3rem;
+  text-shadow: 0 0 6px rgba(255,215,0,0.6);
+}
+
+/* Hover efek elegan */
+.info-item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 0 12px rgba(255,215,0,0.45);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* ===============================
+   Description style
+=================================*/
+.room-desc {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #e6e6e6;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px 16px;
+  border-left: 4px solid #FFD700;
+  border-radius: 8px;
+
+  /* stabilkan tinggi deskripsi */
+  min-height: 70px;
+  display: flex;
+  align-items: center; /* teks di tengah */
+}
