@@ -38,7 +38,21 @@ class BookingController extends Controller
             }
 
             $img = $room->images->first()?->file_path;
-            $room->image = !empty($img) ? $img : 'images/slider/slider1.jpg';
+            if (empty($img)) {
+                $room->image = asset('images/slider/slider1.jpg');
+            } else {
+                if (str_starts_with($img, 'http')) {
+                    $room->image = $img;
+                } else {
+                    $img = preg_replace('/^public\//', '', $img);
+                    $img = ltrim($img, '/');
+                    if (!str_starts_with($img, 'images/') && !str_starts_with($img, 'storage/')) {
+                        // Jika DB hanya menyimpan 'junior1.jpg' atau 'rooms/junior1.jpg'
+                        $img = 'images/rooms/' . basename($img);
+                    }
+                    $room->image = asset($img);
+                }
+            }
             $room->available = true; // default
             if ($checkin && $checkout) {
                 $room->available = $this->isRoomAvailable($room->id, $checkin, $checkout);

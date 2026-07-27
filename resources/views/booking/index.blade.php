@@ -81,7 +81,7 @@
                        onclick="selectRoomCard('{{ $room->id }}')">
                     <span class="badge-selected"><i class="bi bi-patch-check-fill"></i> KAMAR TERPILIH</span>
                     <img class="room-thumb"
-                         src="{{ asset($room->image ?? 'images/slider/slider1.jpg') }}"
+                         src="{{ $room->image }}"
                          alt="{{ $room->name }}">
                     <div class="room-info">
                       <h4>{{ $room->name }}</h4>

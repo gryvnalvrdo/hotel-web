@@ -32,7 +32,21 @@ class HomeController extends Controller
                 $room->save();
             }
 
-            $room->thumbnail   = $room->images->first()?->file_path;
+            $img = $room->images->first()?->file_path;
+            if (empty($img)) {
+                $room->thumbnail = 'images/slider/slider1.jpg';
+            } else {
+                if (str_starts_with($img, 'http')) {
+                    $room->thumbnail = $img;
+                } else {
+                    $img = preg_replace('/^public\//', '', $img);
+                    $img = ltrim($img, '/');
+                    if (!str_starts_with($img, 'images/') && !str_starts_with($img, 'storage/')) {
+                        $img = 'images/rooms/' . basename($img);
+                    }
+                    $room->thumbnail = $img;
+                }
+            }
             $room->mainFacilities = $room->facilities()->where('category', 'utama')->limit(2)->get();
             $room->roomFacilities = $room->facilities()->where('category', 'kamar')->limit(4)->get();
             return $room;
