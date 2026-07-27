@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 class InventoryController extends Controller
 {
-    /**
-     * Tampilkan Laporan Real-Time Ketersediaan & Stok Kamar (Room Inventory & Occupancy)
-     */
+    
     public function index(Request $request)
     {
         $date = $request->get('date', now()->format('Y-m-d'));

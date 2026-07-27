@@ -8,9 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminAuth
 {
-    /**
-     * Handle an incoming request to check admin session authentication.
-     */
+    
     public function handle(Request $request, Closure $next): Response
     {
         if (!session('admin_logged_in')) {

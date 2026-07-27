@@ -19,13 +19,9 @@ class BookingController extends Controller
 {
     public function index(Request $request)
     {
-        // Ambil tanggal dari request (jika ada dari step 1)
         $checkin  = $request->get('checkin');
         $checkout = $request->get('checkout');
-
-        // Ambil semua rooms dengan availability check
         $allRooms = Room::with('images')->get()->map(function ($room) use ($checkin, $checkout) {
-            // Self-healing jika harga di database 0 atau null
             if (!$room->price || $room->price <= 0) {
                 if (stripos($room->name, 'presidential') !== false) {
                     $room->price = 7500000;
@@ -41,18 +37,15 @@ class BookingController extends Controller
                 $room->save();
             }
 
-            $room->image     = $room->images->first()?->file_path;
+            $img = $room->images->first()?->file_path;
+            $room->image = !empty($img) ? $img : 'images/slider/slider1.jpg';
             $room->available = true; // default
-
-            // Cek availability jika ada tanggal
             if ($checkin && $checkout) {
                 $room->available = $this->isRoomAvailable($room->id, $checkin, $checkout);
             }
 
             return $room;
         });
-
-        // Data rooms untuk JS window.ROOMS
         $roomsJs = $allRooms->mapWithKeys(fn($r) => [
             (string) $r->id => [
                 'name'      => $r->name,
@@ -61,8 +54,6 @@ class BookingController extends Controller
                 'available' => $r->available,
             ]
         ]);
-
-        // Jika ada ?room_id=... di URL (klik dari halaman Rooms)
         $selectedRoom = null;
         if ($request->has('room_id')) {
             $selectedRoom = Room::with('images')->find($request->room_id);
@@ -94,8 +85,6 @@ class BookingController extends Controller
             'payment_method' => 'nullable|string|in:midtrans,pay_at_hotel',
             'room_details'   => 'nullable|string',
         ]);
-
-        // Format catatan tambahan jika ada pesanan multi-room
         if (!empty($validated['room_details'])) {
             try {
                 $details = json_decode($validated['room_details'], true);
@@ -109,8 +98,6 @@ class BookingController extends Controller
                 }
             } catch (\Throwable $e) {}
         }
-
-        // ✅ Double-check availability & stok kamar sebelum simpan
         if (!empty($validated['room_details'])) {
             $details = json_decode($validated['room_details'], true);
             if (is_array($details) && count($details) > 0) {
@@ -136,8 +123,6 @@ class BookingController extends Controller
                 ])->withInput();
             }
         }
-
-        // ✅ Validasi Batas Kapasitas Maksimal Tamu
         $totalCap = 0;
         if (!empty($validated['room_details'])) {
             $details = json_decode($validated['room_details'], true);
@@ -156,12 +141,8 @@ class BookingController extends Controller
                 'guests' => "Maaf, kapasitas total kamar terpilih ($totalCap tamu) tidak mencukupi untuk " . $validated['guests'] . " tamu. Silakan tambahkan jumlah kamar atau pilih tipe kamar yang lebih besar."
             ])->withInput();
         }
-
-        // Generate Midtrans order ID unik
         $orderId = 'Hotel-' . strtoupper(Str::random(8)) . '-' . time();
         $paymentMethod = $validated['payment_method'] ?? 'midtrans';
-
-        // Hitung ulang total price & promo secara backend (Keamanan)
         $backendTotal = 0;
         if (!empty($validated['room_details'])) {
             $details = json_decode($validated['room_details'], true);
@@ -206,8 +187,6 @@ class BookingController extends Controller
             'payment_status'    => 'unpaid',
             'midtrans_order_id' => $orderId,
         ]));
-
-        // Buat Midtrans Snap Token
         $snapToken = $this->createMidtransToken($booking);
         $booking->update(['midtrans_token' => $snapToken]);
 
@@ -217,8 +196,6 @@ class BookingController extends Controller
     public function payment(Request $request)
     {
         $booking = Booking::with('room')->findOrFail($request->id);
-
-        // Jika sudah dibayar, redirect ke success
         if ($booking->payment_status === 'paid') {
             return redirect()->route('booking.success', ['id' => $booking->id]);
         }
@@ -240,9 +217,7 @@ class BookingController extends Controller
         return view('booking.invoice', compact('booking'));
     }
 
-    /**
-     * Simulasi pembayaran (untuk testing tanpa Midtrans key)
-     */
+    
     public function simulatePay(Request $request, int $id)
     {
         $booking = Booking::findOrFail($id);
@@ -254,17 +229,13 @@ class BookingController extends Controller
         return redirect()->route('booking.success', ['id' => $id]);
     }
 
-    /**
-     * Midtrans Webhook — dipanggil otomatis oleh Midtrans setelah pembayaran
-     */
+    
     public function midtransCallback(Request $request)
     {
         $serverKey    = config('services.midtrans.server_key');
         $orderId      = $request->order_id;
         $statusCode   = $request->status_code;
         $grossAmount  = $request->gross_amount;
-
-        // Validasi signature Midtrans
         $signature = hash('sha512', $orderId . $statusCode . $grossAmount . $serverKey);
         if ($signature !== $request->signature_key) {
             return response()->json(['message' => 'Invalid signature'], 403);
@@ -274,8 +245,6 @@ class BookingController extends Controller
         if (!$booking) {
             return response()->json(['message' => 'Booking not found'], 404);
         }
-
-        // Update status berdasarkan notifikasi Midtrans
         $transactionStatus = $request->transaction_status;
         $fraudStatus       = $request->fraud_status;
 
@@ -294,13 +263,7 @@ class BookingController extends Controller
         return response()->json(['message' => 'OK']);
     }
 
-    // ─────────────────────────────────────────────────
-    // PRIVATE HELPERS
-    // ─────────────────────────────────────────────────
-
-    /**
-     * Kirim email e-Voucher ke tamu
-     */
+    
     private function sendConfirmationEmail(Booking $booking): void
     {
         try {
@@ -310,9 +273,7 @@ class BookingController extends Controller
         }
     }
 
-    /**
-     * Cek apakah stok kamar mencukupi untuk rentang tanggal tertentu dan jumlah yang dipesan.
-     */
+    
     private function isRoomAvailable(int $roomId, string $checkin, string $checkout, int $requestedQty = 1): bool
     {
         $room = \App\Models\Room::find($roomId);
@@ -320,9 +281,7 @@ class BookingController extends Controller
         return $room->getAvailableStock($checkin, $checkout) >= $requestedQty;
     }
 
-    /**
-     * API untuk mengecek ketersediaan real-time seluruh tipe kamar (AJAX).
-     */
+    
     public function checkAvailability(Request $request)
     {
         $checkin = $request->get('checkin', now()->format('Y-m-d'));
@@ -344,9 +303,7 @@ class BookingController extends Controller
         return response()->json($result);
     }
 
-    /**
-     * Buat Midtrans Snap Token untuk pembayaran
-     */
+    
     private function createMidtransToken(Booking $booking): ?string
     {
         if (!config('services.midtrans.server_key')) {
@@ -386,9 +343,7 @@ class BookingController extends Controller
         }
     }
 
-    /**
-     * Helper: ambil data footer dari DB (dipakai semua method)
-     */
+    
     private function getFooterData(): array
     {
         return [

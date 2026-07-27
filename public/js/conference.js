@@ -1,6 +1,3 @@
-// =============================
-// SLIDER
-// =============================
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".room-slider").forEach((slider) => {
     const slides = slider.querySelector(".slides");
@@ -13,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let interval = null;
     const autoSpeed = 2000; // kecepatan auto-slide saat hover
     const isMobile = window.matchMedia("(max-width: 820px)").matches;
-
-    // Generate dots sesuai jumlah slide
     slideItems.forEach((_, i) => {
       const dot = document.createElement("span");
       dot.classList.add("dot");
@@ -46,12 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
       index = (index - 1 + slideItems.length) % slideItems.length;
       updateSlide();
     }
-
-    // Event tombol
     nextBtn.addEventListener("click", showNext);
     prevBtn.addEventListener("click", showPrev);
-
-    // Auto-slide hanya saat card di-hover (desktop saja)
     function startAutoSlide() {
       if (!interval) interval = setInterval(showNext, autoSpeed);
     }
@@ -66,8 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card.addEventListener("mouseenter", startAutoSlide);
       card.addEventListener("mouseleave", stopAutoSlide);
     }
-
-    // Popup event (ambil semua <img>)
     const imgs = slides.querySelectorAll("img");
     imgs.forEach((img, i) => {
       img.addEventListener("click", () => openPopup(imgs, i));
@@ -77,11 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSlide();
   });
 });
-
-
-// =============================
-// POPUP SLIDER
-// =============================
 let popupIndex = 0;
 let popupImages = [];
 
@@ -127,10 +111,6 @@ function prevPopup() {
   popupIndex = (popupIndex - 1 + popupImages.length) % popupImages.length;
   updatePopupSlide();
 }
-
-// =============================
-// EVENT GLOBAL POPUP
-// =============================
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("imagePopup");
   const closeBtn = document.getElementById("popupClose");

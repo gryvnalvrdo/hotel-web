@@ -65,8 +65,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   const ctx = document.getElementById('revenueChart').getContext('2d');
-  
-  // Custom gradient for line chart
   const gradient = ctx.createLinearGradient(0, 0, 0, 350);
   gradient.addColorStop(0, 'rgba(197, 160, 89, 0.4)');
   gradient.addColorStop(1, 'rgba(197, 160, 89, 0.01)');

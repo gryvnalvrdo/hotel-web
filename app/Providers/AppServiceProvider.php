@@ -9,17 +9,12 @@ use Illuminate\Database\Schema\Blueprint;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+    
     public function register(): void
     {
-        //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
+    
     public function boot(): void
     {
         try {
@@ -65,7 +60,6 @@ class AppServiceProvider extends ServiceProvider
                 } catch (\Throwable $e) {}
             }
         } catch (\Throwable $e) {
-            // Abaikan jika database belum siap saat proses instalasi/setup awal
         }
     }
 }

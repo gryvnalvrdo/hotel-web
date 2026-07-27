@@ -1,8 +1,8 @@
-/*---------- Hero (Slider) with <img> ---------- */
+
   .hero {
     position: relative;
     width: 100%;
-    height: 100vh;  /* penuh 1 layar di desktop */
+    height: 100vh;  
     overflow: hidden;
   }
 
@@ -25,16 +25,16 @@
     z-index: 1;
   }
 
-  /* Gambar pakai object-fit supaya seragam */
+  
   .hero .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;    /* penuh, proporsional */
+    object-fit: cover;    
     object-position: center;
     display: block;
   }
 
-  /* Overlay */
+  
   .hero .overlay {
     position: absolute;
     inset: 0;
@@ -42,7 +42,7 @@
     z-index: 2;
   }
 
-  /* Text di atas gambar */
+  
   .hero .hero-text {
     position: absolute;
     bottom: 15%;
@@ -54,15 +54,15 @@
     max-width: 800px;
   }
 
-  /* ---------- Dots Navigation ---------- */
+  
   .hero .dots {
     position: absolute;
-    bottom: 30px;         /* jarak dari bawah */
+    bottom: 30px;         
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
-    z-index: 5;           /* lebih tinggi dari overlay & gambar */
+    z-index: 5;           
   }
 
   .hero .dot {
@@ -75,18 +75,18 @@
   }
 
   .hero .dot.active {
-    background: #d4af37;   /* warna emas biar elegan */
+    background: #d4af37;   
     transform: scale(1.2);
   }
 
 
-  /* ---------- Generic Sections ---------- */
+  
   .section { padding: 80px 20px; text-align: center; }
 
-  /* ---------- Section Titles (Global) ---------- */
+  
   .section-head {
     text-align: center;
-    margin-bottom: 40px; /* konsisten semua */
+    margin-bottom: 40px; 
   }
   .section-head h2 {
     color: var(--gold);
@@ -99,7 +99,7 @@
     opacity: 0.85;
   }
 
-  /* Title */
+  
   .section-title {
     font-size: 2.4rem;
     text-align: center;
@@ -121,16 +121,14 @@
     opacity: 0.8;
   }
 
-  /* =========================
-    ROOMS (Enhanced Dark Theme)
-  ========================= */
+  
   .rooms {
     background: linear-gradient(180deg, var(--navy-dark) 0%, #021228 100%);
     padding-top: 80px;
     padding-bottom: 80px;
   }
 
-  /* Grid */
+  
   .room-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -140,7 +138,7 @@
     padding: 0 20px;
   }
 
-  /* Card — dark glass style */
+  
   .room-card {
     background: linear-gradient(145deg, rgba(15,45,80,0.85) 0%, rgba(5,25,50,0.95) 100%);
     border: 1px solid rgba(212,175,55,0.2);
@@ -159,7 +157,7 @@
     border-color: rgba(212,175,55,0.45);
   }
 
-  /* Reveal animation */
+  
   @keyframes fadeSlideUp {
     from { opacity: 0; transform: translateY(40px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -171,7 +169,7 @@
   .room-card[data-delay="300"] { animation-delay: .55s; }
   .room-card[data-delay="400"] { animation-delay: .7s; }
 
-  /* Media */
+  
   .room-media {
     position: relative;
     overflow: hidden;
@@ -187,7 +185,7 @@
     transform: scale(1.08);
   }
 
-  /* Floating BOOK NOW ribbon */
+  
   .book-ribbon {
     position: absolute;
     top: 16px;
@@ -212,7 +210,7 @@
   .book-ribbon i { font-size: 18px; margin-bottom: 3px; }
   .book-ribbon span { line-height: 1.05; text-align: center; font-size: .75rem; letter-spacing: .5px; }
 
-  /* Body */
+  
   .room-body { padding: 20px; }
   .room-title {
     display: flex;
@@ -228,7 +226,7 @@
     font-family: var(--font-serif);
   }
 
-  /* Tags */
+  
   .room-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .room-tags .tag {
     background: rgba(212,175,55,0.12);
@@ -241,7 +239,7 @@
     display: flex; align-items: center; gap: 4px;
   }
 
-  /* Amenities */
+  
   .amenities {
     list-style: none;
     display: grid;
@@ -252,19 +250,19 @@
   .amenities li { color: #b8c8dc; font-size: .88rem; display: flex; align-items: center; gap: 8px; }
   .amenities i { color: var(--gold); flex-shrink: 0; }
 
-  /* Reveal on scroll */
+  
   .reveal { opacity: 0; transform: translateY(16px); }
   .reveal.show { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
 
 
-  /* ---------- Map / Location ---------- */
+  
   .map-container { margin: 20px auto; max-width: 900px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); width: 80%; max-width: 100%;   margin-top: 30px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);}
   .map-container iframe { width: 100%; height: 500px; border: none; display: block; }
 
-  /* Buttons */
+  
   .btn-more, .btn-learn {
     display: inline-block; padding: 10px 20px; background: linear-gradient(45deg, var(--navy), var(--navy-2));
     color: var(--white); border: none; border-radius: 50px; cursor: pointer; font-size: .92rem; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .3s ease; margin-bottom: 20px;
@@ -276,9 +274,7 @@
   @keyframes fadeIn { from { opacity: 0; transform: scale(.96);} to { opacity: 1; transform: scale(1);} }
   @keyframes modalSlide { 0% { transform: translateX(0);} 33% { transform: translateX(-100%);} 66% { transform: translateX(-200%);} 100% { transform: translateX(0);} }
 
-  /* =========================
-    FACILITIES SECTION
-  ========================= */
+  
   #facilities {   
     text-align: center;  
     padding-bottom: 10px;
@@ -291,12 +287,12 @@
     max-width: 1200px;
     margin: 0 auto;
 
-    justify-items: center; /* item rata tengah kolom */
-    align-items: stretch;  /* tinggi tiap card seragam */
-    justify-content: center; /* ⬅️ supaya baris terakhir selalu di tengah */
+    justify-items: center; 
+    align-items: stretch;  
+    justify-content: center; 
   }
 
-  /* Facility Card */
+  
   .facility-card {
     background: #fff;
     border-radius: 16px;
@@ -308,7 +304,7 @@
     transition: transform .3s ease, box-shadow .3s ease;
     padding-bottom: 1rem;
 
-    display: flex;              /* flex column supaya isi bisa “didorong ke bawah” */
+    display: flex;              
     flex-direction: column;
     justify-content: space-between;
 
@@ -316,16 +312,16 @@
     transform: translateY(40px);
     animation: fadeSlideUp .8s ease forwards;
 
-    height: 100%; /* ⬅️ biar ikut tinggi baris */
+    height: 100%; 
   }
 
-  /* Hover effect */
+  
   .facility-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
   }
 
-  /* Gambar fix di atas */
+  
   .facility-card img {
     width: 100%;
     height: 220px;
@@ -338,7 +334,7 @@
     filter: brightness(.92);
   }
 
-  /* Konten di tengah */
+  
   .facility-card h3 {
     margin: 1rem 0 0.5rem;
     color: var(--navy);
@@ -350,14 +346,14 @@
     padding: 0 12px;
     margin-bottom: 1rem;
 
-    flex-grow: 1; /* isi teks “ngisi” ruang kosong */
+    flex-grow: 1; 
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  /* Tombol tetap rata bawah */
+  
   .facility-card .see-more-btn {
     background: var(--navy);
     color: var(--gold);
@@ -367,21 +363,21 @@
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
-    align-self: center; /* tombol selalu rata tengah bawah */
+    align-self: center; 
   }
   .facility-card .see-more-btn:hover {
     background: var(--navy-2);
     transform: scale(1.05);
   }
 
-  /* Fade + Slide animation */
+  
   @keyframes fadeSlideUp {
     from { opacity: 0; transform: translateY(40px); }
     to   { opacity: 1; transform: translateY(0); }
   }
     
 
-  /* 🔥 Staggered Animation */
+  
   .facility-card:nth-child(1) { animation-delay: 0.1s; }
   .facility-card:nth-child(2) { animation-delay: 0.2s; }
   .facility-card:nth-child(3) { animation-delay: 0.3s; }
@@ -393,9 +389,7 @@
   .facility-card:nth-child(9) { animation-delay: 0.9s; }
   .facility-card:nth-child(10) { animation-delay: 1s; }
 
-  /* ===============================
-    Modal Overlay
-  =============================== */
+  
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -414,9 +408,7 @@
   visibility: visible;
 }
 
-  /* ===============================
-    Modal Content
-  =============================== */
+  
   .modal-content {
     position: relative;
     width: 60vw;
@@ -428,14 +420,12 @@
     border-radius: 14px;
     overflow: hidden;
     border-radius: 14px;
-    overflow: hidden;   /* pastikan sudut luar tetap rounded */
+    overflow: hidden;   
     max-width: 90%;
     max-height: 90vh;
   }
 
-/* =========================
-   MODAL CLOSE - DESKTOP
-========================= */
+
   .modal-close {
     position: absolute;
     top: 20px;
@@ -455,18 +445,16 @@
   }
 
   .modal-close:hover {
-    background: rgba(212, 175, 55, 0.9); /* gold elegan */
+    background: rgba(212, 175, 55, 0.9); 
     color: #000;
     transform: rotate(90deg) scale(1.1);
     box-shadow: 0 4px 12px rgba(0,0,0,0.35);
   }
 
 
-  /* ===============================
-    Carousel
-  =============================== */
+  
   .carousel-container {
-    position: relative; /* biar arrow ngikut parent ini */
+    position: relative; 
     width: 100%;
     height: 100%;
     display: flex;
@@ -482,16 +470,14 @@
 
   .carousel-slide img {
     width: 100%;
-    height: 85vh;         /* tinggi seragam */
-    object-fit: cover;    /* isi penuh, crop sesuai container */
-    border-radius: inherit; /* ikut border radius parent */
+    height: 85vh;         
+    object-fit: cover;    
+    border-radius: inherit; 
     display: block;
   }
 
 
-  /* ===============================
-    Navigasi (Prev / Next)
-  =============================== */
+  
   .arrow {
     position: absolute;
     top: 50%;
@@ -504,7 +490,7 @@
     cursor: pointer;
     border-radius: 50%;
     transition: background 0.3s, transform 0.3s, color 0.3s;
-    z-index: 20; /* di atas gambar */
+    z-index: 20; 
     box-shadow: 0 0 10px rgba(247, 201, 72, 0.25);
   }
 
@@ -514,17 +500,17 @@
     transform: translateY(-50%) scale(1.15);
   }
 
-  /* posisi dalam gambar */
+  
   .prev { left: 20px; }
   .next { right: 20px; }
 
-  /* ---------- Divider (global) ---------- */
+  
   .section-divider {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 60px auto; /* lebih rapat, tidak 80px */
+    margin: 60px auto; 
   }
 
   .section-divider::before,
@@ -548,23 +534,21 @@
     text-transform: uppercase;
   }
 
-  /* --- Our Location section fix --- */
+  
   .location {
-    margin: 50px auto 30px auto; /* tidak terlalu jauh */
+    margin: 50px auto 30px auto; 
     text-align: center;
     max-width: 1200px;
     margin-bottom: 70px;
   }
   .location .section-title {
-    margin: 0 0 10px 0; /* hilangkan jarak ekstra */
+    margin: 0 0 10px 0; 
   }
   .location .tagline {
     margin-bottom: 20px;
   }
 
-/* =========================
-   IMAGE POPUP (Lightbox)
-========================= */
+
   .image-popup {
     position: fixed;
     inset: 0;
@@ -597,20 +581,20 @@
 
 .image-wrapper {
   position: relative;
-  width: 80%;   /* gambar 80% dari container */
+  width: 80%;   
   height: 100%;
 }
 
 .image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* potong biar seragam */
+  object-fit: cover;   
   border-radius: 14px;
   display: block;
   transition: transform 0.35s ease;
 }
 
-/* Tombol Close nempel ke gambar */
+
 .image-popup-close {
   position: absolute;
   top: 10px;

@@ -9,7 +9,7 @@
 
 @section('content')
 
-  {{-- ========== HERO SLIDER ========== --}}
+  
   <section class="hero" id="home">
     <div class="slides">
       @foreach($heroSlides as $i => $slide)
@@ -35,7 +35,7 @@
       @endforeach
     </div>
 
-    {{-- Dots --}}
+    
     <div class="dots">
       @foreach($heroSlides as $i => $slide)
         <span class="dot {{ $i === 0 ? 'active' : '' }}"></span>
@@ -43,7 +43,7 @@
     </div>
   </section>
 
-  {{-- ========== ROOMS SECTION ========== --}}
+  
   <section id="rooms" class="section rooms">
     <div class="section-head">
       <h2 class="section-title">Our Favorite Room</h2>
@@ -88,7 +88,7 @@
 
   <div class="section-divider"></div>
 
-  {{-- Image Popup --}}
+  
   <div class="image-popup" id="imagePopup">
     <div class="image-popup-content">
       <div class="image-wrapper">
@@ -98,7 +98,7 @@
     </div>
   </div>
 
-  {{-- ========== FACILITIES SECTION ========== --}}
+  
   <section id="facilities">
     <div class="section-head">
       <h2 class="section-title">Our Facilities</h2>
@@ -124,7 +124,7 @@
     </div>
   </section>
 
-  {{-- ========== FACILITY MODALS ========== --}}
+  
   @foreach($facilities as $facility)
     <div id="facilityModal{{ $facility->id }}" class="modal-overlay">
       <div class="modal-content">
@@ -144,7 +144,7 @@
 
   <div class="section-divider"></div>
 
-  {{-- ========== LOCATION SECTION ========== --}}
+  
   <section class="location">
     <div class="section-head">
       <h2 class="section-title">Our Location</h2>

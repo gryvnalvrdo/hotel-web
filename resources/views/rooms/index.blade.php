@@ -14,7 +14,7 @@
 
     @foreach($rooms as $room)
       <div class="room-card">
-        {{-- Left: Image Slider --}}
+        
         <div class="room-left">
           <div class="slider" id="slider{{ $room->id }}">
             <div class="slides">
@@ -28,7 +28,7 @@
           </div>
         </div>
 
-        {{-- Right: Room Info --}}
+        
         <div class="room-right">
           <h3 class="room-title">{{ $room->name }}</h3>
           <p class="room-desc">{{ $room->short_description }}</p>
@@ -62,12 +62,12 @@
         </div>
       </div>
 
-      {{-- Modal Detail Room --}}
+      
       <div class="modal-overlay" id="modal{{ $room->id }}">
         <div class="modal-content two-column">
           <span class="modal-close" data-close-modal="modal{{ $room->id }}">&times;</span>
 
-          {{-- Left: Slider --}}
+          
           <div class="modal-left">
             <div class="room-title-modal">
               <h3>{{ $room->name }}</h3>
@@ -96,7 +96,7 @@
             </div>
           </div>
 
-          {{-- Right: Info --}}
+          
           <div class="modal-right">
             <div class="modal-body">
               <h4>Info Kamar</h4>
@@ -149,7 +149,7 @@
       </div>
     @endforeach
 
-    {{-- Image Popup --}}
+    
     <div class="image-popup" id="imagePopup">
       <div class="image-popup-content">
         <div class="image-wrapper">

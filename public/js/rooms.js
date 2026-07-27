@@ -1,6 +1,3 @@
-// ================================
-// SLIDER STATE
-// ================================
 const sliders = {};
 
 function initSlider(sliderId) {
@@ -22,8 +19,6 @@ function initSlider(sliderId) {
       dotsContainer.appendChild(dot);
     });
   }
-
-  // Klik gambar di slider luar modal → buka modal
   if (!slider.closest('.modal-overlay')) {
     images.forEach(img => {
       img.style.cursor = 'pointer';
@@ -33,8 +28,6 @@ function initSlider(sliderId) {
       });
     });
   }
-
-  // Klik gambar di slider dalam modal → buka image popup
   if (slider.closest('.modal-overlay')) {
     images.forEach(img => {
       img.style.cursor = 'zoom-in';
@@ -88,10 +81,6 @@ function goToSlide(sliderId, i) {
   s.index = i;
   updateSlider(sliderId);
 }
-
-// ================================
-// SWIPE SUPPORT
-// ================================
 function enableSwipe(sliderId) {
   const slider = document.getElementById(sliderId);
   if (!slider) return;
@@ -102,18 +91,12 @@ function enableSwipe(sliderId) {
     if (Math.abs(diff) > 50) diff > 0 ? nextSlide(sliderId) : prevSlide(sliderId);
   }, { passive: true });
 }
-
-// ================================
-// MODAL LOGIC
-// ================================
 function openModal(id) {
   const modal = document.getElementById(id);
   if (!modal) { console.warn('Modal not found:', id); return; }
   modal.classList.add('active');
   document.body.classList.add('modal-open');
   document.body.style.overflow = 'hidden';
-
-  // Init slider di dalam modal jika ada
   const modalSlider = modal.querySelector('.slider');
   if (modalSlider) initSlider(modalSlider.id);
 }
@@ -133,10 +116,6 @@ function closeAllModals() {
   document.body.classList.remove('modal-open');
   document.body.style.overflow = '';
 }
-
-// ================================
-// IMAGE POPUP LOGIC
-// ================================
 function openImagePopup(src) {
   const popup = document.getElementById('imagePopup');
   const img   = document.getElementById('popupImg');
@@ -152,28 +131,17 @@ function closeImagePopup() {
   popup.classList.remove('active');
   document.body.style.overflow = '';
 }
-
-// ================================
-// INIT ON LOAD
-// ================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Init semua slider di halaman
   document.querySelectorAll('.slider').forEach(slider => initSlider(slider.id));
-
-  // ─── Click outside modal → close ───
   document.addEventListener('click', e => {
-    // Close modal-overlay jika klik tepat pada overlay (bukan isi)
     if (e.target.classList.contains('modal-overlay')) {
       closeAllModals();
     }
-    // Close image popup jika klik tepat pada overlay
     const popup = document.getElementById('imagePopup');
     if (popup && e.target === popup) {
       closeImagePopup();
     }
   });
-
-  // ─── Data-modal delegation (btn-detail) ───
   document.addEventListener('click', e => {
     const btn = e.target.closest('[data-modal]');
     if (btn) {
@@ -186,12 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal(closeBtn.getAttribute('data-close-modal'));
     }
   });
-
-  // ─── Close popup via X button ───
   const popupClose = document.getElementById('popupClose');
   if (popupClose) popupClose.addEventListener('click', closeImagePopup);
-
-  // ─── ESC key ───
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       closeAllModals();

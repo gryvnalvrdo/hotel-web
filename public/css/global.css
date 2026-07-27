@@ -1,15 +1,8 @@
-/* =====================================================
-   Web Hotel — Global CSS
-   Berisi: Design tokens, reset, navbar, footer,
-           buttons, section-title, popups, animations,
-           dan semua media queries global (responsive)
-   ===================================================== */
 
-/* ==============================
-   1. DESIGN TOKENS (:root)
-============================== */
+
+
 :root {
-  /* Warna utama - Warm Luxury Hospitality Theme */
+  
   --navy:        #0F172A;
   --navy-dark:   #0B0F19;
   --navy-2:      #1E293B;
@@ -18,31 +11,29 @@
   --gold-dark:   #9E7D3B;
   --white:       #ffffff;
 
-  /* Tipografi */
+  
   --font-main:   'Poppins', sans-serif;
   --font-serif:  'Playfair Display', serif;
 
-  /* Spacing & radius */
+  
   --radius:      14px;
   --radius-lg:   20px;
 
-  /* Transisi */
+  
   --transition:  0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Shadows */
+  
   --shadow-sm:   0 4px 12px rgba(15, 23, 42, 0.08);
   --shadow-md:   0 12px 30px rgba(15, 23, 42, 0.12);
   --shadow-lg:   0 20px 50px rgba(15, 23, 42, 0.22);
 
-  /* Background alternatif */
+  
   --bg:          #FAF8F5;
   --muted:       #78716C;
 }
 
 
-/* ==============================
-   2. RESET & BASE
-============================== */
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -61,9 +52,7 @@ body {
 }
 
 
-/* ==============================
-   3. NAVBAR
-============================== */
+
 .navbar-modern {
   position: fixed;
   top: 0;
@@ -127,7 +116,7 @@ body {
   color: var(--white);
 }
 
-/* === Drawer Header (mobile only) === */
+
 .drawer-header {
   display: none;
   align-items: center;
@@ -157,7 +146,7 @@ body {
 .drawer-title .hotel { color: #fff; }
 .drawer-title .Hotel { color: var(--gold); }
 
-/* === Overlay belakang drawer === */
+
 .drawer-overlay {
   position: fixed;
   inset: 0;
@@ -174,13 +163,11 @@ body {
   opacity: 1;
 }
 
-/* === Body lock saat menu terbuka === */
+
 body.menu-open { overflow: hidden; }
 
 
-/* ==============================
-   4. HERO (Shared)
-============================== */
+
 .hero {
   height: 100vh;
   position: relative;
@@ -232,7 +219,7 @@ body.menu-open { overflow: hidden; }
   font-size: 1.2rem;
 }
 
-/* Dots (hero slider) */
+
 .dots {
   position: absolute;
   bottom: 40px;
@@ -258,11 +245,9 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   5. BUTTONS (Global)
-============================== */
 
-/* CTA Button (hero) */
+
+
 .btn-cta {
   display: inline-block;
   background: var(--gold);
@@ -279,7 +264,7 @@ body.menu-open { overflow: hidden; }
   background: #e0c067;
 }
 
-/* More / Learn Button */
+
 .btn-more, .btn-learn {
   display: inline-block;
   padding: 10px 20px;
@@ -307,7 +292,7 @@ body.menu-open { overflow: hidden; }
   outline-offset: 2px;
 }
 
-/* Detail & Book Buttons (rooms page) */
+
 .btn-detail,
 .btn-book {
   padding: 10px 20px;
@@ -343,7 +328,7 @@ body.menu-open { overflow: hidden; }
   box-shadow: 0 0 12px rgba(247, 201, 72, 0.8);
 }
 
-/* Book Now (modal) */
+
 .btn-book-modal {
   background: var(--gold-light);
   border: none;
@@ -364,9 +349,7 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   6. SECTION TITLE (Global)
-============================== */
+
 .section-title {
   font-size: 2.4rem;
   text-align: center;
@@ -389,7 +372,7 @@ body.menu-open { overflow: hidden; }
   opacity: 0.8;
 }
 
-/* Section Head (title + subtitle block) */
+
 .section-head {
   text-align: center;
   margin-bottom: 40px;
@@ -407,7 +390,7 @@ body.menu-open { overflow: hidden; }
   opacity: 0.85;
 }
 
-/* Section Divider */
+
 .section-divider {
   position: relative;
   display: flex;
@@ -438,9 +421,7 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   7. IMAGE POPUP / LIGHTBOX (Global)
-============================== */
+
 .image-popup {
   position: fixed;
   inset: 0;
@@ -500,7 +481,7 @@ body.menu-open { overflow: hidden; }
   transition: transform 0.35s ease;
 }
 
-/* Close button */
+
 .image-popup-close {
   position: absolute;
   top: 10px;
@@ -524,7 +505,7 @@ body.menu-open { overflow: hidden; }
   transform: rotate(90deg) scale(1.1);
 }
 
-/* Prev & Next buttons */
+
 .image-popup-prev,
 .image-popup-next {
   position: absolute;
@@ -552,7 +533,7 @@ body.menu-open { overflow: hidden; }
   transform: translateY(-50%) scale(1.15);
 }
 
-/* Popup slides */
+
 .popup-slides {
   display: flex;
   height: 100%;
@@ -568,9 +549,7 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   8. FOOTER
-============================== */
+
 .footer-modern {
   background: linear-gradient(135deg, var(--navy), var(--navy-2));
   color: #f5f6fa;
@@ -588,7 +567,7 @@ body.menu-open { overflow: hidden; }
   margin: auto;
 }
 
-/* Branding */
+
 .footer-brand { flex: 1.2; min-width: 280px; }
 .footer-brand h2 { color: var(--gold); margin-bottom: 18px; }
 .footer-brand p {
@@ -616,7 +595,7 @@ body.menu-open { overflow: hidden; }
   color: var(--navy-2);
 }
 
-/* Contact */
+
 .footer-contact { flex: 1; min-width: 260px; }
 .footer-contact h3 { color: var(--gold); margin-bottom: 18px; }
 .footer-contact ul { list-style: none; padding: 0; }
@@ -629,7 +608,7 @@ body.menu-open { overflow: hidden; }
 }
 .footer-contact i { color: var(--gold); font-size: 1.2rem; }
 
-/* Bottom */
+
 .footer-bottom {
   text-align: center;
   margin-top: 40px;
@@ -639,7 +618,7 @@ body.menu-open { overflow: hidden; }
   color: #cfd2d6;
 }
 
-/* Partner Logos */
+
 .footer-partners { margin-top: 30px; }
 .footer-partners h4 {
   color: var(--gold);
@@ -677,11 +656,9 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   9. FLOATING BUTTONS
-============================== */
 
-/* WhatsApp Float */
+
+
 .whatsapp-float {
   position: fixed;
   bottom: 25px;
@@ -705,7 +682,7 @@ body.menu-open { overflow: hidden; }
 .whatsapp-float:hover { transform: scale(1.08); }
 .whatsapp-float i { font-size: 1.8rem; }
 
-/* Back to Top */
+
 .back-to-top {
   position: fixed;
   bottom: 90px;
@@ -742,9 +719,7 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   10. REVEAL ON SCROLL
-============================== */
+
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -757,9 +732,7 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   11. ANIMATIONS (Global)
-============================== */
+
 @keyframes pulse {
   0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
   70%  { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -791,13 +764,10 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   12. RESPONSIVE — NAVBAR & FOOTER
-   (max-width: 820px)
-============================== */
+
 @media (max-width: 820px) {
 
-  /* === NAVBAR === */
+  
   .navbar-modern {
     justify-content: flex-start;
     padding: 15px 16px;
@@ -819,7 +789,7 @@ body.menu-open { overflow: hidden; }
 
   .navbar-modern nav { display: block; }
 
-  /* === DRAWER === */
+  
   .nav-links {
     position: fixed;
     top: 0;
@@ -869,14 +839,14 @@ body.menu-open { overflow: hidden; }
   .nav-links li a:hover::before,
   .nav-links li a.active::before { height: 60%; }
 
-  /* Drawer header hanya di mobile */
+  
   .drawer-header { display: flex; }
 
-  /* === HERO === */
+  
   .hero-text h1 { font-size: 2.2rem; }
   .hero-text p  { font-size: 1rem; }
 
-  /* === FOOTER === */
+  
   .footer-modern {
     padding: 50px 16px 20px;
     font-size: 0.85rem;
@@ -911,7 +881,7 @@ body.menu-open { overflow: hidden; }
     font-size: 0.75rem;
   }
 
-  /* === FLOATING BUTTONS === */
+  
   .whatsapp-float {
     bottom: 16px;
     right: 16px;
@@ -930,7 +900,7 @@ body.menu-open { overflow: hidden; }
     font-size: 1.2rem;
   }
 
-  /* === IMAGE POPUP — Tablet === */
+  
   .image-popup-content {
     width: 95vw;
     max-width: 95%;
@@ -975,11 +945,9 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ==============================
-   RESPONSIVE — Mobile (max-width: 480px)
-============================== */
+
 @media (max-width: 480px) {
-  /* === IMAGE POPUP — Mobile === */
+  
   .image-popup-content {
     width: 95vw;
     max-width: 95%;
@@ -1011,9 +979,7 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ============================================================
-   LOADING SCREEN — Web Hotel Luxury Entrance
-   ============================================================ */
+
 #loading-screen {
   position: fixed;
   inset: 0;
@@ -1094,9 +1060,7 @@ body.menu-open { overflow: hidden; }
 }
 
 
-/* ============================================================
-   MODAL OVERLAY — Unified & Consistent
-   ============================================================ */
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1110,7 +1074,7 @@ body.menu-open { overflow: hidden; }
   transition: opacity 0.3s ease, visibility 0.3s ease;
   z-index: 10000;
   padding: 20px;
-  cursor: pointer; /* click outside = close */
+  cursor: pointer; 
 }
 
 .modal-overlay.active {
@@ -1128,7 +1092,7 @@ body.menu-open { overflow: hidden; }
   max-height: 88vh;
   overflow-y: auto;
   box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,175,55,0.1);
-  cursor: default; /* agar isi modal tidak trigger close */
+  cursor: default; 
   animation: modalSlideIn 0.35s cubic-bezier(.22,.68,0,1.2) forwards;
 }
 
@@ -1163,7 +1127,7 @@ body.menu-open { overflow: hidden; }
   transform: rotate(90deg) scale(1.1);
 }
 
-/* Two-column modal (rooms detail) */
+
 .modal-content.two-column {
   display: flex;
   gap: 0;
@@ -1235,7 +1199,7 @@ body.menu-open { overflow: hidden; }
 
 .info-item i { color: var(--gold); }
 
-/* Facility list in modal */
+
 .facility-list {
   list-style: none;
   padding: 0;
@@ -1263,7 +1227,7 @@ body.menu-open { overflow: hidden; }
   flex-shrink: 0;
 }
 
-/* Modal footer with price + book */
+
 .modal-footer {
   padding: 16px 24px;
   border-top: 1px solid rgba(212,175,55,0.2);
@@ -1303,11 +1267,9 @@ body.menu-open { overflow: hidden; }
   box-shadow: 0 6px 20px rgba(212,175,55,0.4);
 }
 
-/* ============================================================
-   IMAGE POPUP — Consistent & Uniform across all pages
-   ============================================================ */
+
 .image-popup {
-  cursor: pointer; /* click backdrop = close */
+  cursor: pointer; 
 }
 
 .image-popup .image-popup-content {
@@ -1331,7 +1293,7 @@ body.menu-open { overflow: hidden; }
   border-radius: 16px;
 }
 
-/* Thumbnails in modal */
+
 .thumbnails {
   display: flex;
   gap: 8px;
@@ -1363,9 +1325,7 @@ body.menu-open { overflow: hidden; }
   margin-top: 6px;
 }
 
-/* =====================================================
-   GLOBAL SCROLLBAR (Royal Web Hotel Executive)
-   ===================================================== */
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;

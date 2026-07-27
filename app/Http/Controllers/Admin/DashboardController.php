@@ -22,8 +22,6 @@ class DashboardController extends Controller
                             ->orderBy('id', 'desc')
                             ->limit(10)
                             ->get();
-
-        // Calculate Monthly Revenue for the current year
         $currentYear = date('Y');
         $monthlyData = Booking::where('payment_status', '!=', 'cancelled')
             ->whereYear('created_at', $currentYear)

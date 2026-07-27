@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-fit, initial-scale=1.0" />
   <title>@yield('title', 'Admin Console — Web Hotel')</title>
   
-  {{-- Fonts --}}
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -27,7 +27,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; background: var(--admin-bg); color: var(--text-main); display: flex; min-height: 100vh; }
 
-    /* SIDEBAR */
+    
     .admin-sidebar {
       width: 270px;
       background: var(--sidebar-bg);
@@ -138,7 +138,7 @@
       color: #ffffff;
     }
 
-    /* MAIN CONTENT */
+    
     .admin-main {
       margin-left: 270px;
       flex: 1;
@@ -185,7 +185,7 @@
       flex: 1;
     }
 
-    /* ALERTS */
+    
     .alert {
       padding: 16px 20px;
       border-radius: 14px;
@@ -199,7 +199,7 @@
     .alert-success { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
     .alert-danger { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
 
-    /* CARDS */
+    
     .card {
       background: #FFFFFF;
       border-radius: 20px;
@@ -220,14 +220,14 @@
 
     .card-header h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #0F172A; }
 
-    /* TABLES */
+    
     .table-responsive { overflow-x: auto; }
     .table { width: 100%; border-collapse: collapse; text-align: left; }
     .table th { padding: 14px 16px; background: #F8F6F0; color: #64748b; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--border); }
     .table td { padding: 16px; border-bottom: 1px solid #f1f5f9; font-size: 0.94rem; color: #1C1917; vertical-align: middle; }
     .table tr:hover { background: #FCFBF9; }
 
-    /* BUTTONS */
+    
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 0.88rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.25s ease; }
     .btn-gold { background: linear-gradient(135deg, #C5A059 0%, #9E7D3B 100%); color: #FFF; box-shadow: 0 4px 12px rgba(197, 160, 89, 0.25); }
     .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(197, 160, 89, 0.4); }
@@ -236,7 +236,7 @@
     .btn-danger { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
     .btn-danger:hover { background: #fca5a5; color: #7f1d1d; }
 
-    /* FORMS */
+    
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; font-weight: 600; font-size: 0.92rem; color: #0F172A; margin-bottom: 8px; }
     .form-control { width: 100%; padding: 12px 16px; border-radius: 12px; border: 1.5px solid #D6D2C4; background: #FCFBF9; font-size: 0.95rem; font-family: inherit; }
@@ -253,7 +253,7 @@
 </head>
 <body>
 
-  {{-- SIDEBAR --}}
+  
   <aside class="admin-sidebar">
     <div class="sidebar-header">
       <h2>Web Hotel</h2>
@@ -295,7 +295,7 @@
     </div>
   </aside>
 
-  {{-- MAIN --}}
+  
   <main class="admin-main">
     <header class="admin-topbar">
       <div class="topbar-title">

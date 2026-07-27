@@ -9,7 +9,7 @@
     <div class="card-header">
       <h3>Riwayat & Reservasi Masuk</h3>
       
-      {{-- Filter Status --}}
+      
       <form action="{{ route('admin.bookings.index') }}" method="GET" style="display:flex;gap:10px;align-items:center;">
         <select name="status" class="form-control" style="width:200px;padding:8px 12px;font-size:0.88rem;" onchange="this.form.submit()">
           <option value="">-- Semua Status --</option>

@@ -8,7 +8,7 @@ return new class extends Migration
 {
     /**
      * Buat tabel bookings dari scratch.
-     * Tabel ini belum ada di database claro lama.
+     * Tabel ini belum ada di database Web Hotel lama.
      */
     public function up(): void
     {

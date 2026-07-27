@@ -57,7 +57,6 @@ class RoomController extends Controller
                 'display_order' => 1,
             ]);
         } else {
-            // Default image
             RoomImage::create([
                 'room_id'       => $room->id,
                 'file_path'     => 'images/slider/slider1.jpg',
@@ -66,8 +65,6 @@ class RoomController extends Controller
                 'display_order' => 1,
             ]);
         }
-
-        // Add default facilities
         $defaultFacilities = [
             ['name' => 'Free Wi-Fi Kecepatan Tinggi', 'icon' => 'bi bi-wifi', 'category' => 'utama'],
             ['name' => 'Sarapan Prasmanan Gratis', 'icon' => 'bi bi-cup-hot-fill', 'category' => 'utama'],

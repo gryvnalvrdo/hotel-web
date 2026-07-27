@@ -1,6 +1,4 @@
-/* =========================
-   ROOMS SECTION
-========================= */
+
 body.modal-open {
   overflow: hidden;
 }
@@ -32,9 +30,7 @@ body.modal-open {
   opacity: 0.8;
 }
 
-/* =========================
-   ROOM CARD
-========================= */
+
 .room-card {
   display: flex;
   flex-direction: row;
@@ -71,14 +67,14 @@ body.modal-open {
   justify-content: space-between;
 }
 
-/* Hilangkan bullet pada amenities */
+
 .amenities {
-  list-style: none; /* hilangkan bullet */
+  list-style: none; 
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
   gap: 8px 14px;
   margin-top: 10px;
-  padding-left: 0; /* pastikan tidak ada padding default */
+  padding-left: 0; 
 }
 
 .amenities li {
@@ -93,9 +89,7 @@ body.modal-open {
 }
 
 
-/* =========================
-   SLIDER
-========================= */
+
 .slider {
   position: relative;
   width: 100%;
@@ -114,14 +108,14 @@ body.modal-open {
 .slides img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* tampilkan full gambar tanpa crop */
+  object-fit: cover; 
   flex-shrink: 0;
   display: block;
   border-radius: 15px;
   background: #001d3d;
 }
 
-/* Dots */
+
 .dots {
   position: absolute;
   bottom: 12px;
@@ -152,22 +146,20 @@ body.modal-open {
   background: #ffdd75;
 }
 
-/* SEMBUNYIKAN default */
+
 .dots {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-/* MUNCUL saat hover slider */
+
 .slider:hover .dots {
   opacity: 1;
   visibility: visible;
 }
 
-/* =========================
-   ROOM INFO
-========================= */
+
 .room-title {
   font-size: 1.6rem;
   font-weight: 700;
@@ -209,9 +201,7 @@ body.modal-open {
   color: #ffdd75;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+
 .room-buttons {
   display: flex;
   gap: 15px;
@@ -230,7 +220,7 @@ body.modal-open {
   font-family: inherit;
 }
 
-/* View Detail */
+
 .btn-detail {
   background: transparent;
   color: #f7c948;
@@ -242,7 +232,7 @@ body.modal-open {
   box-shadow: 0 0 12px rgba(247, 201, 72, 0.8);
 }
 
-/* Book Now */
+
 .btn-book {
   background: #f7c948;
   color: #001d3d;

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-fit, initial-scale=1.0">
   <title>Login Admin — Web Hotel</title>
   
-  {{-- Fonts & Icons --}}
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
       overflow: hidden;
     }
 
-    /* Background decoration */
+    
     body::before {
       content: "";
       position: absolute;

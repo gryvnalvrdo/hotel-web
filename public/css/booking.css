@@ -1,7 +1,4 @@
-/* ============================================================
-   Booking — Web Hotel (Warm Champagne & Brushed Gold Luxury Theme)
-   An exquisite 5-star hospitality aesthetic with warm alabaster, brushed gold, and deep slate.
-   ============================================================ */
+
 
 :root {
   --navy: #0F172A;
@@ -21,7 +18,7 @@ body {
   background-color: var(--bg-champagne) !important;
 }
 
-/* HERO */
+
 .hero {
   position: relative;
   min-height: 48vh;
@@ -64,7 +61,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* FLOATING BOOKING WRAPPER */
+
 .booking-wrapper {
   display: flex;
   justify-content: center;
@@ -120,7 +117,7 @@ body {
   margin-bottom: 26px;
 }
 
-/* STEPS INDICATOR */
+
 .steps {
   display: flex;
   gap: 14px;
@@ -150,7 +147,7 @@ body {
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.22);
 }
 
-/* FORM FIELDS & INPUTS */
+
 .field {
   margin-bottom: 24px;
 }
@@ -192,7 +189,7 @@ body {
   background: #FFFFFF;
 }
 
-/* Ensure Calendar Indicator is sharp and dark */
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   opacity: 0.85;
@@ -209,7 +206,7 @@ select option {
 
 .muted-small { font-size: 0.85rem; color: var(--text-muted); }
 
-/* SEARCH BAR GRID IN STEP 1 */
+
 .search-dates-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -222,7 +219,7 @@ select option {
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
-/* ROOM LIST IN STEP 1 (Scrollable Luxury Grid) */
+
 .rooms-container {
   max-height: 540px;
   overflow-y: auto;
@@ -322,7 +319,7 @@ select option {
   flex-wrap: wrap;
 }
 
-/* INTERACTIVE ROOM ACTION & QUANTITY COUNTER (+/-) */
+
 .room-action {
   display: flex;
   flex-direction: row;
@@ -396,7 +393,7 @@ select option {
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.25);
 }
 
-/* RIGHT COLUMN: SUMMARY CARD (Warm Luxury Slate Box) */
+
 .summary-card {
   background: linear-gradient(145deg, #18181B 0%, #0F172A 100%);
   color: #FFFFFF;
@@ -451,7 +448,7 @@ select option {
   font-family: "Playfair Display", serif;
 }
 
-/* BUTTONS IN WIZARD */
+
 .confirm-btn {
   display: inline-flex;
   align-items: center;
@@ -494,13 +491,13 @@ button#back-to-2:hover {
   color: #1C1917;
 }
 
-/* SCROLLBAR IN ROOMS CONTAINER */
+
 .rooms-container::-webkit-scrollbar { width: 8px; }
 .rooms-container::-webkit-scrollbar-track { background: #F8F6F0; border-radius: 10px; }
 .rooms-container::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #C5A059, #9E7D3B); border-radius: 10px; }
 .rooms-container::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
 
-/* CUSTOM STYLING FOR SELECTS */
+
 #guests {
   appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg fill='%23C5A059' height='24' viewBox='0 0 24 24' width='24'><path d='M7 10l5 5 5-5z'/></svg>");
@@ -510,7 +507,7 @@ button#back-to-2:hover {
   cursor: pointer;
 }
 
-/* PAYMENT OPTIONS BOX IN STEP 2 */
+
 .payment-methods-box {
   background: #F8F6F0;
   border: 1px solid #EBE5DB;

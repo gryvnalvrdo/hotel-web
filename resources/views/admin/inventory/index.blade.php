@@ -172,7 +172,7 @@
   </div>
 </div>
 
-{{-- QUICK EDIT BOX --}}
+
 <div id="quick-stock-box" style="display:none;background:#FFFFFF;border:1.5px solid #C5A059;border-radius:18px;padding:24px;margin-bottom:28px;box-shadow:0 10px 25px rgba(197,160,89,0.12);">
   <h3 style="margin:0 0 8px;color:var(--navy);font-family:'Playfair Display',serif;display:flex;align-items:center;gap:8px;">
     <i class="bi bi-sliders" style="color:#C5A059;"></i> Pengaturan Stok & Lantai Seluruh Tipe Kamar
@@ -203,7 +203,7 @@
   </form>
 </div>
 
-{{-- 4 STAT BLOCKS --}}
+
 <div class="stat-grid-4">
   <div class="stat-box">
     <div class="icon" style="background:#EEF2FF;color:#4F46E5;"><i class="bi bi-building"></i></div>
@@ -238,7 +238,7 @@
   </div>
 </div>
 
-{{-- LIST BY ROOM TYPE --}}
+
 @foreach($inventoryData as $inv)
   <div class="room-inv-card">
     <div class="room-inv-header">

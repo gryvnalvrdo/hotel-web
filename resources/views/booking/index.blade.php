@@ -9,7 +9,7 @@
 
 @section('content')
 
-  {{-- Pass rooms data to JS --}}
+  
   <script>
     window.ROOMS = @json($roomsJs);
     @if($selectedRoom)
@@ -17,7 +17,7 @@
     @endif
   </script>
 
-  {{-- HERO --}}
+  
   <section class="hero image-hero">
     <div class="hero-bg" style="background-image:url('{{ asset('images/slider/slider3.jpg') }}')"></div>
     <div class="overlay"></div>
@@ -27,22 +27,22 @@
     </div>
   </section>
 
-  {{-- BOOKING FORM --}}
+  
   <div class="booking-wrapper">
     <div class="form-card">
 
-      {{-- LEFT FORM --}}
+      
       <div class="form-left">
         <h2>Formulir Reservasi Resmi</h2>
         <p class="subtitle">Langkah mudah untuk mengamankan kamar mewah dan akomodasi berkelas Anda</p>
 
-        {{-- Steps Indicator --}}
+        
         <div class="steps">
           <div class="step active" data-step="1" onclick="goToStep(1)">1. Pilih Tanggal & Kamar</div>
           <div class="step" data-step="2" onclick="goToStep(2)">2. Data Tamu & Pembayaran</div>
         </div>
 
-        {{-- STEP 1: DATES & ROOMS SHOWCASE --}}
+        
         <div class="step-panel" id="step-1">
           
           <div class="search-dates-grid">
@@ -119,7 +119,7 @@
           </div>
         </div>
 
-        {{-- STEP 2: GUEST INFO & PAYMENT --}}
+        
         <div class="step-panel" id="step-2" style="display:none">
           <form id="bookingForm" action="{{ route('booking.store') }}" method="POST">
             @csrf
@@ -159,7 +159,7 @@
               <div id="promo-message" style="margin-top:8px; font-size:0.85rem; font-weight:600;"></div>
             </div>
 
-            {{-- Metode Pembayaran --}}
+            
             <div class="payment-methods-box">
               <h4><i class="bi bi-shield-lock-fill" style="color:var(--gold)"></i> Pilihan Metode Pembayaran</h4>
 
@@ -206,7 +206,7 @@
         </div>
       </div>
 
-      {{-- RIGHT SUMMARY --}}
+      
       <aside class="form-right">
         <div class="summary-card">
           <h3>Rincian Reservasi</h3>

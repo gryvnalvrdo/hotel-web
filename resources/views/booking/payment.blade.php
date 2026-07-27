@@ -150,7 +150,7 @@
     <h2>Konfirmasi & Pembayaran</h2>
     <p class="subtitle">Reservasi kamar Anda telah diaktifkan. Silakan selesaikan pembayaran untuk mendapatkan e-Voucher resmi.</p>
 
-    {{-- Booking Summary --}}
+    
     <div class="booking-summary-box">
       <p><strong>Nama Tamu:</strong> <span>{{ $booking->name }}</span></p>
       <p><strong>Tipe Kamar:</strong> <span>{{ $booking->room?->name }} ({{ $booking->room_count }} Kamar)</span></p>
@@ -163,7 +163,7 @@
       </div>
     </div>
 
-    {{-- Tombol Bayar Midtrans --}}
+    
     @if($booking->midtrans_token)
       <button class="pay-btn" id="pay-btn" onclick="payWithMidtrans()">
         <i class="bi bi-credit-card-2-front-fill"></i> Pilih Saluran Pembayaran
@@ -183,7 +183,7 @@
         <div class="pay-method-item"><i class="bi bi-qr-code"></i> QRIS</div>
       </div>
     @else
-      {{-- Fallback jika Midtrans belum dikonfigurasi --}}
+      
       <div style="background:rgba(247,201,72,0.12); border:1px solid rgba(247,201,72,0.35); border-radius:12px; padding:16px; margin-bottom:24px; color:#f7c948; font-size:0.9rem; display:flex; align-items:center; gap:10px; text-align:left;">
         <i class="bi bi-info-circle-fill" style="font-size:1.3rem;"></i>
         <div>
@@ -224,7 +224,6 @@
         alert('Pembayaran gagal. Silakan coba lagi.');
       },
       onClose: function() {
-        // User tutup popup tanpa bayar
       }
     });
   }

@@ -17,7 +17,7 @@
         <div class="room-card">
           <h3>{{ $room->name }}</h3>
 
-          {{-- Slider --}}
+          
           <div class="room-slider" id="slider{{ $room->id }}">
             <button class="prev" onclick="prevSlide({{ $index }})">&#10094;</button>
             <div class="slides">
@@ -31,7 +31,7 @@
             <div class="slider-dots" id="dots-slider{{ $room->id }}"></div>
           </div>
 
-          {{-- Info --}}
+          
           <div class="room-info">
             @if($room->description)
               <p class="room-desc">{{ $room->description }}</p>
@@ -52,7 +52,7 @@
     </div>
   </section>
 
-  {{-- Image Popup --}}
+  
   <div class="image-popup" id="imagePopup">
     <div class="image-popup-content">
       <div class="image-wrapper">

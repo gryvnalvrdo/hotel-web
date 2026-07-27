@@ -27,12 +27,8 @@ class AuthController extends Controller
 
         $username = trim($request->username);
         $password = $request->password;
-
-        // 1. Cek Default credentials (admin / adminHotel123 atau admin / admin)
         $isDefaultAdmin = ($username === 'admin' && in_array($password, ['adminHotel123', 'admin']))
                        || ($username === 'Hotel' && in_array($password, ['Hotel123', 'adminHotel123']));
-
-        // 2. Cek database User jika ada
         $dbUser = User::where('email', $username)->orWhere('name', $username)->first();
         $isDbUser = $dbUser && Hash::check($password, $dbUser->password);
 

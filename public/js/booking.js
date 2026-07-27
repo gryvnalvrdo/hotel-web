@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     room_qty: 1,
     selected_rooms: {}, // map of roomId => { id, name, price, capacity, qty }
   };
-
-  // Inisialisasi kamar jika ada dari URL / pilihan awal
   if (state.room_id && ROOMS[state.room_id]) {
     state.selected_rooms[state.room_id] = {
       id: state.room_id,
@@ -142,13 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form_nights) form_nights.value = state.nights || 0;
     if (form_room_details) form_room_details.value = JSON.stringify(Object.values(state.selected_rooms));
   }
-
-  // ✅ Perbaikan Navigasi Step (Biar ga loncat ke paling atas)
   window.goToStep = function(n) {
     Object.values(panels).forEach((p) => p && (p.style.display = "none"));
     if (panels[n]) {
       panels[n].style.display = "block";
-      // Scroll smoothly tepat ke kontainer form reservasi, bukan ke window top 0
       const wrapper = document.querySelector(".booking-container") || panels[n];
       wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -156,14 +151,10 @@ document.addEventListener("DOMContentLoaded", () => {
       s.classList.toggle("active", parseInt(s.getAttribute("data-step")) === n);
     });
   };
-
-  // ✅ Fungsi global untuk +/- jumlah kamar di setiap kartu
   window.changeRoomQty = function(roomId, delta) {
     const dispEl = document.getElementById("qty-disp-" + roomId);
     if (!dispEl) return;
     let curr = parseInt(dispEl.textContent) || 1;
-    
-    // Cek batas stok real-time saat ini
     if (delta > 0 && state.availability && state.availability[roomId]) {
       const avail = state.availability[roomId].available;
       if (curr + delta > avail) {
@@ -176,8 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (curr < 1) curr = 1;
     if (curr > 10) curr = 10;
     dispEl.textContent = curr;
-    
-    // Jika kamar sudah terpilih, langsung update kuantitas di state multi-room
     if (state.selected_rooms[roomId]) {
       state.selected_rooms[roomId].qty = curr;
       updateVisualCards();
@@ -186,8 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.selectRoomCard(roomId, curr);
     }
   };
-
-  // ✅ Fungsi global untuk memilih / membatalkan kartu kamar (Multi-room support)
   window.selectRoomCard = function(roomId, forceQty) {
     if (!roomsGrid) return;
     const card = roomsGrid.querySelector(`.room-card[data-room="${roomId}"]`);
@@ -206,8 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const roomName = card.querySelector("h4")?.textContent?.trim() || (ROOMS[roomId]?.name || "Kamar Hotel");
     const dispEl = document.getElementById("qty-disp-" + roomId);
     const qty = forceQty || (dispEl ? parseInt(dispEl.textContent) || 1 : 1);
-
-    // Toggle multi-room: Jika diklik pada kamar yang sudah terpilih & bukan dari tombol +/-, bisa dibatalkan jika ada kamar lain
     if (state.selected_rooms[roomId] && !forceQty && Object.keys(state.selected_rooms).length > 1) {
       delete state.selected_rooms[roomId];
     } else {
@@ -328,8 +313,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSummary();
     filterRooms();
   };
-
-  // Filter tamu & kapasitas (Untuk multi room kita tetap tampilkan semua atau filter by cap)
   function filterRooms() {
     if (!roomsGrid) return;
     const cards = roomsGrid.querySelectorAll(".room-card");
@@ -342,13 +325,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // Init min date hari ini
   const today = new Date().toISOString().split("T")[0];
   if (checkinEl) checkinEl.setAttribute("min", today);
   if (checkoutEl) checkoutEl.setAttribute("min", today);
-
-  // Set default checkin hari ini & checkout besok jika belum ada
   if (checkinEl && !checkinEl.value) {
     checkinEl.value = today;
     state.checkin = today;
@@ -361,8 +340,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     state.nights = computeNights(state.checkin, state.checkout);
   }
-
-  // Events
   if (checkinEl) {
     checkinEl.addEventListener("change", (e) => {
       state.checkin = e.target.value;
@@ -399,8 +376,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateSummary();
     });
   }
-
-  // Step Navigation
   document.getElementById("to-step-2")?.addEventListener("click", () => {
     if (!state.checkin || !state.checkout) {
       alert("Silakan pilih tanggal Check-in dan Check-out terlebih dahulu.");
@@ -417,8 +392,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (roomsGrid) roomsGrid.scrollIntoView({ behavior: "smooth" });
       return;
     }
-
-    // Cek kesesuaian jumlah tamu vs kamar yang dipesan
     const selectedKeys = Object.keys(state.selected_rooms);
     let totalQty = 0;
     let totalCap = 0;
@@ -474,7 +447,6 @@ document.addEventListener("DOMContentLoaded", () => {
       msg.textContent = "Memeriksa kode promo...";
       
       try {
-        // Base total without discount
         const originalTotal = (computeTotal() + (state.discount_amount || 0));
         const res = await fetch(`/api/check-promo?code=${code}&total=${originalTotal}`);
         const data = await res.json();
@@ -496,8 +468,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // Init jika ada room terpilih
   if (state.room_id && roomsGrid) {
     window.selectRoomCard(state.room_id);
   } else {

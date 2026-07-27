@@ -175,7 +175,7 @@
       Terima kasih, <strong>{{ $booking->name ?? 'Tamu' }}</strong>. Reservasi Anda di Web Hotel telah terkonfirmasi secara resmi.
     </p>
 
-    {{-- Email confirmation box --}}
+    
     <div class="email-notice-box">
       <i class="bi bi-envelope-check-fill"></i>
       <div>

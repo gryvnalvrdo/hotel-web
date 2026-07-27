@@ -7,7 +7,7 @@
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
     
-    {{-- FASILITAS UMUM HOTEL --}}
+    
     <div>
       <div class="card" style="margin-bottom:28px;">
         <div class="card-header">
@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    {{-- FASILITAS KAMAR --}}
+    
     <div>
       <div class="card" style="margin-bottom:28px;">
         <div class="card-header">

@@ -6,25 +6,25 @@
   <title>@yield('title', 'Web Hotel')</title>
   <meta name="description" content="@yield('description', 'Web Hotel — Experience luxury and comfort in every detail.')">
 
-  {{-- Icons --}}
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  {{-- Fonts --}}
+  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  {{-- Global CSS --}}
+  
   <link rel="stylesheet" href="{{ asset('css/global.css') }}" />
 
-  {{-- Page-specific CSS --}}
+  
   @stack('styles')
 
-  {{-- CSRF Token --}}
+  
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
-  {{-- ========== LOADING SCREEN ========== --}}
+  
   <div id="loading-screen">
     <div class="loading-logo">
       <h1>Web Hotel</h1>
@@ -36,14 +36,14 @@
     </div>
   </div>
 
-  {{-- ========== NAVBAR ========== --}}
+  
   <header class="navbar-modern" id="navbar">
-    <div class="logo">Hotel <span>Hotel</span></div>
+    <div class="logo">Web <span>Hotel</span></div>
     <nav>
       <ul class="nav-links">
         <div class="drawer-header">
           <span class="drawer-title">
-            <span class="hotel">Hotel</span> <span class="Hotel">Hotel</span>
+            <span class="hotel" style="color:var(--gold);">Web</span> <span class="Hotel" style="color:white;">Hotel</span>
           </span>
         </div>
         <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
@@ -59,62 +59,49 @@
 
   <div class="drawer-overlay"></div>
 
-  {{-- ========== PAGE CONTENT ========== --}}
+  
   @yield('content')
 
-  {{-- ========== FOOTER ========== --}}
+  
   <footer class="footer-modern" id="footer">
     <div class="footer-main">
-      {{-- Branding --}}
+      
       <div class="footer-brand">
-        <h2>{{ $branding->hotel_name ?? 'Web Hotel' }}</h2>
-        <p>{!! nl2br(e($branding->tagline ?? '')) !!}</p>
+        <h2>Web Hotel</h2>
+        <p>Luxury & Comfort Project<br>Sistem Reservasi & Manajemen Berbasis Laravel</p>
 
-        {{-- Social Media --}}
         <div class="footer-social">
-          @foreach($socials as $social)
-            <a href="{{ $social->url }}" target="_blank">
-              <i class="{{ $social->icon_class }}"></i>
-            </a>
-          @endforeach
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
         </div>
-
-        {{-- Partners --}}
-        <div class="footer-partners">
-          <h4>Our Partners</h4>
-          <div class="partner-logos">
-            @foreach($partners as $partner)
-              <a href="{{ $partner->url }}" target="_blank">
-                <img src="{{ asset($partner->logo_path) }}" alt="{{ $partner->name }}">
-              </a>
-            @endforeach
+        
+        <div class="footer-partners" style="margin-top:20px;">
+          <h4 style="font-size:0.95rem; margin-bottom:12px; color:var(--gold);">Our Partners</h4>
+          <div class="partner-logos" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+              <a href="https://agoda.com" target="_blank" style="color:var(--text); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Agoda</a>
+              <a href="https://traveloka.com" target="_blank" style="color:var(--text); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Traveloka</a>
+              <a href="https://booking.com" target="_blank" style="color:var(--text); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Booking.com</a>
           </div>
         </div>
       </div>
-
-      {{-- Contact --}}
+      
       <div class="footer-contact">
         <h3>Contact Us</h3>
         <ul>
-          @foreach($contacts as $contact)
-            <li>
-              @if($contact->icon_class)
-                <i class="{{ $contact->icon_class }}"></i>
-              @endif
-              {{ $contact->value }}
-            </li>
-          @endforeach
+            <li><i class="bi bi-geo-alt-fill"></i> Jl. Fiktif Utama No. 123, Jakarta Selatan, 12345 (Fictitious Location)</li>
+            <li><i class="bi bi-telephone-fill"></i> +62 811 0000 0000</li>
+            <li><i class="bi bi-envelope-fill"></i> hello@webhotel.local</li>
         </ul>
       </div>
     </div>
 
-    {{-- Bottom --}}
     <div class="footer-bottom">
-      <p>{{ $footerBottom->text ?? '© ' . date('Y') . ' Web Hotel. All rights reserved.' }}</p>
+      <p>© {{ date('Y') }} Web Hotel Project. All rights reserved. (Not a real hotel)</p>
     </div>
   </footer>
 
-  {{-- Floating Buttons --}}
+  
   <button id="backToTop" class="back-to-top">
     <i class="bi bi-arrow-up"></i>
   </button>
@@ -124,11 +111,11 @@
     <span>Contact Us</span>
   </a>
 
-  {{-- Scripts --}}
+  
   <script src="{{ asset('js/header_footer.js') }}"></script>
   @stack('scripts')
 
-  {{-- Loading Screen Dismiss (Hanya muncul sekali per sesi agar tidak mengganggu saat ganti halaman) --}}
+  
   <script>
     (function () {
       var ls = document.getElementById('loading-screen');

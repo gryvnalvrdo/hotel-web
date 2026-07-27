@@ -1,6 +1,4 @@
-/* =========================
-   MODAL OVERLAY
-========================= */
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -20,9 +18,7 @@
   transform: scale(1);
 }
 
-/* =========================
-   MODAL CONTENT
-========================= */
+
 .modal-content {
   background: rgba(12, 25, 55, 0.95);
   display: flex;
@@ -43,13 +39,11 @@
   opacity: 1;
 }
 
-/* =========================
-   TOMBOL CLOSE (GLOBAL STYLE)
-========================= */
+
 .modal-close {
   position: absolute;
-  top: 12px;   /* agak rapat ke atas */
-  right: 12px; /* rapat ke kanan */
+  top: 12px;   
+  right: 12px; 
   font-size: 20px;
   width: 38px;
   height: 38px;
@@ -60,22 +54,20 @@
   line-height: 38px;
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 20;  /* cukup tinggi supaya di atas gambar */
+  z-index: 20;  
   box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
-/* Hover effect */
+
 .modal-close:hover {
-  background: rgba(212, 175, 55, 0.9); /* gold elegan */
+  background: rgba(212, 175, 55, 0.9); 
   color: #000;
   transform: rotate(90deg) scale(1.1);
   box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
 
 
-/* =========================
-   LEFT COLUMN (SLIDER)
-========================= */
+
 .modal-left {
   flex: 1.2;
   background: rgba(12, 25, 55, 0.95);
@@ -94,7 +86,7 @@
   display: block;
 }
 
-/* Slider wrapper */
+
 .slider {
   position: relative;
   overflow: hidden;
@@ -109,12 +101,12 @@
   filter: brightness(1.05);
 }
 
-/* Slider arrows */
+
 .slider .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.55);  /* kasih warna solid biar kontras */
+  background: rgba(0, 0, 0, 0.55);  
   border: 1px solid rgba(247,201,72,0.4);
   color: #fff;
   font-size: 18px;
@@ -124,8 +116,8 @@
   transition: background 0.3s, transform 0.3s;
   z-index: 10;
   box-shadow: 0 0 10px rgba(247,201,72,0.2);
-  opacity: 1;              /* pastikan selalu full opacity */
-  visibility: visible;     /* selalu terlihat */
+  opacity: 1;              
+  visibility: visible;     
 }
 
 .slider .arrow:hover {
@@ -135,7 +127,7 @@
 .slider .prev { left: 12px; }
 .slider .next { right: 12px; }
 
-/* Counter */
+
 .slide-counter {
   position: absolute;
   bottom: 12px;
@@ -149,48 +141,42 @@
   font-weight: 600;
 }
 
-/* =========================
-   SLIDER IMAGE (lebih tinggi)
-========================= */
+
 .modal-content .slider img {
-  height: 480px;          /* sebelumnya 360px */
+  height: 480px;          
   width: 100%;
   object-fit: cover;
   border-radius: 14px;
 }
 
-/* =========================
-   ROOM TITLE (Room)
-========================= */
+
 .room-title {
   text-align: left;
-  padding: 0;               /* reset padding container */
-  margin: 0;                /* biar tidak geser */
+  padding: 0;               
+  margin: 0;                
   background: #0a1f44 rgb(10, 31, 68);
 }
 
 .room-title h3 {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #f7c948;                 /* gold lembut */
+  color: #f7c948;                 
   letter-spacing: 0.5px;
   margin: 0;
   padding-bottom: 6px;
-  border-bottom: 1px solid rgba(247,201,72,0.35); /* garis tipis dekoratif */
-  display: inline-block;          /* supaya garis tidak full width */
+  border-bottom: 1px solid rgba(247,201,72,0.35); 
+  display: inline-block;          
 }
 
-/* Optional hover halus */
+
 .room-title h3:hover {
   color: #fff4ce;
   border-color: rgba(247,201,72,0.6);
 }
 
-/* =========================
-   ROOM TITLE (Modal)
-========================= */
+
 .room-title-modal {
-  background: rgba(12, 25, 55, 0.95);       /* sama dengan modal-right */
+  background: rgba(12, 25, 55, 0.95);       
   color: #fff;
   padding: 15px 20px;
   text-align: left;
@@ -204,9 +190,7 @@
 }
 
 
-/* =========================
-   THUMBNAILS (lebih besar)
-========================= */
+
 .thumbnails {
   display: flex;
   gap: 12px;
@@ -233,8 +217,8 @@
 
 .thumbnails img {
   flex: 0 0 auto;
-  width: 100px;           /* sebelumnya 80px */
-  height: 75px;           /* sebelumnya 60px */
+  width: 100px;           
+  height: 75px;           
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
@@ -255,9 +239,7 @@
   box-shadow: 0 0 12px rgba(247,201,72,0.6);
 }
 
-/* =========================
-   RIGHT COLUMN (INFO)
-========================= */
+
 .modal-right {
   flex: 1;
   display: flex;
@@ -272,7 +254,7 @@
   font-weight: 700;
 }
 
-/* Scrollable body */
+
 .modal-body {
   flex: 1;
   overflow-y: auto;
@@ -290,7 +272,7 @@
   border-radius: 10px;
 }
 
-/* Section heading */
+
 .modal-body h4 {
   margin-top: 22px;
   margin-bottom: 10px;
@@ -301,7 +283,7 @@
   padding-bottom: 5px;
 }
 
-/* Info grid */
+
 .room-info-grid,
 .facility-grid {
   display: grid;
@@ -325,7 +307,7 @@
   font-size: 0.95rem;
 }
 
-/* Facility list */
+
 .facility-list {
   list-style: none;
   margin: 10px 0 22px;
@@ -352,19 +334,15 @@
   background: #f7c948;
 }
 
-/* Paragraph */
+
 .modal-body p {
   color: #ddd;
   font-size: 0.96rem;
   line-height: 1.55;
 }
 
-/* =========================
-   FOOTER
-========================= */
-/* =========================
-   FOOTER (DESKTOP)
-========================= */
+
+
 .modal-footer {
   padding: 16px 26px;
   background: rgba(12, 25, 55, 0.95);
@@ -372,8 +350,8 @@
   position: sticky;
   bottom: 0;
   display: flex;
-  flex-direction: column;   /* Ubah jadi atas–bawah */
-  align-items: stretch;     /* Biar full width */
+  flex-direction: column;   
+  align-items: stretch;     
   gap: 12px;
 }
 
@@ -393,7 +371,7 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s;
-  width: 100%;              /* tombol full lebar */
+  width: 100%;              
   text-align: center;
 }
 
@@ -402,9 +380,7 @@
   box-shadow: 0 0 14px #f7c948;
 }
 
-/* =========================
-   IMAGE POPUP (Lightbox)
-========================= */
+
   .image-popup {
     position: fixed;
     inset: 0;
@@ -437,20 +413,20 @@
 
 .image-wrapper {
   position: relative;
-  width: 80%;   /* gambar 80% dari container */
+  width: 80%;   
   height: 100%;
 }
 
 .image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* potong biar seragam */
+  object-fit: cover;   
   border-radius: 14px;
   display: block;
   transition: transform 0.35s ease;
 }
 
-/* Tombol Close nempel ke gambar */
+
 .image-popup-close {
   position: absolute;
   top: 10px;

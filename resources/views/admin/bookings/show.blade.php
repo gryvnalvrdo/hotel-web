@@ -7,7 +7,7 @@
 
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:28px;">
     
-    {{-- DETAIL UTAMA --}}
+    
     <div class="card">
       <div class="card-header">
         <h3>e-Voucher & Lembar Reservasi #{{ $booking->midtrans_order_id }}</h3>
@@ -97,7 +97,7 @@
       </div>
     </div>
 
-    {{-- SIDE ACTION --}}
+    
     <div>
       <div class="card" style="margin-bottom:24px;">
         <div class="card-header">
