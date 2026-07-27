@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Grand Lumina — Our Rooms')
-@section('description', 'Explore our luxury rooms at Grand Lumina. Book your stay today.')
+@section('title', 'Web Hotel — Our Rooms')
+@section('description', 'Explore our luxury rooms at Web Hotel. Book your stay today.')
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('css/rooms.css') }}" />

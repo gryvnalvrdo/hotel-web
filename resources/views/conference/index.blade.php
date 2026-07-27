@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Grand Lumina — Conference Rooms')
-@section('description', 'Book our premium conference rooms at Grand Lumina Hotel.')
+@section('title', 'Web Hotel — Conference Rooms')
+@section('description', 'Book our premium conference rooms at Web Hotel.')
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('css/conference.css') }}" />

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>e-Voucher Reservasi Grand Lumina Hotel</title>
+    <title>e-Voucher Reservasi Web Hotel</title>
     <style>
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f6f9; color: #333333; margin: 0; padding: 20px; }
         .email-container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e1e8ed; }
@@ -26,12 +26,12 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <h1>Grand Lumina Hotel</h1>
+            <h1>Web Hotel</h1>
             <p>Jl. A. P. Pettarani No.03, Mannuruki, Kec. Tamalate, Kota Makassar, Sulawesi Selatan 90222</p>
         </div>
         <div class="content">
             <h2>Halo, {{ $booking->name }}!</h2>
-            <p>Terima kasih telah memilih <strong>Grand Lumina Hotel</strong>. Berikut adalah salinan resmi e-Voucher dan rincian reservasi kamar Anda. Harap tunjukkan email ini saat melakukan proses Check-in di resepsionis.</p>
+            <p>Terima kasih telah memilih <strong>Web Hotel</strong>. Berikut adalah salinan resmi e-Voucher dan rincian reservasi kamar Anda. Harap tunjukkan email ini saat melakukan proses Check-in di resepsionis.</p>
 
             <div class="voucher-box">
                 <div style="text-align:center;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #e2e8f0;">
@@ -84,7 +84,7 @@
             </p>
         </div>
         <div class="footer">
-            <p>&copy; {{ date('Y') }} Grand Lumina Hotel · All Rights Reserved.<br>Icon of the East — Grand & Luxury Experience.</p>
+            <p>&copy; {{ date('Y') }} Web Hotel · All Rights Reserved.<br>Icon of the East — Grand & Luxury Experience.</p>
         </div>
     </div>
 </body>

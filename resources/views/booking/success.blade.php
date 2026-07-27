@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Grand Lumina — Reservasi Berhasil!')
-@section('description', 'e-Voucher reservasi resmi Grand Lumina Hotel telah terbit.')
+@section('title', 'Web Hotel — Reservasi Berhasil!')
+@section('description', 'e-Voucher reservasi resmi Web Hotel telah terbit.')
 
 @push('styles')
   <style>
@@ -172,7 +172,7 @@
     </div>
     <h1>Reservasi Berhasil!</h1>
     <p class="subtitle">
-      Terima kasih, <strong>{{ $booking->name ?? 'Tamu' }}</strong>. Reservasi Anda di Grand Lumina Hotel telah terkonfirmasi secara resmi.
+      Terima kasih, <strong>{{ $booking->name ?? 'Tamu' }}</strong>. Reservasi Anda di Web Hotel telah terkonfirmasi secara resmi.
     </p>
 
     {{-- Email confirmation box --}}
@@ -230,7 +230,7 @@
 
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="no-print">
       <a href="{{ route('home') }}" class="btn-cta-gold"><i class="bi bi-house-door-fill"></i> Kembali ke Beranda</a>
-      <button onclick="window.print()" class="btn-cta-gold" style="background:#f1f5f9;color:#002147;border:1.5px solid #cbd5e1;box-shadow:none;"><i class="bi bi-printer-fill"></i> Cetak e-Voucher</button>
+      <a href="{{ route('booking.invoice', $booking->id) }}" target="_blank" class="btn-cta-gold" style="background:#f1f5f9;color:#002147;border:1.5px solid #cbd5e1;box-shadow:none;"><i class="bi bi-printer-fill"></i> Cetak / Simpan PDF</a>
     </div>
   </div>
 </div>

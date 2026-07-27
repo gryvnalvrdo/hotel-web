@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Daftar Reservasi & Bookings — Admin Grand Lumina')
+@section('title', 'Daftar Reservasi & Bookings — Admin Web Hotel')
 @section('page-title', 'Manajemen Daftar Reservasi Tamu')
 
 @section('content')

@@ -1,5 +1,5 @@
 /* =====================================================
-   Grand Lumina — Global CSS
+   Web Hotel — Global CSS
    Berisi: Design tokens, reset, navbar, footer,
            buttons, section-title, popups, animations,
            dan semua media queries global (responsive)
@@ -155,7 +155,7 @@ body {
 }
 
 .drawer-title .hotel { color: #fff; }
-.drawer-title .Lumina { color: var(--gold); }
+.drawer-title .Hotel { color: var(--gold); }
 
 /* === Overlay belakang drawer === */
 .drawer-overlay {
@@ -1012,7 +1012,7 @@ body.menu-open { overflow: hidden; }
 
 
 /* ============================================================
-   LOADING SCREEN — Grand Lumina Luxury Entrance
+   LOADING SCREEN — Web Hotel Luxury Entrance
    ============================================================ */
 #loading-screen {
   position: fixed;
@@ -1364,7 +1364,7 @@ body.menu-open { overflow: hidden; }
 }
 
 /* =====================================================
-   GLOBAL SCROLLBAR (Royal Grand Lumina Executive)
+   GLOBAL SCROLLBAR (Royal Web Hotel Executive)
    ===================================================== */
 ::-webkit-scrollbar {
   width: 10px;

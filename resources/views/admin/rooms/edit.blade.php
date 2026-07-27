@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Harga & Data Kamar — Admin Grand Lumina')
+@section('title', 'Edit Harga & Data Kamar — Admin Web Hotel')
 @section('page-title', 'Edit Data Tipe Kamar')
 
 @section('content')

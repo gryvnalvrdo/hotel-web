@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-fit, initial-scale=1.0" />
-  <title>@yield('title', 'Admin Console — Grand Lumina Hotel')</title>
+  <title>@yield('title', 'Admin Console — Web Hotel')</title>
   
   {{-- Fonts --}}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -256,7 +256,7 @@
   {{-- SIDEBAR --}}
   <aside class="admin-sidebar">
     <div class="sidebar-header">
-      <h2>Grand Lumina</h2>
+      <h2>Web Hotel</h2>
       <span>Management Console</span>
     </div>
     
@@ -303,7 +303,7 @@
       </div>
       <div class="admin-badge">
         <i class="bi bi-person-badge-fill"></i>
-        <span>{{ session('admin_username', 'Administrator Lumina') }}</span>
+        <span>{{ session('admin_username', 'Administrator Hotel') }}</span>
       </div>
     </header>
 

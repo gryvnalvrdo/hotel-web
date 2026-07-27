@@ -20,7 +20,7 @@ class BookingConfirmedMail extends Mailable
 
     public function build()
     {
-        return $this->subject('e-Voucher Reservasi — Grand Lumina Hotel [' . $this->booking->midtrans_order_id . ']')
+        return $this->subject('e-Voucher Reservasi — Web Hotel [' . $this->booking->midtrans_order_id . ']')
                     ->view('emails.booking_confirmed');
     }
 }

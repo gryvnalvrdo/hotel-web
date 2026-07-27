@@ -28,9 +28,9 @@ class AuthController extends Controller
         $username = trim($request->username);
         $password = $request->password;
 
-        // 1. Cek Default credentials (admin / adminLumina123 atau admin / admin)
-        $isDefaultAdmin = ($username === 'admin' && in_array($password, ['adminLumina123', 'admin']))
-                       || ($username === 'Lumina' && in_array($password, ['Lumina123', 'adminLumina123']));
+        // 1. Cek Default credentials (admin / adminHotel123 atau admin / admin)
+        $isDefaultAdmin = ($username === 'admin' && in_array($password, ['adminHotel123', 'admin']))
+                       || ($username === 'Hotel' && in_array($password, ['Hotel123', 'adminHotel123']));
 
         // 2. Cek database User jika ada
         $dbUser = User::where('email', $username)->orWhere('name', $username)->first();
@@ -42,10 +42,10 @@ class AuthController extends Controller
                 'admin_username'  => $isDbUser ? $dbUser->name : ucfirst($username),
             ]);
 
-            return redirect()->route('admin.dashboard')->with('success', 'Selamat datang kembali di Management Console Grand Lumina Hotel!');
+            return redirect()->route('admin.dashboard')->with('success', 'Selamat datang kembali di Management Console Web Hotel!');
         }
 
-        return redirect()->back()->withInput()->with('error', 'Username atau password salah! (Gunakan default: admin / adminLumina123)');
+        return redirect()->back()->withInput()->with('error', 'Username atau password salah! (Gunakan default: admin / adminHotel123)');
     }
 
     public function logout(Request $request)

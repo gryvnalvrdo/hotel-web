@@ -12,6 +12,9 @@ class Booking extends Model
         'room_count', 'total_price', 'notes',
         'status', 'payment_status',
         'midtrans_order_id', 'midtrans_token', 'room_details',
+        'special_request',
+        'promo_code',
+        'discount_amount'
     ];
 
     public function room()

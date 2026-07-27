@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Grand Lumina — Home')
-@section('description', 'Welcome to Grand Lumina. Experience luxury and comfort in every detail.')
+@section('title', 'Web Hotel — Home')
+@section('description', 'Welcome to Web Hotel. Experience luxury and comfort in every detail.')
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
@@ -148,11 +148,11 @@
   <section class="location">
     <div class="section-head">
       <h2 class="section-title">Our Location</h2>
-      <p class="tagline">Find us at Grand Lumina</p>
+      <p class="tagline">Find us at Web Hotel</p>
     </div>
     <div class="map-container">
       <iframe
-        src="https://www.google.com/maps?q=Lumina+Hotel+Makassar&output=embed"
+        src="https://www.google.com/maps?q=Hotel+Hotel+Makassar&output=embed"
         width="100%"
         height="400"
         style="border:0;"

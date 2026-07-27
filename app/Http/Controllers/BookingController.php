@@ -89,7 +89,8 @@ class BookingController extends Controller
             'nights'         => 'required|integer|min:1',
             'total_price'    => 'required|numeric|min:0',
             'room_count'     => 'required|integer|min:1',
-            'notes'          => 'nullable|string|max:1000',
+            'special_request'=> 'nullable|string|max:1000',
+            'promo_code'     => 'nullable|string|max:50',
             'payment_method' => 'nullable|string|in:midtrans,pay_at_hotel',
             'room_details'   => 'nullable|string',
         ]);
@@ -104,7 +105,7 @@ class BookingController extends Controller
                         $summaryParts[] = ($d['qty'] ?? 1) . 'x ' . ($d['name'] ?? 'Kamar');
                     }
                     $multiRoomStr = "[Multi-Room: " . implode(", ", $summaryParts) . "]";
-                    $validated['notes'] = $multiRoomStr . ($validated['notes'] ? " | " . $validated['notes'] : "");
+                    $validated['special_request'] = $multiRoomStr . (!empty($validated['special_request']) ? " | " . $validated['special_request'] : "");
                 }
             } catch (\Throwable $e) {}
         }
@@ -157,8 +158,36 @@ class BookingController extends Controller
         }
 
         // Generate Midtrans order ID unik
-        $orderId = 'Lumina-' . strtoupper(Str::random(8)) . '-' . time();
+        $orderId = 'Hotel-' . strtoupper(Str::random(8)) . '-' . time();
         $paymentMethod = $validated['payment_method'] ?? 'midtrans';
+
+        // Hitung ulang total price & promo secara backend (Keamanan)
+        $backendTotal = 0;
+        if (!empty($validated['room_details'])) {
+            $details = json_decode($validated['room_details'], true);
+            if (is_array($details)) {
+                foreach ($details as $item) {
+                    $backendTotal += (int)($item['price'] ?? 0) * (int)($item['qty'] ?? 1) * (int)$validated['nights'];
+                }
+            }
+        } else {
+            $rObj = \App\Models\Room::find($validated['room_id']);
+            if ($rObj) $backendTotal = $rObj->price * (int)$validated['room_count'] * (int)$validated['nights'];
+        }
+
+        $discount = 0;
+        if (!empty($validated['promo_code'])) {
+            $promo = \App\Models\Promo::where('code', $validated['promo_code'])->first();
+            if ($promo && $promo->isValid()) {
+                $discount = $promo->discount_type === 'percent' ? ($backendTotal * ($promo->discount_amount / 100)) : $promo->discount_amount;
+            } else {
+                $validated['promo_code'] = null; // Invalid promo
+            }
+        }
+        
+        $finalTotal = $backendTotal - $discount;
+        $validated['total_price'] = $finalTotal > 0 ? $finalTotal : 0;
+        $validated['discount_amount'] = $discount;
 
         if ($paymentMethod === 'pay_at_hotel') {
             $booking = Booking::create(array_merge($validated, [
@@ -203,6 +232,12 @@ class BookingController extends Controller
         $booking = Booking::with('room')->findOrFail($request->id);
         $footerData = $this->getFooterData();
         return view('booking.success', array_merge(compact('booking'), $footerData));
+    }
+
+    public function invoice(Request $request)
+    {
+        $booking = Booking::with('room')->findOrFail($request->id);
+        return view('booking.invoice', compact('booking'));
     }
 
     /**

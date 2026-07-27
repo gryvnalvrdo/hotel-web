@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Grand Lumina — Reservasi & Booking Resmi')
-@section('description', 'Reservasi kamar mewah di Grand Lumina Hotel. Proses cepat, aman, dan bergaransi harga terbaik.')
+@section('title', 'Web Hotel — Reservasi & Booking Resmi')
+@section('description', 'Reservasi kamar mewah di Web Hotel. Proses cepat, aman, dan bergaransi harga terbaik.')
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('css/booking.css') }}" />
@@ -22,7 +22,7 @@
     <div class="hero-bg" style="background-image:url('{{ asset('images/slider/slider3.jpg') }}')"></div>
     <div class="overlay"></div>
     <div class="content">
-      <h1><i class="bi bi-stars"></i> Reservasi Grand Lumina Hotel</h1>
+      <h1><i class="bi bi-stars"></i> Reservasi Web Hotel</h1>
       <p>Icon of the East — Kemewahan Berkelas · Pelayanan Eksklusif · Lokasi Strategis di Jantung Kota</p>
     </div>
   </section>
@@ -66,7 +66,7 @@
           </div>
 
           <div class="field" style="margin-top: 28px;">
-            <label><i class="bi bi-grid-fill" style="color:var(--gold)"></i> Katalog Kamar Resmi Grand Lumina Hotel</label>
+            <label><i class="bi bi-grid-fill" style="color:var(--gold)"></i> Katalog Kamar Resmi Web Hotel</label>
             <p class="muted-small" style="margin-bottom: 14px; color:#57534E;">
               Silakan sesuaikan jumlah kamar dengan tombol <strong>+ / -</strong> di setiap kartu, lalu klik <strong>Pilih Kamar Ini</strong> untuk mengamankan harga terbaik.
             </p>
@@ -141,12 +141,22 @@
               <input id="email" name="email" class="input" type="email" required placeholder="contoh@domain.com (untuk pengiriman otomatis e-Voucher)">
             </div>
             <div class="field">
-              <label>Nomor WhatsApp / Handphone</label>
-              <input id="phone" name="phone" class="input" required placeholder="081234567890">
+              <label for="phone">Nomor HP</label>
+              <input type="tel" id="phone" name="phone" class="input" placeholder="08xxxx" required>
             </div>
+
             <div class="field">
-              <label>Catatan Tambahan / Permintaan Khusus</label>
-              <textarea id="notes" name="notes" class="input" rows="2" placeholder="Contoh: Lantai atas, kamar bebas asap rokok (non-smoking), check-in lebih awal, dll."></textarea>
+              <label for="special_request">Permintaan Khusus (Opsional)</label>
+              <textarea id="special_request" name="special_request" class="input" rows="2" placeholder="Cth: Early check-in, Honeymoon setup, Non-smoking room"></textarea>
+            </div>
+
+            <div class="field" style="margin-bottom: 28px;">
+              <label for="promo_code">Kode Promo / Voucher</label>
+              <div style="display:flex; gap:10px;">
+                <input type="text" id="promo_code" name="promo_code" class="input" placeholder="Masukkan kode promo" style="text-transform:uppercase;">
+                <button type="button" id="btn-check-promo" class="confirm-btn" style="width:auto; padding: 0 20px; font-size:0.95rem;">Terapkan</button>
+              </div>
+              <div id="promo-message" style="margin-top:8px; font-size:0.85rem; font-weight:600;"></div>
             </div>
 
             {{-- Metode Pembayaran --}}
@@ -233,7 +243,7 @@
             <span id="sum-total">—</span>
           </div>
           <p style="font-size:0.83rem; color:#D6D2C4; margin-top:18px; line-height:1.5; opacity:0.9;">
-            * Harga estimasi resmi Grand Lumina Hotel. e-Voucher reservasi resmi akan otomatis dikirimkan ke email Anda setelah konfirmasi.
+            * Harga estimasi resmi Web Hotel. e-Voucher reservasi resmi akan otomatis dikirimkan ke email Anda setelah konfirmasi.
           </p>
         </div>
       </aside>

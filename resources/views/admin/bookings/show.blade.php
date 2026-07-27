@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Detail Reservasi #{{ $booking->midtrans_order_id }} — Admin Grand Lumina')
+@section('title', 'Detail Reservasi #{{ $booking->midtrans_order_id }} — Admin Web Hotel')
 @section('page-title', 'Detail Lembar Reservasi Tamu')
 
 @section('content')
@@ -11,7 +11,7 @@
     <div class="card">
       <div class="card-header">
         <h3>e-Voucher & Lembar Reservasi #{{ $booking->midtrans_order_id }}</h3>
-        <a href="{{ route('booking.success', $booking->id) }}" target="_blank" class="btn btn-gold" style="font-size:0.85rem;"><i class="bi bi-printer-fill"></i> Cetak e-Voucher</a>
+        <a href="{{ route('booking.invoice', $booking->id) }}" target="_blank" class="btn btn-gold" style="font-size:0.85rem;"><i class="bi bi-file-earmark-pdf-fill"></i> Cetak / Simpan PDF</a>
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;background:#F8F6F0;padding:20px;border-radius:16px;">
@@ -76,8 +76,14 @@
         </tr>
         <tr>
           <td style="color:#64748b;">Catatan Khusus Tamu:</td>
-          <td><em style="color:#475569;">"{{ $booking->notes ?: 'Tidak ada catatan tambahan.' }}"</em></td>
+          <td><em style="color:#475569;">"{{ $booking->special_request ?: 'Tidak ada catatan tambahan.' }}"</em></td>
         </tr>
+        @if($booking->discount_amount > 0)
+        <tr>
+          <td style="color:#64748b;">Promo Diterapkan:</td>
+          <td><strong style="color:#b91c1c;">{{ $booking->promo_code }} (Diskon: Rp {{ number_format($booking->discount_amount, 0, ',', '.') }})</strong></td>
+        </tr>
+        @endif
       </table>
 
       <div style="display:flex;justify-content:space-between;align-items:center;background:#0F172A;color:#FFF;padding:20px 24px;border-radius:16px;">

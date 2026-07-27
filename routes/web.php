@@ -8,7 +8,7 @@ use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes — Grand Lumina
+| Web Routes — Web Hotel
 |--------------------------------------------------------------------------
 */
 
@@ -23,6 +23,7 @@ Route::post('/booking',               [BookingController::class, 'store'])->name
 Route::get('/booking/payment/{id}',   [BookingController::class, 'payment'])->name('booking.payment');
 Route::post('/booking/simulate-pay/{id}', [BookingController::class, 'simulatePay'])->name('booking.simulate-pay');
 Route::get('/booking/success/{id}',   [BookingController::class, 'success'])->name('booking.success');
+Route::get('/booking/invoice/{id}',   [BookingController::class, 'invoice'])->name('booking.invoice');
 
 // Midtrans webhook (tidak perlu CSRF)
 Route::post('/midtrans/callback', [BookingController::class, 'midtransCallback'])
@@ -31,7 +32,7 @@ Route::post('/midtrans/callback', [BookingController::class, 'midtransCallback']
 
 /*
 |--------------------------------------------------------------------------
-| Admin Panel Routes — Grand Lumina Hotel
+| Admin Panel Routes — Web Hotel
 |--------------------------------------------------------------------------
 */
 // Authentication Routes (Tanpa Middleware Auth)

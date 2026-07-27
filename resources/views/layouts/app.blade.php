@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@yield('title', 'Grand Lumina')</title>
-  <meta name="description" content="@yield('description', 'Grand Lumina — Experience luxury and comfort in every detail.')">
+  <title>@yield('title', 'Web Hotel')</title>
+  <meta name="description" content="@yield('description', 'Web Hotel — Experience luxury and comfort in every detail.')">
 
   {{-- Icons --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
@@ -27,7 +27,7 @@
   {{-- ========== LOADING SCREEN ========== --}}
   <div id="loading-screen">
     <div class="loading-logo">
-      <h1>Grand Lumina</h1>
+      <h1>Web Hotel</h1>
       <p>Makassar · Sulawesi Selatan</p>
     </div>
     <div class="loading-divider"></div>
@@ -38,12 +38,12 @@
 
   {{-- ========== NAVBAR ========== --}}
   <header class="navbar-modern" id="navbar">
-    <div class="logo">Hotel <span>Lumina</span></div>
+    <div class="logo">Hotel <span>Hotel</span></div>
     <nav>
       <ul class="nav-links">
         <div class="drawer-header">
           <span class="drawer-title">
-            <span class="hotel">Hotel</span> <span class="Lumina">Lumina</span>
+            <span class="hotel">Hotel</span> <span class="Hotel">Hotel</span>
           </span>
         </div>
         <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
@@ -67,7 +67,7 @@
     <div class="footer-main">
       {{-- Branding --}}
       <div class="footer-brand">
-        <h2>{{ $branding->hotel_name ?? 'Grand Lumina' }}</h2>
+        <h2>{{ $branding->hotel_name ?? 'Web Hotel' }}</h2>
         <p>{!! nl2br(e($branding->tagline ?? '')) !!}</p>
 
         {{-- Social Media --}}
@@ -110,7 +110,7 @@
 
     {{-- Bottom --}}
     <div class="footer-bottom">
-      <p>{{ $footerBottom->text ?? '© ' . date('Y') . ' Grand Lumina. All rights reserved.' }}</p>
+      <p>{{ $footerBottom->text ?? '© ' . date('Y') . ' Web Hotel. All rights reserved.' }}</p>
     </div>
   </footer>
 
@@ -134,7 +134,7 @@
       var ls = document.getElementById('loading-screen');
       if (!ls) return;
 
-      if (sessionStorage.getItem('hotel_Lumina_loaded') === 'true') {
+      if (sessionStorage.getItem('hotel_Hotel_loaded') === 'true') {
         ls.style.display = 'none';
         return;
       }
@@ -142,7 +142,7 @@
       var hide = function () {
         setTimeout(function () {
           ls.classList.add('hidden');
-          sessionStorage.setItem('hotel_Lumina_loaded', 'true');
+          sessionStorage.setItem('hotel_Hotel_loaded', 'true');
         }, 300);
       };
       if (document.readyState === 'complete') {

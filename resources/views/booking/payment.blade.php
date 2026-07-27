@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Grand Lumina — Pembayaran & Konfirmasi')
+@section('title', 'Web Hotel — Pembayaran & Konfirmasi')
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('css/booking.css') }}" />

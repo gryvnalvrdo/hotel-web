@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Manajemen Fasilitas — Admin Grand Lumina')
+@section('title', 'Manajemen Fasilitas — Admin Web Hotel')
 @section('page-title', 'Manajemen Fasilitas Hotel & Kamar')
 
 @section('content')

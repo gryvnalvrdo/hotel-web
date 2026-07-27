@@ -77,9 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const item = state.selected_rooms[k];
         totalRatePerNight += (item.price * item.qty);
       });
-      return totalRatePerNight * state.nights;
+      let baseTotal = totalRatePerNight * state.nights;
+      if (state.discount_amount) baseTotal -= state.discount_amount;
+      return baseTotal > 0 ? baseTotal : 0;
     }
-    return state.nights * state.price_per_night * state.room_qty;
+    let baseTotal = state.nights * state.price_per_night * state.room_qty;
+    if (state.discount_amount) baseTotal -= state.discount_amount;
+    return baseTotal > 0 ? baseTotal : 0;
   }
 
   function formatDate(dateStr) {
@@ -120,7 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const total = computeTotal();
-    if (sumTotal) sumTotal.textContent = total ? idr(total) : "—";
+    
+    if (sumTotal) {
+      if (state.discount_amount && state.discount_amount > 0) {
+        sumTotal.innerHTML = `<span style="font-size:0.85rem; color:#b91c1c; display:block; text-decoration:line-through; font-weight:normal;">${idr(total + state.discount_amount)}</span> ${idr(total)}`;
+      } else {
+        sumTotal.textContent = total ? idr(total) : "—";
+      }
+    }
 
     if (form_checkin) form_checkin.value = state.checkin || "";
     if (form_checkout) form_checkout.value = state.checkout || "";
@@ -451,6 +462,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return true;
   });
+
+  const btnCheckPromo = document.getElementById("btn-check-promo");
+  if (btnCheckPromo) {
+    btnCheckPromo.addEventListener("click", async () => {
+      const code = document.getElementById("promo_code").value.trim();
+      const msg = document.getElementById("promo-message");
+      if (!code) return;
+      
+      msg.style.color = "#475569";
+      msg.textContent = "Memeriksa kode promo...";
+      
+      try {
+        // Base total without discount
+        const originalTotal = (computeTotal() + (state.discount_amount || 0));
+        const res = await fetch(`/api/check-promo?code=${code}&total=${originalTotal}`);
+        const data = await res.json();
+        
+        if (data.valid) {
+          state.discount_amount = data.discount;
+          msg.style.color = "#15803d";
+          msg.innerHTML = `<i class="bi bi-check-circle-fill"></i> Promo berhasil diterapkan! Diskon: ${idr(data.discount)}`;
+          updateSummary();
+        } else {
+          state.discount_amount = 0;
+          msg.style.color = "#b91c1c";
+          msg.innerHTML = `<i class="bi bi-x-circle-fill"></i> ${data.message || "Kode promo tidak valid."}`;
+          updateSummary();
+        }
+      } catch (err) {
+        msg.style.color = "#b91c1c";
+        msg.textContent = "Terjadi kesalahan saat memeriksa promo.";
+      }
+    });
+  }
 
   // Init jika ada room terpilih
   if (state.room_id && roomsGrid) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-fit, initial-scale=1.0">
-  <title>Login Admin — Grand Lumina Hotel</title>
+  <title>Login Admin — Web Hotel</title>
   
   {{-- Fonts & Icons --}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -273,7 +273,7 @@
   <div class="login-wrapper">
     
     <div class="brand-header">
-      <h1>Grand Lumina</h1>
+      <h1>Web Hotel</h1>
       <span>Management Console</span>
     </div>
 
@@ -310,7 +310,7 @@
           <label for="password">Password</label>
           <div class="input-wrapper">
             <i class="bi bi-lock-fill"></i>
-            <input type="password" id="password" name="password" class="form-control" required placeholder="••••••••••••" value="adminLumina123">
+            <input type="password" id="password" name="password" class="form-control" required placeholder="••••••••••••" value="adminHotel123">
           </div>
         </div>
 
@@ -322,13 +322,13 @@
 
       <div class="login-info">
         💡 <strong>Akses Default Admin:</strong><br>
-        Username: <code>admin</code> (atau <code>Lumina</code>)<br>
-        Password: <code>adminLumina123</code> (atau <code>admin</code>)
+        Username: <code>admin</code> (atau <code>Hotel</code>)<br>
+        Password: <code>adminHotel123</code> (atau <code>admin</code>)
       </div>
     </div>
 
     <div class="footer-link">
-      <a href="{{ route('home') }}"><i class="bi bi-arrow-left"></i> Kembali ke Beranda Resmi Grand Lumina</a>
+      <a href="{{ route('home') }}"><i class="bi bi-arrow-left"></i> Kembali ke Beranda Resmi Web Hotel</a>
     </div>
 
   </div>

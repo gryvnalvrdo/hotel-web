@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard Overview — Admin Grand Lumina')
+@section('title', 'Dashboard Overview — Admin Web Hotel')
 @section('page-title', 'Dashboard Executive Overview')
 
 @push('styles')
@@ -51,6 +51,83 @@
       </div>
     </div>
   </div>
+
+  <div class="card" style="margin-bottom:32px;">
+    <div class="card-header">
+      <h3>📈 Analitik Pendapatan Tahun {{ date('Y') }}</h3>
+    </div>
+    <div style="padding: 20px; height: 350px;">
+      <canvas id="revenueChart"></canvas>
+    </div>
+  </div>
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('revenueChart').getContext('2d');
+  
+  // Custom gradient for line chart
+  const gradient = ctx.createLinearGradient(0, 0, 0, 350);
+  gradient.addColorStop(0, 'rgba(197, 160, 89, 0.4)');
+  gradient.addColorStop(1, 'rgba(197, 160, 89, 0.01)');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: @json($monthlyLabels),
+      datasets: [{
+        label: 'Pendapatan (Rp)',
+        data: @json($monthlyRevenue),
+        borderColor: '#C5A059',
+        backgroundColor: gradient,
+        borderWidth: 3,
+        pointBackgroundColor: '#0F172A',
+        pointBorderColor: '#C5A059',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        fill: true,
+        tension: 0.4 // Smooth curves
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0F172A',
+          padding: 12,
+          titleFont: { family: 'Inter', size: 13 },
+          bodyFont: { family: 'Inter', size: 14, weight: 'bold' },
+          callbacks: {
+            label: function(context) {
+              let val = context.raw || 0;
+              return ' Rp ' + val.toLocaleString('id-ID');
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { borderDash: [4, 4], color: '#e2e8f0' },
+          ticks: {
+            callback: function(value) {
+              if (value >= 1000000) return 'Rp ' + (value/1000000) + ' Jt';
+              if (value >= 1000) return 'Rp ' + (value/1000) + ' Rb';
+              return value;
+            }
+          }
+        },
+        x: {
+          grid: { display: false }
+        }
+      }
+    }
+  });
+</script>
+@endpush
 
   <div class="card">
     <div class="card-header">
