@@ -44,6 +44,9 @@ class DatabaseSeeder extends Seeder
             ['room_id' => 2, 'file_path' => 'images/rooms/junior2.jpg'],
             ['room_id' => 2, 'file_path' => 'images/rooms/junior3.jpg'],
             ['room_id' => 2, 'file_path' => 'images/rooms/junior4.jpg'],
+
+            ['room_id' => 4, 'file_path' => 'images/rooms/deluxe1.jpg'],
+            ['room_id' => 5, 'file_path' => 'images/rooms/executive1.jpg'],
         ];
         DB::table('room_images')->insert($roomImages);
 

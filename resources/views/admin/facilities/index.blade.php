@@ -45,7 +45,12 @@
                 <tr>
                   <td>
                     @if($hf->images && $hf->images->count() > 0)
-                      <img src="{{ asset($hf->images->first()->image_path) }}" alt="{{ $hf->title }}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;">
+                      <div style="cursor:pointer;" onclick='openLightbox(@json($hf->images->pluck("image_path")->map(fn($path) => asset($path))))'>
+                        <img src="{{ asset($hf->images->first()->image_path) }}" alt="{{ $hf->title }}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;border:2px solid #e2e8f0;">
+                        @if($hf->images->count() > 1)
+                          <div style="position:absolute; margin-top:-20px; margin-left:30px; background:#0F172A; color:#fff; font-size:0.65rem; padding:2px 5px; border-radius:10px;">+{{ $hf->images->count() - 1 }}</div>
+                        @endif
+                      </div>
                     @else
                       <div style="width:50px;height:50px;background:#f1f5f9;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#94a3b8;"><i class="bi bi-image"></i></div>
                     @endif
@@ -219,7 +224,58 @@
     </div>
   </div>
 
+  {{-- LIGHTBOX MODAL --}}
+  <div id="lightboxModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.95); z-index:10000; align-items:center; justify-content:center; flex-direction:column;">
+    <button onclick="closeLightbox()" style="position:absolute; top:30px; right:40px; background:none; border:none; color:white; font-size:2.5rem; cursor:pointer;"><i class="bi bi-x"></i></button>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <button onclick="prevLightboxImage()" style="background:none; border:none; color:white; font-size:3rem; cursor:pointer;"><i class="bi bi-chevron-left"></i></button>
+      <img id="lightboxImage" src="" style="max-width:80vw; max-height:80vh; border-radius:12px; box-shadow:0 25px 50px rgba(0,0,0,0.5); object-fit:contain;">
+      <button onclick="nextLightboxImage()" style="background:none; border:none; color:white; font-size:3rem; cursor:pointer;"><i class="bi bi-chevron-right"></i></button>
+    </div>
+    <div id="lightboxCounter" style="color:white; margin-top:15px; font-size:1.1rem; letter-spacing:1px;"></div>
+  </div>
+
   <script>
+    let lightboxImages = [];
+    let currentLightboxIndex = 0;
+
+    function openLightbox(images) {
+      lightboxImages = images;
+      currentLightboxIndex = 0;
+      updateLightbox();
+      document.getElementById('lightboxModal').style.display = 'flex';
+    }
+
+    function updateLightbox() {
+      if (lightboxImages.length === 0) return;
+      document.getElementById('lightboxImage').src = lightboxImages[currentLightboxIndex];
+      document.getElementById('lightboxCounter').innerText = (currentLightboxIndex + 1) + " / " + lightboxImages.length;
+    }
+
+    function prevLightboxImage() {
+      if (currentLightboxIndex > 0) {
+        currentLightboxIndex--;
+        updateLightbox();
+      } else {
+        currentLightboxIndex = lightboxImages.length - 1;
+        updateLightbox();
+      }
+    }
+
+    function nextLightboxImage() {
+      if (currentLightboxIndex < lightboxImages.length - 1) {
+        currentLightboxIndex++;
+        updateLightbox();
+      } else {
+        currentLightboxIndex = 0;
+        updateLightbox();
+      }
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').style.display = 'none';
+    }
+
     function filterRooms() {
       const filter = document.getElementById('roomFilter').value;
       const rows = document.querySelectorAll('.rf-row');
