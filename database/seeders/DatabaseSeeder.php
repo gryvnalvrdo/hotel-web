@@ -156,9 +156,9 @@ class DatabaseSeeder extends Seeder
 
         // 11. Footer Partners
         DB::table('footer_partners')->insert([
-            ['name' => 'Agoda', 'url' => 'https://agoda.com', 'logo_path' => 'images/partners/agoda.png', 'display_order' => 1],
-            ['name' => 'Traveloka', 'url' => 'https://traveloka.com', 'logo_path' => 'images/partners/traveloka.png', 'display_order' => 2],
-            ['name' => 'Booking.com', 'url' => 'https://booking.com', 'logo_path' => 'images/partners/booking.png', 'display_order' => 3],
+            ['name' => 'Agoda', 'url' => 'https://agoda.com', 'logo_path' => 'images/footer/agoda.png', 'display_order' => 1],
+            ['name' => 'Traveloka', 'url' => 'https://traveloka.com', 'logo_path' => 'images/footer/traveloka.png', 'display_order' => 2],
+            ['name' => 'Booking.com', 'url' => 'https://booking.com', 'logo_path' => 'images/footer/booking.jpeg', 'display_order' => 3],
         ]);
 
         // 12. Footer Contacts
