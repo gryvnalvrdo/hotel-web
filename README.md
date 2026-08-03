@@ -1,48 +1,90 @@
-# 🏨 Hotel Web App Project (Sistem Manajemen & Reservasi Hotel)
+# 🏨 Hotel Reservation & Management Web App
 
-Ini adalah **Proyek Web Hotel** berskala penuh yang dibangun menggunakan ekosistem modern Laravel 11. Proyek ini berfungsi sebagai portofolio/sistem *booking* hotel yang komprehensif, mencakup *user-facing booking flow* dan *Admin Dashboard* (CMS) untuk mengelola ketersediaan, tipe kamar, fasilitas, serta inventaris kamar.
+> A full-stack hotel booking and CMS system built with **Laravel 11** — featuring a multi-step booking engine, Midtrans payment gateway integration, and a complete Admin Dashboard.
 
-**Catatan:** *Aplikasi ini murni merupakan proyek web portofolio buatan saya pribadi dan tidak terafiliasi dengan brand hotel nyata manapun di dunia nyata.*
-
-## Tech Stack Modern & Database Terpadu
-
-Aplikasi ini menggunakan **SQLite** secara bawaan (*default*). Ini adalah standar industri modern untuk aplikasi portofolio karena:
-- **TIDAK PERLU INSTALL XAMPP**
-- **TIDAK PERLU PHPMyAdmin**
-- **TIDAK PERLU Import/Export file SQL**
-- Seluruh database sudah tersimpan rapi dan abadi di dalam file `database/database.sqlite`. Anda cukup *clone* dan jalankan!
-
-Tentu saja, karena menggunakan **Eloquent ORM** dari Laravel, sistem ini juga **mendukung berbagai macam tipe database (Cross-Database Support)** jika Anda ingin mengubahnya:
-- **MySQL** / MariaDB 
-- **PostgreSQL**
-- **SQL Server**
-
-- **PHP** 8.2+
-- **Laravel** 11
-- **Blade** templating
-- **Vanilla CSS** (Responsive & Modular)
-- **JavaScript Vanilla** (Interaktif tanpa jQuery)
-- **Bootstrap Icons** + **Font Awesome**
+**Note:** *This is a personal portfolio project and is not affiliated with any real hotel brand.*
 
 ---
 
-## Fitur Utama
+## ✨ Features
 
-- 🏠 **Landing Page (Home)** — Hero slider dinamis, pratinjau kamar, galeri fasilitas (Lightbox Pop-up), dan peta lokasi yang elegan.
-- 🛏️ **Katalog Kamar** — Detail kamar, fasilitas per kategori.
-- 🏢 **Conference & Meeting** — Manajemen halaman ruang *meeting* (MICE).
-- 📝 **Booking Engine (Multi-step)** — Alur pemesanan yang canggih (Cek ketersediaan tanggal → Pilih kamar dari grid responsif → Input data tamu & permintaan khusus → Konfirmasi).
-- 📊 **Admin Dashboard (CMS)** — Manajemen master kamar, manajemen fasilitas umum & kamar, kontrol inventaris, serta validasi pemesanan tamu.
-- 📱 **Fully Responsive** — Desain adaptif dari Mobile hingga layar Monitor ultrawide.
-- ✨ **Global CSS System** — Sistem desain yang rapi dan elegan.
+| Module | Description |
+|---|---|
+| 🏠 **Landing Page** | Dynamic hero slider, room previews, facility gallery with lightbox pop-up, location map |
+| 🛏️ **Room Catalog** | Listing of all room types with amenities, image sliders, and price per night |
+| 🏢 **Conference & MICE** | Dedicated page for meeting room & event space information |
+| 📝 **Booking Engine** | Multi-step flow: date availability check → room selection from live inventory → guest data & special request input → payment |
+| 💳 **Payment Gateway** | Integrated with **Midtrans** (BCA VA, Mandiri VA, BNI VA, GoPay, OVO, DANA, QRIS, Credit Card) |
+| 📊 **Admin Dashboard** | Full CMS: manage room catalog, home & room facilities, room inventory, guest reservations |
+| 📱 **Fully Responsive** | Adaptive design from mobile to ultrawide monitor |
 
 ---
 
-## Setup Lokal (Super Instan)
+## 🛠️ Tech Stack
 
-Karena menggunakan **SQLite**, Anda bisa menjalankan aplikasi ini kurang dari 1 menit!
+| Layer | Technology |
+|---|---|
+| **Backend** | PHP 8.2+, Laravel 11, Eloquent ORM |
+| **Frontend** | Blade Templating, Vanilla CSS (Modular), Vanilla JavaScript |
+| **Icons** | Bootstrap Icons, Font Awesome |
+| **Database** | SQLite *(default, zero-config)* · MySQL · PostgreSQL · SQL Server |
+| **Payment** | Midtrans Payment Gateway (Sandbox) |
 
-### 1. Clone repository
+---
+
+## 🗂️ Project Structure
+
+```
+hotel-web/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── HomeController.php
+│   │   │   ├── RoomController.php
+│   │   │   ├── ConferenceController.php
+│   │   │   ├── BookingController.php
+│   │   │   └── Admin/
+│   │   │       ├── AuthController.php
+│   │   │       ├── DashboardController.php
+│   │   │       ├── RoomController.php
+│   │   │       ├── FacilityController.php
+│   │   │       ├── InventoryController.php
+│   │   │       └── BookingController.php
+│   │   └── Middleware/
+│   │       └── AdminAuth.php
+│   └── Models/
+│       ├── Room.php · RoomImage.php · RoomFacility.php
+│       ├── Booking.php · Promo.php
+│       ├── ConferenceRoom.php · ConferenceRoomImage.php
+│       ├── HomeFacility.php · HomeFacilityImage.php · HomeSlider.php
+│       └── Footer*.php (Branding, Contact, Social, Partner, Bottom)
+├── database/
+│   ├── migrations/         — Database schema definitions
+│   ├── seeders/            — DatabaseSeeder.php (rooms, facilities, slider, etc.)
+│   └── database.sqlite     — ⭐ Pre-seeded SQLite database (ready to use)
+├── resources/views/
+│   ├── layouts/
+│   │   ├── app.blade.php   — Main front-end layout
+│   │   └── admin.blade.php — Admin dashboard layout
+│   ├── home/               — Landing page sections
+│   ├── rooms/              — Room catalog page
+│   ├── conference/         — Conference & MICE page
+│   ├── booking/            — Multi-step booking flow
+│   └── admin/              — Dashboard, rooms, facilities, inventory, bookings
+├── public/
+│   ├── css/                — Modular CSS files (rooms, booking, admin, etc.)
+│   ├── js/                 — Front-end JavaScript logic
+│   └── images/             — Room photos, facility images, slider assets
+└── routes/web.php          — All route definitions
+```
+
+---
+
+## 🚀 Quick Start (< 1 Minute Setup)
+
+This project uses **SQLite** by default — no database server installation required. The `database.sqlite` file is already pre-seeded with rooms, facilities, and demo data.
+
+### 1. Clone the repository
 ```bash
 git clone https://github.com/gryvnalvrdo/hotel-web.git
 cd hotel-web
@@ -54,48 +96,82 @@ composer install
 npm install
 ```
 
-### 3. Copy .env
+### 3. Set up environment
 ```bash
 cp .env.example .env
-```
-*(Catatan: Anda tidak perlu mengkonfigurasi bagian database di `.env` karena secara default Laravel 11 akan membaca koneksi SQLite dan file `database.sqlite` yang sudah disertakan).*
-
-### 4. Generate app key & Jalankan server
-```bash
 php artisan key:generate
+```
+> **Note:** No database configuration needed. Laravel 11 automatically uses the included `database/database.sqlite` file.
+
+### 4. Run the development server
+```bash
 php artisan serve
 ```
 
-Buka `http://localhost:8000` di browser Anda 🎉.
-Aplikasi akan langsung menampilkan data kamar, fasilitas, dan gambar tanpa konfigurasi tambahan!
+Open **http://localhost:8000** in your browser — everything works immediately! 🎉
+
+### 5. Admin Panel Access
+Navigate to **http://localhost:8000/admin/login**
+
+| Credential | Value |
+|---|---|
+| Username | `admin` |
+| Password | `adminHotel123` |
 
 ---
 
-## Struktur Proyek
+## 🗺️ Routes Overview
 
+| Method | Route | Description |
+|---|---|---|
+| GET | `/` | Landing page |
+| GET | `/rooms` | Room catalog |
+| GET | `/conference` | Conference & MICE page |
+| GET | `/booking` | Booking step 1 (availability check) |
+| GET | `/booking/check-availability` | AJAX availability check |
+| POST | `/booking` | Submit booking |
+| GET | `/booking/payment/{id}` | Payment page |
+| POST | `/booking/simulate-pay/{id}` | Simulate payment (sandbox) |
+| GET | `/booking/success/{id}` | Booking success page |
+| GET | `/booking/invoice/{id}` | Guest invoice |
+| POST | `/midtrans/callback` | Midtrans webhook callback |
+| GET | `/admin` | Admin dashboard |
+| — | `/admin/rooms` | Room CRUD management |
+| — | `/admin/facilities` | Home & room facility management |
+| — | `/admin/inventory` | Real-time inventory & occupancy |
+| — | `/admin/bookings` | Guest reservation management |
+
+---
+
+## 💡 Cross-Database Support
+
+Although SQLite is the default (zero-config), the app fully supports any Laravel-compatible database. Just update `.env`:
+
+```env
+# MySQL / MariaDB
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=hotel_web
+DB_USERNAME=root
+DB_PASSWORD=
+
+# PostgreSQL
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=hotel_web
+DB_USERNAME=postgres
+DB_PASSWORD=
 ```
-hotel-web/
-├── app/
-│   ├── Http/Controllers/   → HomeController, RoomController, BookingController, dll
-│   └── Models/             → Room, Booking, Promo, dll (Eloquent Models)
-├── database/
-│   ├── migrations/         → Skema struktur database
-│   ├── seeders/            → File seeder penyuntik data dummy
-│   └── database.sqlite     → 🌟 File Database Fisik (Siap pakai)
-├── resources/views/
-│   ├── layouts/app.blade.php   → Layout utama front-end
-│   ├── layouts/admin.blade.php → Layout dashboard backend
-│   ├── booking/                → Alur pemesanan kamar
-│   └── admin/                  → Seluruh antarmuka admin
-├── public/
-│   ├── css/                    → Modular CSS
-│   ├── js/                     → Front-end logic
-│   └── images/                 → Assets (Gambar ruangan, fasilitas, logo, dll)
-└── routes/web.php          → Deklarasi routing
+
+Then run:
+```bash
+php artisan migrate --seed
 ```
 
 ---
 
-## License
+## 📄 License
 
-Proyek ini dibangun sebagai portofolio *open-source* dan pembelajaran web development tingkat lanjut.
+This project is built as an open-source portfolio and advanced web development learning exercise. Free to use for educational purposes.
