@@ -68,4 +68,7 @@ $_ENV['DB_CONNECTION'] = 'sqlite';
 $_SERVER['DB_CONNECTION'] = 'sqlite';
 putenv('DB_CONNECTION=sqlite');
 
+// Force HTTPS for asset() URL generation (Vercel terminates SSL at the edge)
+$_SERVER['HTTPS'] = 'on';
+
 require __DIR__ . '/../public/index.php';
