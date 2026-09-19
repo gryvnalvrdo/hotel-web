@@ -51,6 +51,11 @@
         <li><a href="{{ route('conference') }}" class="{{ request()->routeIs('conference') ? 'active' : '' }}">Conference</a></li>
         <li><a href="#footer">About</a></li>
         <li><a href="{{ route('booking') }}" class="{{ request()->routeIs('booking*') ? 'active' : '' }}">Book Now</a></li>
+        <li>
+          <a href="{{ route('admin.login') }}" style="color: var(--gold); border: 1px solid var(--gold); border-radius: 6px; padding: 4px 12px; margin-left: 10px;" onmouseover="this.style.background='rgba(197, 160, 89, 0.1)'" onmouseout="this.style.background='transparent'">
+            <i class="bi bi-shield-lock-fill"></i> Admin
+          </a>
+        </li>
       </ul>
     </nav>
     <div class="menu-toggle"><i class="bi bi-list"></i></div>
@@ -95,11 +100,8 @@
       </div>
     </div>
 
-    <div class="footer-bottom" style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 10px;">
+    <div class="footer-bottom">
       <p>© {{ date('Y') }} Web Hotel Project. All rights reserved. (Not a real hotel)</p>
-      <a href="{{ route('admin.login') }}" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 4px 12px; border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 6px; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(197, 160, 89, 0.1)'" onmouseout="this.style.background='transparent'">
-        <i class="bi bi-shield-lock-fill" style="margin-right: 5px;"></i> Admin Panel
-      </a>
     </div>
   </footer>
 
