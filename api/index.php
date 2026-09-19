@@ -63,12 +63,17 @@ foreach ($defaultEnvs as $k => $v) {
     }
 }
 
-// Force DB connection to sqlite regardless of empty Vercel dashboard vars
-$_ENV['DB_CONNECTION'] = 'sqlite';
-$_SERVER['DB_CONNECTION'] = 'sqlite';
-putenv('DB_CONNECTION=sqlite');
-
 // Force HTTPS for asset() URL generation (Vercel terminates SSL at the edge)
 $_SERVER['HTTPS'] = 'on';
+
+// Hardcode Supabase Database Connection
+$_ENV['DB_CONNECTION'] = 'pgsql';
+$_SERVER['DB_CONNECTION'] = 'pgsql';
+putenv('DB_CONNECTION=pgsql');
+
+$dbUrl = 'postgresql://postgres:alvrdo331851@db.cphrxiakrsbmqkgnxtks.supabase.co:5432/postgres';
+$_ENV['DATABASE_URL'] = $dbUrl;
+$_SERVER['DATABASE_URL'] = $dbUrl;
+putenv("DATABASE_URL=$dbUrl");
 
 require __DIR__ . '/../public/index.php';
