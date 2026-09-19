@@ -448,3 +448,19 @@
   color: #000;
   transform: rotate(90deg) scale(1.1);
 }
+
+@media (max-width: 768px) {
+  .modal-content { flex-direction: column; overflow-y: auto; max-height: 90vh; }
+  .modal-left { flex: none; height: auto; }
+  .modal-content .slider img { height: 260px; border-radius: 14px 14px 0 0; }
+  .modal-right { overflow-y: visible; max-height: none; flex: auto; }
+  .modal-right h3 { margin: 15px 15px 10px; font-size: 1.4rem; }
+  .modal-body { padding: 0 15px 15px; }
+  .modal-footer { flex-direction: row; justify-content: space-between; align-items: center; padding: 12px 15px; }
+  .room-price { font-size: 1.2rem; }
+  .btn-book-modal { padding: 10px 16px; width: auto; font-size: 0.9rem; }
+  
+  .image-popup-content { height: auto; max-height: 80vh; }
+  .image-wrapper { width: 100%; }
+  .image-wrapper img { height: auto; max-height: 80vh; }
+}

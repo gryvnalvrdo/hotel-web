@@ -385,4 +385,7 @@
   .conference-section { padding: 80px 15px 40px; }
   .rooms-grid { grid-template-columns: 1fr; gap: 20px; }
   .info-grid { flex-direction: column; gap: 10px; }
+  .image-popup-content { height: auto; max-height: 80vh; width: 95vw; }
+  .image-wrapper { width: 100%; }
+  .image-wrapper img { height: auto; max-height: 80vh; object-fit: contain; }
 }

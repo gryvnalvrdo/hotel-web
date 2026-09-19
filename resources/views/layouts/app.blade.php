@@ -132,7 +132,7 @@
         setTimeout(function () {
           ls.style.display = 'none';
           sessionStorage.setItem('hotel_Hotel_loaded', 'true');
-        }, 300);
+        }, 150);
       };
       
       if (document.readyState === 'complete') {
