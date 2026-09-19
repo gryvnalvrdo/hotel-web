@@ -176,5 +176,24 @@ class DatabaseSeeder extends Seeder
         foreach ($promos as $promo) {
             \App\Models\Promo::create($promo);
         }
+
+        // 14. Conference Rooms
+        $conf1 = \App\Models\ConferenceRoom::create([
+            'name' => 'Grand Ballroom',
+            'description' => 'The perfect venue for large corporate events and grand weddings.',
+            'width' => 30,
+            'length' => 45,
+            'capacity' => 1000
+        ]);
+        \App\Models\ConferenceRoomImage::create(['conference_room_id' => $conf1->id, 'image_path' => 'img/sample-room-1.jpg', 'display_order' => 1]);
+
+        $conf2 = \App\Models\ConferenceRoom::create([
+            'name' => 'Executive Meeting Room',
+            'description' => 'An elegant space for board meetings and executive discussions.',
+            'width' => 10,
+            'length' => 15,
+            'capacity' => 25
+        ]);
+        \App\Models\ConferenceRoomImage::create(['conference_room_id' => $conf2->id, 'image_path' => 'img/sample-room-2.jpg', 'display_order' => 1]);
     }
 }
