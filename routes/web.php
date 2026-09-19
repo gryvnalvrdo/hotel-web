@@ -22,12 +22,6 @@ Route::post('/midtrans/callback', [BookingController::class, 'midtransCallback']
     ->name('midtrans.callback')
     ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
 Route::get('admin/login', [\App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('admin.login');
-
-Route::get('/fix-images-temp', function () {
-    \App\Models\ConferenceRoomImage::where('image_path', 'img/sample-room-1.jpg')->update(['image_path' => 'images/conferences/jasmine1.jpg']);
-    \App\Models\ConferenceRoomImage::where('image_path', 'img/sample-room-2.jpg')->update(['image_path' => 'images/conferences/sandeq1.jpg']);
-    return 'Images fixed!';
-});
 Route::post('admin/login', [\App\Http\Controllers\Admin\AuthController::class, 'login'])->name('admin.login.submit');
 Route::post('admin/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
 Route::prefix('admin')->name('admin.')->middleware([\App\Http\Middleware\AdminAuth::class])->group(function () {
