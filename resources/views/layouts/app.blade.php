@@ -23,12 +23,6 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-  <!-- DEMO WARNING BANNER -->
-  <div style="background: #eab308; color: #1e293b; text-align: center; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; z-index: 2000; position: relative;">
-    <i class="bi bi-info-circle-fill" style="margin-right: 6px;"></i>
-    Ini adalah Web Portofolio. Transaksi pemesanan kamar tidak menggunakan uang asli.
-  </div>
-
   
   <div id="loading-screen">
     <div class="loading-logo">

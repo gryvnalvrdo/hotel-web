@@ -17,15 +17,7 @@
     @endif
   </script>
 
-  
-  <section class="hero image-hero">
-    <div class="hero-bg" style="background-image:url('{{ asset('images/slider/slider3.jpg') }}')"></div>
-    <div class="overlay"></div>
-    <div class="content">
-      <h1><i class="bi bi-stars"></i> Reservasi Web Hotel</h1>
-      <p>Icon of the East — Kemewahan Berkelas · Pelayanan Eksklusif · Lokasi Strategis di Jantung Kota</p>
-    </div>
-  </section>
+  <!-- Hero section removed per request to simplify the booking page -->
 
   
   <div class="booking-wrapper">
