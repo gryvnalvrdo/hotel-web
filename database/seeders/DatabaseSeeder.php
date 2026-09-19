@@ -169,9 +169,12 @@ class DatabaseSeeder extends Seeder
         ]);
         
         // 13. Promos
-        DB::table('promos')->insert([
-            ['code' => 'WELCOME20', 'discount_type' => 'percent', 'discount_amount' => 20, 'is_active' => 1, 'valid_until' => '2026-12-31'],
-            ['code' => 'FLAT100K', 'discount_type' => 'fixed', 'discount_amount' => 100000, 'is_active' => 1, 'valid_until' => '2026-12-31'],
-        ]);
+        $promos = [
+            ['code' => 'WELCOME20', 'discount_type' => 'percent', 'discount_amount' => 20, 'is_active' => \Illuminate\Support\Facades\DB::raw('true'), 'valid_until' => '2026-12-31'],
+            ['code' => 'FLAT100K', 'discount_type' => 'fixed', 'discount_amount' => 100000, 'is_active' => \Illuminate\Support\Facades\DB::raw('true'), 'valid_until' => '2026-12-31'],
+        ];
+        foreach ($promos as $promo) {
+            \App\Models\Promo::create($promo);
+        }
     }
 }
