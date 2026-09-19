@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $currentYear = date('Y');
         $monthlyData = Booking::where('payment_status', '!=', 'cancelled')
             ->whereYear('created_at', $currentYear)
-            ->selectRaw('MONTH(created_at) as month, SUM(total_price) as revenue')
+            ->selectRaw('EXTRACT(MONTH FROM created_at) as month, SUM(total_price) as revenue')
             ->groupBy('month')
             ->pluck('revenue', 'month')->toArray();
 

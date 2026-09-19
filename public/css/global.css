@@ -552,11 +552,24 @@ body.menu-open { overflow: hidden; }
 
 .footer-modern {
   background: var(--navy-dark);
-  border-top: 1px solid rgba(255,255,255,0.05);
   color: #f5f6fa;
   padding: 70px 20px 30px;
   margin-top: 20px;
   font-size: 0.95rem;
+  position: relative;
+}
+
+.footer-modern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  opacity: 0.8;
 }
 
 .footer-main {
