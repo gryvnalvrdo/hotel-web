@@ -42,9 +42,30 @@ $_ENV['DB_DATABASE'] = '/tmp/database.sqlite';
 $_SERVER['DB_DATABASE'] = '/tmp/database.sqlite';
 putenv('DB_DATABASE=/tmp/database.sqlite');
 
-// Tell Laravel we are in Vercel
-$_ENV['VERCEL'] = '1';
-$_SERVER['VERCEL'] = '1';
-putenv('VERCEL=1');
+// Hardcode critical env vars to prevent Vercel empty string errors
+$defaultEnvs = [
+    'VERCEL' => '1',
+    'DB_CONNECTION' => 'sqlite',
+    'SESSION_LIFETIME' => '120',
+    'APP_ENV' => 'production',
+    'APP_DEBUG' => 'false',
+    'LOG_CHANNEL' => 'stderr',
+    'CACHE_DRIVER' => 'array',
+    'SESSION_DRIVER' => 'cookie',
+    'QUEUE_CONNECTION' => 'sync',
+];
+
+foreach ($defaultEnvs as $k => $v) {
+    if (empty($_ENV[$k])) {
+        $_ENV[$k] = $v;
+        $_SERVER[$k] = $v;
+        putenv("$k=$v");
+    }
+}
+
+// Force DB connection to sqlite regardless of empty Vercel dashboard vars
+$_ENV['DB_CONNECTION'] = 'sqlite';
+$_SERVER['DB_CONNECTION'] = 'sqlite';
+putenv('DB_CONNECTION=sqlite');
 
 require __DIR__ . '/../public/index.php';
