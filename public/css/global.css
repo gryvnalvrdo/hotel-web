@@ -1355,3 +1355,31 @@ body.menu-open { overflow: hidden; }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gold-light, #f7c948);
 }
+
+.slider .slides img {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .modal-content.two-column {
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+  .modal-left {
+    flex: none;
+    height: auto;
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+  }
+  .modal-right {
+    overflow-y: visible;
+  }
+  .modal-body {
+    padding: 15px;
+  }
+  .modal-footer {
+    padding: 12px 15px;
+  }
+}
