@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
     
     public function boot(): void
     {
+        if (isset($_ENV['VERCEL']) || env('VERCEL') || env('APP_ENV') === 'production') {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         try {
             if (Schema::hasTable('rooms')) {
                 Schema::table('rooms', function (Blueprint $table) {
