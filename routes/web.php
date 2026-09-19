@@ -22,30 +22,6 @@ Route::post('/midtrans/callback', [BookingController::class, 'midtransCallback']
     ->name('midtrans.callback')
     ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
 Route::get('admin/login', [\App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('admin.login');
-
-Route::get('/migrate-run-temp', function () {
-    if (\App\Models\ConferenceRoom::count() === 0) {
-        $conf1 = \App\Models\ConferenceRoom::create([
-            'name' => 'Grand Ballroom',
-            'description' => 'The perfect venue for large corporate events and grand weddings.',
-            'width' => 30,
-            'length' => 45,
-            'capacity' => 1000
-        ]);
-        \App\Models\ConferenceRoomImage::create(['room_id' => $conf1->id, 'image_path' => 'img/sample-room-1.jpg', 'display_order' => 1]);
-
-        $conf2 = \App\Models\ConferenceRoom::create([
-            'name' => 'Executive Meeting Room',
-            'description' => 'An elegant space for board meetings and executive discussions.',
-            'width' => 10,
-            'length' => 15,
-            'capacity' => 25
-        ]);
-        \App\Models\ConferenceRoomImage::create(['room_id' => $conf2->id, 'image_path' => 'img/sample-room-2.jpg', 'display_order' => 1]);
-        return 'Seeded conference rooms!';
-    }
-    return 'Already seeded!';
-});
 Route::post('admin/login', [\App\Http\Controllers\Admin\AuthController::class, 'login'])->name('admin.login.submit');
 Route::post('admin/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
 Route::prefix('admin')->name('admin.')->middleware([\App\Http\Middleware\AdminAuth::class])->group(function () {
