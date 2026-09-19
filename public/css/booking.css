@@ -171,21 +171,22 @@ body {
 
 .input, select, textarea {
   width: 100%;
-  padding: 14px 18px;
-  border-radius: 14px;
-  background: #FCFBF9;
-  border: 1.5px solid #D6D2C4;
-  color: #1C1917;
-  font-size: 0.96rem;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1.5px solid #E5E7EB;
+  color: #1E293B;
+  font-size: 0.98rem;
   font-family: inherit;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15);
+  box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15), 0 4px 12px rgba(197, 160, 89, 0.1);
   background: #FFFFFF;
 }
 

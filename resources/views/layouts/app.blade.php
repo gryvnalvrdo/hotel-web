@@ -23,6 +23,11 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
+  <!-- DEMO WARNING BANNER -->
+  <div style="background: #eab308; color: #1e293b; text-align: center; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; z-index: 2000; position: relative;">
+    <i class="bi bi-info-circle-fill" style="margin-right: 6px;"></i>
+    Ini adalah Web Portofolio. Transaksi pemesanan kamar tidak menggunakan uang asli.
+  </div>
 
   
   <div id="loading-screen">
@@ -79,9 +84,9 @@
         <div class="footer-partners" style="margin-top:20px;">
           <h4 style="font-size:0.95rem; margin-bottom:12px; color:var(--gold);">Our Partners</h4>
           <div class="partner-logos" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
-              <a href="https://agoda.com" target="_blank" style="color:var(--text); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Agoda</a>
-              <a href="https://traveloka.com" target="_blank" style="color:var(--text); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Traveloka</a>
-              <a href="https://booking.com" target="_blank" style="color:var(--text); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Booking.com</a>
+              <a href="https://agoda.com" target="_blank" style="color:var(--navy); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Agoda</a>
+              <a href="https://traveloka.com" target="_blank" style="color:var(--navy); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Traveloka</a>
+              <a href="https://booking.com" target="_blank" style="color:var(--navy); font-weight:600; text-decoration:none; background:#F8F6F0; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Booking.com</a>
           </div>
         </div>
       </div>

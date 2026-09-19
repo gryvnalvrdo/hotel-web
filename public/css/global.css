@@ -62,8 +62,8 @@ body {
   justify-content: space-between;
   padding: 15px 50px;
   z-index: 1300;
-  background: rgba(10, 39, 64, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
   transition: background var(--transition), padding var(--transition);
 }
 
@@ -551,7 +551,8 @@ body.menu-open { overflow: hidden; }
 
 
 .footer-modern {
-  background: linear-gradient(135deg, var(--navy), var(--navy-2));
+  background: var(--navy-dark);
+  border-top: 1px solid rgba(255,255,255,0.05);
   color: #f5f6fa;
   padding: 70px 20px 30px;
   margin-top: 20px;
