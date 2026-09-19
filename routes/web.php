@@ -21,17 +21,6 @@ Route::get('/booking/invoice/{id}',   [BookingController::class, 'invoice'])->na
 Route::post('/midtrans/callback', [BookingController::class, 'midtransCallback'])
     ->name('midtrans.callback')
     ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
-Route::get('/migrate-run-temp', function () {
-    try {
-        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
-            '--force' => true,
-            '--seed' => true
-        ]);
-        return 'Migrations and seeders completed successfully! ' . \Illuminate\Support\Facades\Artisan::output();
-    } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
-    }
-});
 Route::get('admin/login', [\App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('admin/login', [\App\Http\Controllers\Admin\AuthController::class, 'login'])->name('admin.login.submit');
 Route::post('admin/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
