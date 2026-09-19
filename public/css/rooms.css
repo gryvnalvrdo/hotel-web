@@ -245,3 +245,10 @@ body.modal-open {
   color: #f7c948;
   box-shadow: 0 0 12px rgba(247, 201, 72, 0.8);
 }
+
+@media (max-width: 768px) {
+  .room-card { flex-direction: column; }
+  .room-left, .room-right { flex: 1 1 100%; min-width: 100%; }
+  .slider { aspect-ratio: 16 / 9; }
+  .rooms-section { padding: 80px 15px 40px; }
+}

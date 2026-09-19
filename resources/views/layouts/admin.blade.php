@@ -248,6 +248,30 @@
       .admin-main { margin-left: 70px; }
       .admin-content { padding: 20px; }
     }
+
+    @media (max-width: 768px) {
+      .admin-sidebar {
+        width: 100%; height: 65px; bottom: 0; top: auto; flex-direction: row; border-right: none; border-top: 1px solid rgba(197, 160, 89, 0.2); box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+      }
+      .sidebar-header { display: none; }
+      .sidebar-nav { flex-direction: row; justify-content: space-around; width: 100%; padding: 0; align-items: center; }
+      .nav-link { padding: 8px; border-left: none !important; border-bottom: 2px solid transparent; flex: 1; text-align: center; justify-content: center; }
+      .nav-link.active { border-bottom-color: var(--gold); background: rgba(255,255,255,0.05); }
+      .nav-link i { font-size: 1.5rem; margin: 0; }
+      .sidebar-footer { padding: 0; display: flex; align-items: center; justify-content: center; width: 65px; border-top: none; }
+      .btn-logout { padding: 10px; width: 100%; height: 100%; border-radius: 0; border: none; }
+      .btn-logout span { display: none; }
+      .btn-logout i { font-size: 1.5rem; margin: 0; }
+      .admin-main { margin-left: 0; margin-bottom: 65px; }
+      .admin-topbar { padding: 0 15px; height: 65px; }
+      .topbar-title h1 { font-size: 1.2rem; }
+      .admin-badge span { display: none; }
+      .admin-content { padding: 15px; }
+      .card { padding: 15px; margin-bottom: 20px; }
+      .card-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .table th, .table td { padding: 10px; font-size: 0.85rem; }
+      .btn { padding: 8px 12px; font-size: 0.8rem; }
+    }
   </style>
   @stack('styles')
 </head>

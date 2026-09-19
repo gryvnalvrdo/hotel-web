@@ -380,3 +380,9 @@
   display: flex;
   align-items: center; 
 }
+
+@media (max-width: 768px) {
+  .conference-section { padding: 80px 15px 40px; }
+  .rooms-grid { grid-template-columns: 1fr; gap: 20px; }
+  .info-grid { flex-direction: column; gap: 10px; }
+}
