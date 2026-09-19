@@ -71,7 +71,7 @@ $_ENV['DB_CONNECTION'] = 'pgsql';
 $_SERVER['DB_CONNECTION'] = 'pgsql';
 putenv('DB_CONNECTION=pgsql');
 
-$dbUrl = 'postgresql://postgres:alvrdo331851@db.cphrxiakrsbmqkgnxtks.supabase.co:5432/postgres';
+$dbUrl = 'postgresql://postgres.cphrxiakrsbmqkgnxtks:alvrdo331851@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres';
 $_ENV['DATABASE_URL'] = $dbUrl;
 $_SERVER['DATABASE_URL'] = $dbUrl;
 putenv("DATABASE_URL=$dbUrl");
