@@ -108,10 +108,6 @@
     <i class="bi bi-arrow-up"></i>
   </button>
 
-  <a href="https://wa.me/628114497878" class="whatsapp-float" target="_blank">
-    <i class="bi bi-whatsapp"></i>
-    <span>Contact Us</span>
-  </a>
 
   
   <script src="{{ asset('js/header_footer.js') }}"></script>
