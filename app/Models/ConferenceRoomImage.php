@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ConferenceRoomImage extends Model
 {
     protected $table = 'conference_room_images';
+    public $timestamps = false;
     protected $fillable = ['room_id', 'image_path', 'display_order'];
 
     public function room()
