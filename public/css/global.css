@@ -3,13 +3,16 @@
 
 :root {
   
-  --navy:        #0F172A;
-  --navy-dark:   #0B0F19;
-  --navy-2:      #1E293B;
-  --gold:        #C5A059;
-  --gold-light:  #D4AF37;
-  --gold-dark:   #9E7D3B;
+  --navy:        #080E1D;
+  --navy-dark:   #050A14;
+  --navy-2:      #0F1E35;
+  --navy-3:      #162440;
+  --gold:        #C9962A;
+  --gold-light:  #E8B84B;
+  --gold-dark:   #9A7220;
+  --gold-muted:  rgba(201,150,42,0.15);
   --white:       #ffffff;
+  --text-muted:  #8899BB;
 
   
   --font-main:   'Poppins', sans-serif;
@@ -455,9 +458,8 @@ body.menu-open { overflow: hidden; }
 
 .image-popup-content {
   position: relative;
-  width: 90vw;
-  height: 80vh;
-  max-width: 1200px;
+  width: min(92vw, 1100px);
+  height: min(88vh, 750px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -467,7 +469,7 @@ body.menu-open { overflow: hidden; }
 
 .image-wrapper {
   position: relative;
-  width: 80%;
+  width: 100%;
   height: 100%;
   overflow: hidden;
 }
@@ -475,7 +477,7 @@ body.menu-open { overflow: hidden; }
 .image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 14px;
   display: block;
   transition: transform 0.35s ease;
@@ -916,31 +918,28 @@ body.menu-open { overflow: hidden; }
 
   
   .image-popup-content {
-    width: 95vw;
-    max-width: 95%;
-    height: auto;
-    max-height: 90vh;
+    width: 96vw;
+    height: 70vh;
     border-radius: 12px;
+    max-width: 96vw;
   }
 
   .image-wrapper {
     width: 100%;
-    height: auto;
-    position: relative;
+    height: 100%;
   }
 
   .image-wrapper img,
   .image-popup-content img {
     width: 100%;
-    height: auto;
-    max-height: 90vh;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
     border-radius: 10px;
   }
 
   .image-popup-close {
-    top: 12px;
-    right: 12px;
+    top: 10px;
+    right: 10px;
     font-size: 22px;
     width: 36px;
     height: 36px;
@@ -963,32 +962,31 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 480px) {
   
   .image-popup-content {
-    width: 95vw;
-    max-width: 95%;
-    height: auto;
-    max-height: 80vh;
+    width: 98vw;
+    height: 60vh;
     border-radius: 10px;
   }
 
   .image-wrapper img,
   .image-popup-content img {
-    max-height: 80vh;
+    height: 100%;
+    object-fit: contain;
   }
 
   .image-popup-close {
     top: 8px;
     right: 8px;
-    font-size: 12px;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
   }
 
   .image-popup-prev,
   .image-popup-next {
-    width: 28px;
-    height: 28px;
-    font-size: 12px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
   }
 }
 
