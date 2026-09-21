@@ -123,7 +123,7 @@
 
   
   .rooms {
-    background: var(--navy-dark);
+    background: linear-gradient(180deg, #091628 0%, #0C1A30 50%, #091628 100%);
     padding-top: 80px;
     padding-bottom: 80px;
   }
@@ -277,7 +277,7 @@
   
   #facilities {   
     padding: 100px 5%;
-    background: var(--navy-dark);
+    background: linear-gradient(180deg, #0A1A2E 0%, #0D1E36 50%, #081422 100%);
     text-align: center;
     color: var(--white);
     padding-bottom: 10px;

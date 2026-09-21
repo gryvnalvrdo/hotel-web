@@ -3,16 +3,27 @@
 
 :root {
   
-  --navy:        #080E1D;
-  --navy-dark:   #050A14;
-  --navy-2:      #0F1E35;
-  --navy-3:      #162440;
+  /* Deep ocean luxury palette — richer, warmer, not pure black */
+  --navy:        #0C1526;
+  --navy-dark:   #08101E;
+  --navy-mid:    #0A1628;
+  --navy-2:      #132035;
+  --navy-3:      #1A2D47;
+  --navy-accent: #0F2040;
+
+  /* Gold palette — unchanged, warm and premium */
   --gold:        #C9962A;
   --gold-light:  #E8B84B;
   --gold-dark:   #9A7220;
   --gold-muted:  rgba(201,150,42,0.15);
+
   --white:       #ffffff;
-  --text-muted:  #8899BB;
+  --text-muted:  #8FA4C8;
+
+  /* Page background gradient stops */
+  --bg-top:      #08101E;
+  --bg-mid:      #0A1628;
+  --bg-btm:      #0D1C32;
 
   
   --font-main:   'Poppins', sans-serif;
@@ -26,9 +37,9 @@
   --transition:  0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
   
-  --shadow-sm:   0 4px 12px rgba(15, 23, 42, 0.08);
-  --shadow-md:   0 12px 30px rgba(15, 23, 42, 0.12);
-  --shadow-lg:   0 20px 50px rgba(15, 23, 42, 0.22);
+  --shadow-sm:   0 4px 12px rgba(8, 16, 30, 0.25);
+  --shadow-md:   0 12px 30px rgba(8, 16, 30, 0.35);
+  --shadow-lg:   0 20px 50px rgba(8, 16, 30, 0.5);
 
   
   --bg:          #FAF8F5;
@@ -50,7 +61,16 @@ html {
 body {
   font-family: var(--font-main);
   color: var(--white);
-  background: var(--navy-dark);
+  /* Rich multi-stop background gradient — smooth depth without being flat black */
+  background: linear-gradient(160deg,
+    #060E1A 0%,
+    #091628 20%,
+    #0C1A30 40%,
+    #081422 60%,
+    #0A1828 80%,
+    #060C18 100%
+  );
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
 
