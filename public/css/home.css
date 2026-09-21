@@ -140,11 +140,14 @@
 
   
   .room-card {
-    background: var(--navy-2);
-    border: 1px solid rgba(212,175,55,0.2);
+    /* Noticeably lighter than the background so cards pop */
+    background: linear-gradient(145deg, rgba(30, 55, 85, 0.9) 0%, rgba(20, 38, 62, 0.95) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(212,175,55,0.35);
     border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.06) inset;
     transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
     position: relative;
     opacity: 0;
@@ -153,8 +156,8 @@
   }
   .room-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 48px rgba(212,175,55,0.15), 0 8px 24px rgba(0,0,0,0.4);
-    border-color: rgba(212,175,55,0.45);
+    box-shadow: 0 20px 52px rgba(212,175,55,0.2), 0 8px 24px rgba(0,0,0,0.5);
+    border-color: rgba(212,175,55,0.6);
   }
 
   
@@ -304,11 +307,14 @@
 
   
   .facility-card {
-    background: var(--navy-2);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Lighter and more distinct from the dark navy background */
+    background: linear-gradient(145deg, rgba(30, 55, 85, 0.92) 0%, rgba(18, 35, 58, 0.96) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.06) inset;
     transition: var(--transition);
     color: var(--white);
     text-align: center;
@@ -330,8 +336,8 @@
   
   .facility-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.2);
-    border-color: rgba(197, 160, 89, 0.3);
+    box-shadow: 0 20px 44px rgba(212, 175, 55, 0.22), 0 8px 24px rgba(0,0,0,0.5);
+    border-color: rgba(212, 175, 55, 0.5);
   }
 
   
