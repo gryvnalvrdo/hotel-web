@@ -57,7 +57,15 @@
       <h3>📈 Analitik Pendapatan Tahun {{ date('Y') }}</h3>
     </div>
     <div style="padding: 20px; height: 350px;">
-      <canvas id="revenueChart"></canvas>
+      @if(array_sum($monthlyRevenue) == 0)
+        <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #64748b; background: #FCFBF9; border-radius: 12px; border: 1px dashed #EBE5DB;">
+          <div style="font-size: 3.5rem; color: #EBE5DB; margin-bottom: 15px;"><i class="bi bi-bar-chart"></i></div>
+          <h4 style="color: #0F172A; font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 6px;">Belum Ada Analitik</h4>
+          <p style="font-size: 0.95rem;">Grafik pendapatan akan muncul setelah ada reservasi lunas.</p>
+        </div>
+      @else
+        <canvas id="revenueChart"></canvas>
+      @endif
     </div>
   </div>
 
