@@ -56,6 +56,7 @@
           <div class="room-media">
             <img src="{{ asset($room->thumbnail ?? '') }}"
                  alt="{{ $room->name }}"
+                 loading="lazy"
                  class="image-popup-trigger">
             <a href="{{ route('booking', ['room_id' => $room->id]) }}" class="book-ribbon">
               <i class="bi bi-lightning-charge"></i>
@@ -110,6 +111,7 @@
         <div class="facility-card">
           <img src="{{ asset($facility->images->first()?->image_path ?? '') }}"
                alt="{{ $facility->title }}"
+               loading="lazy"
                class="modal-trigger"
                data-modal="facilityModal{{ $facility->id }}">
 
@@ -132,7 +134,7 @@
         <div class="carousel-container">
           <div class="carousel-slide">
             @foreach($facility->images as $img)
-              <img src="{{ asset($img->image_path) }}" alt="{{ $facility->title }}">
+              <img src="{{ asset($img->image_path) }}" alt="{{ $facility->title }}" loading="lazy">
             @endforeach
           </div>
           <button class="prev arrow">&#10094;</button>

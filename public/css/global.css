@@ -458,8 +458,10 @@ body.menu-open { overflow: hidden; }
 
 .image-popup-content {
   position: relative;
-  width: min(92vw, 1100px);
-  height: min(88vh, 750px);
+  width: min(90vw, 1100px);
+  /* Use dvh (dynamic viewport height) with vh fallback — accounts for mobile browser chrome */
+  height: min(82vh, 720px);
+  height: min(82dvh, 720px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -472,15 +474,20 @@ body.menu-open { overflow: hidden; }
   width: 100%;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain;  /* contain so full image is always visible */
   border-radius: 14px;
   display: block;
   transition: transform 0.35s ease;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 
@@ -917,9 +924,16 @@ body.menu-open { overflow: hidden; }
   }
 
   
+  .image-popup {
+    padding: 12px;
+    align-items: center;
+  }
+
   .image-popup-content {
     width: 96vw;
-    height: 70vh;
+    /* 55vh is safe on all mobile browsers including Samsung Internet with nav bar */
+    height: 55vh;
+    height: 55dvh;
     border-radius: 12px;
     max-width: 96vw;
   }
@@ -927,30 +941,35 @@ body.menu-open { overflow: hidden; }
   .image-wrapper {
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .image-wrapper img,
   .image-popup-content img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     border-radius: 10px;
   }
 
   .image-popup-close {
-    top: 10px;
-    right: 10px;
-    font-size: 22px;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
+    top: 8px;
+    right: 8px;
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
   }
 
   .image-popup-prev,
   .image-popup-next {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -963,19 +982,23 @@ body.menu-open { overflow: hidden; }
   
   .image-popup-content {
     width: 98vw;
-    height: 60vh;
+    height: 50vh;
+    height: 50dvh;
     border-radius: 10px;
   }
 
   .image-wrapper img,
   .image-popup-content img {
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
   }
 
   .image-popup-close {
-    top: 8px;
-    right: 8px;
+    top: 6px;
+    right: 6px;
     font-size: 14px;
     width: 28px;
     height: 28px;
@@ -984,9 +1007,9 @@ body.menu-open { overflow: hidden; }
 
   .image-popup-prev,
   .image-popup-next {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
   }
 }
 

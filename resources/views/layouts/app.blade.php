@@ -7,11 +7,16 @@
   <meta name="description" content="@yield('description', 'Web Hotel — Experience luxury and comfort in every detail.')">
 
   
+  <!-- Performance: preconnect to CDN origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap&font-display=swap" rel="stylesheet" />
 
   
   <link rel="stylesheet" href="{{ asset('css/global.css') }}?v={{ time() }}" />
@@ -140,6 +145,36 @@
       } else {
         window.addEventListener('load', hide);
       }
+    })();
+  </script>
+
+  <!-- Lazy-load images + smooth fade-in -->
+  <script>
+    (function() {
+      // Add smooth fade-in for lazy images
+      var style = document.createElement('style');
+      style.textContent = 'img[loading="lazy"]{opacity:0;transition:opacity 0.45s ease} img[loading="lazy"].img-loaded{opacity:1}';
+      document.head.appendChild(style);
+
+      document.addEventListener('DOMContentLoaded', function() {
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+              if (e.isIntersecting) {
+                e.target.classList.add('img-loaded');
+                io.unobserve(e.target);
+              }
+            });
+          }, { rootMargin: '100px' });
+          document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+            io.observe(img);
+          });
+        } else {
+          document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+            img.classList.add('img-loaded');
+          });
+        }
+      });
     })();
   </script>
 

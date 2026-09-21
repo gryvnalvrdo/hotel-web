@@ -76,7 +76,7 @@
             <div class="slider" id="modal-slider{{ $room->id }}">
               <div class="slides">
                 @foreach($room->images as $img)
-                  <img src="{{ asset($img->file_path) }}" alt="{{ $room->name }}" />
+                  <img src="{{ asset($img->file_path) }}" alt="{{ $room->name }}" loading="lazy" />
                 @endforeach
               </div>
               <button class="arrow prev" onclick="prevSlide('modal-slider{{ $room->id }}')">&#10094;</button>
@@ -91,6 +91,7 @@
               @foreach($room->images as $i => $img)
                 <img src="{{ asset($img->file_path) }}"
                      onclick="goToSlide('modal-slider{{ $room->id }}', {{ $i }})"
+                     loading="lazy"
                      class="thumbnail {{ $i === 0 ? 'active' : '' }}" />
               @endforeach
             </div>
