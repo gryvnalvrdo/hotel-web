@@ -482,9 +482,8 @@ body.menu-open { overflow: hidden; }
   max-width: min(92vw, 1100px);
   max-height: 85vh;
   max-height: 85dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  vertical-align: middle;
   border-radius: 14px;
   overflow: hidden;
 }
@@ -505,7 +504,6 @@ body.menu-open { overflow: hidden; }
   max-height: 80dvh;
   width: auto;
   height: auto;
-  object-fit: contain;
   border-radius: 14px;
   display: block;
   transition: transform 0.35s ease;
@@ -964,7 +962,6 @@ body.menu-open { overflow: hidden; }
     max-height: 70dvh;
     width: auto;
     height: auto;
-    object-fit: contain;
     border-radius: 10px;
   }
 
@@ -1010,7 +1007,6 @@ body.menu-open { overflow: hidden; }
     max-height: 65dvh;
     width: auto;
     height: auto;
-    object-fit: contain;
   }
 
   .image-popup-close {
