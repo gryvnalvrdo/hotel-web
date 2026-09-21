@@ -172,7 +172,11 @@
             </tr>
           @empty
             <tr>
-              <td colspan="8" style="text-align:center;padding:30px;color:#64748b;">Belum ada data reservasi yang masuk.</td>
+              <td colspan="8" style="text-align:center;padding:50px 30px;color:#64748b;background:#FCFBF9;">
+                <div style="font-size: 3.5rem; color: #EBE5DB; margin-bottom: 15px;"><i class="bi bi-inbox"></i></div>
+                <h4 style="color: #0F172A; font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 6px;">Belum Ada Reservasi Baru</h4>
+                <p style="font-size: 0.95rem;">Reservasi terbaru yang masuk akan muncul di sini.</p>
+              </td>
             </tr>
           @endforelse
         </tbody>

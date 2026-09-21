@@ -129,13 +129,14 @@
     }
 
     .btn-logout {
-      background: rgba(239, 68, 68, 0.15);
-      color: #fca5a5;
-      border-color: #ef4444;
+      background: transparent;
+      color: #cbd5e1;
+      border-color: rgba(255, 255, 255, 0.1);
     }
     .btn-logout:hover {
-      background: #ef4444;
-      color: #ffffff;
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border-color: rgba(239, 68, 68, 0.3);
     }
 
     
@@ -194,10 +195,12 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border-left: 4px solid transparent;
+      background: #FCFBF9;
     }
-    .alert-success { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
-    .alert-danger { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    .alert-success { color: #C5A059; border: 1px solid var(--border); border-left-color: #C5A059; }
+    .alert-danger { color: #b91c1c; border: 1px solid var(--border); border-left-color: #b91c1c; }
 
     
     .card {
@@ -247,6 +250,10 @@
       .sidebar-header h2, .sidebar-header span, .nav-link span, .nav-label, .btn-back-web span { display: none; }
       .admin-main { margin-left: 70px; }
       .admin-content { padding: 20px; }
+      .admin-topbar { padding: 0 20px; height: 65px; }
+      .topbar-title h1 { font-size: 1.15rem; }
+      .admin-badge span { display: none; }
+      .admin-badge { padding: 8px; border-radius: 50%; }
     }
 
     @media (max-width: 768px) {
