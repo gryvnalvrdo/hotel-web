@@ -1324,24 +1324,40 @@ body.menu-open { overflow: hidden; }
   cursor: pointer; 
 }
 
+/* Override block — natural sizing, no cropping */
 .image-popup .image-popup-content {
-  width: min(88vw, 900px);
-  height: min(80vh, 600px);
+  /* Let the image determine the container size */
+  width: auto;
+  max-width: min(95vw, 1000px);
+  height: auto;
+  max-height: min(88vh, 88dvh);
   cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .image-popup .image-wrapper {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   border-radius: 16px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,175,55,0.2);
 }
 
 .image-popup .image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  /* CONTAIN — never crops, always shows the full image */
+  width: auto;
+  height: auto;
+  max-width: min(93vw, 960px);
+  max-height: min(85vh, 85dvh);
+  object-fit: contain;
+  display: block;
   border-radius: 16px;
 }
 
