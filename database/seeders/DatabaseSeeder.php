@@ -185,7 +185,7 @@ class DatabaseSeeder extends Seeder
             'length' => 45,
             'capacity' => 1000
         ]);
-        \App\Models\ConferenceRoomImage::create(['conference_room_id' => $conf1->id, 'image_path' => 'img/sample-room-1.jpg', 'display_order' => 1]);
+        \App\Models\ConferenceRoomImage::create(['room_id' => $conf1->id, 'image_path' => 'img/sample-room-1.jpg', 'display_order' => 1]);
 
         $conf2 = \App\Models\ConferenceRoom::create([
             'name' => 'Executive Meeting Room',
@@ -194,6 +194,6 @@ class DatabaseSeeder extends Seeder
             'length' => 15,
             'capacity' => 25
         ]);
-        \App\Models\ConferenceRoomImage::create(['conference_room_id' => $conf2->id, 'image_path' => 'img/sample-room-2.jpg', 'display_order' => 1]);
+        \App\Models\ConferenceRoomImage::create(['room_id' => $conf2->id, 'image_path' => 'img/sample-room-2.jpg', 'display_order' => 1]);
     }
 }
