@@ -137,7 +137,7 @@
               @endif
 
               <h4>Deskripsi Kamar</h4>
-              <p>{{ $room->full_description }}</p>
+              <p>{{ $room->full_description ?: $room->short_description }}</p>
             </div>
 
             <div class="modal-footer">
