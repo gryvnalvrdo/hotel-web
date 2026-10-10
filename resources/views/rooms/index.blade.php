@@ -5,6 +5,7 @@
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('css/rooms.css') }}?v={{ time() }}" />
+  <link rel="stylesheet" href="{{ asset('css/rooms-modal.css') }}?v={{ time() }}" />
 @endpush
 
 @section('content')
