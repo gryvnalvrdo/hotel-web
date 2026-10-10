@@ -39,11 +39,9 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "true",
-    "APP_KEY": "base64:kW67K1BDXLTJ9rb+Q7w6rzPMD0BxS5oTnYv87gRzNAA=",
     "APP_URL": "https://hotel-web-iota-pink.vercel.app",
     "LOG_CHANNEL": "stderr",
     "DB_CONNECTION": "pgsql",
-    "DATABASE_URL": "postgresql://neondb_owner:npg_JUbIAuiX5qO7@ep-restless-breeze-azji690h.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require",
     "CACHE_DRIVER": "array",
     "SESSION_DRIVER": "cookie",
     "SESSION_LIFETIME": "120",
