@@ -65,7 +65,19 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('POSTGRES_URL_NON_POOLING', env('DATABASE_URL')),
+            'url' => (function () {
+                $url = env('POSTGRES_URL_NON_POOLING', env('DATABASE_URL'));
+                if ($url && strpos($url, 'neon.tech') !== false && strpos($url, 'endpoint=') === false) {
+                    $parsed = parse_url($url);
+                    $host = $parsed['host'] ?? '';
+                    $pass = $parsed['pass'] ?? '';
+                    $endpoint = explode('.', $host)[0];
+                    if ($pass && $endpoint) {
+                        $url = str_replace(':' . $pass . '@', ':endpoint=' . $endpoint . '$' . $pass . '@', $url);
+                    }
+                }
+                return $url;
+            })(),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'forge'),
