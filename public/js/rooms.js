@@ -37,6 +37,23 @@ function initSlider(sliderId) {
 
   enableSwipe(sliderId);
   updateSlider(sliderId);
+  
+  const prevBtn = slider.querySelector('.arrow.prev');
+  const nextBtn = slider.querySelector('.arrow.next');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      prevSlide(sliderId);
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      nextSlide(sliderId);
+    });
+  }
 }
 
 function updateSlider(sliderId) {

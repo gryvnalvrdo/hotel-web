@@ -10,12 +10,18 @@
   --text-main: #1C1917;
   --text-muted: #78716C;
   --card-bg: #FFFFFF;
-  --bg-champagne: #FAF8F5;
+  --bg-champagne: #FAF8F5;/* Removed custom bg-champagne to use global dark theme */
   --border-light: #EBE5DB;
+  --font-serif: "Playfair Display", serif;
+  --font-main: inherit;
+  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
 body {
-  background-color: var(--bg-champagne) !important;
+  background-color: var(--navy-dark) !important;
+  color: #F8FAFC;
 }
 
 
@@ -69,7 +75,7 @@ body {
   margin-top: 70px;
   z-index: 40;
   position: relative;
-  background-color: var(--bg-champagne);
+  background-color: var(--navy-dark);
   min-height: 100vh;
 }
 
@@ -80,25 +86,26 @@ body {
   left: 0;
   right: 0;
   height: 350px;
-  background: linear-gradient(135deg, var(--navy) 0%, #1e293b 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, #0a0f18 100%);
   z-index: -1;
-  border-bottom: 2px solid var(--gold-light);
+  border-bottom: 2px solid rgba(197, 160, 89, 0.2);
 }
 
 .form-card {
+  background: var(--navy-2);
   width: 100%;
-  max-width: 1140px;
-  background: var(--card-bg);
-  border-radius: 28px;
-  padding: 42px;
-  box-shadow: 0 25px 70px rgba(28, 24, 20, 0.08), 0 0 0 1px rgba(197, 160, 89, 0.15);
-  position: relative;
-  overflow: hidden;
+  max-width: 1100px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 400px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  animation: fadeInUp .7s ease both;
   gap: 38px;
   align-items: start;
-  animation: fadeInUp .7s ease both;
+  padding: 42px;
 }
 
 .form-card::before {
@@ -114,20 +121,25 @@ body {
 .form-left { padding: 4px; }
 .form-right { padding: 0; }
 
-.form-card h2 {
+.form-header {
+  padding: 0;
+}
+
+.form-card h2, .form-header h2 {
   margin: 0;
-  font-family: "Playfair Display", serif;
-  color: var(--navy);
+  font-family: var(--font-serif);
+  color: var(--white);
   font-size: 2.1rem;
   letter-spacing: 0.5px;
   font-weight: 700;
 }
 
-.form-card .subtitle {
-  color: var(--text-muted);
-  font-size: 0.98rem;
+.form-card .subtitle, .form-header p {
+  color: #cbd5e1;
+  font-size: 1.05rem;
   margin-top: 6px;
   margin-bottom: 26px;
+  line-height: 1.6;
 }
 
 
@@ -135,7 +147,7 @@ body {
   display: flex;
   gap: 14px;
   margin-bottom: 30px;
-  border-bottom: 2px solid #F5F2EC;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.08);
   padding-bottom: 18px;
 }
 
@@ -143,40 +155,40 @@ body {
   flex: 1;
   padding: 13px 18px;
   border-radius: 14px;
-  background: #F8F6F0;
-  color: #78716C;
+  background: rgba(255, 255, 255, 0.03);
+  color: #94A3B8;
   font-weight: 600;
   text-align: center;
   font-size: 0.95rem;
   transition: all 0.3s ease;
-  border: 1px solid #EBE5DB;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
 }
 
 .step.active {
   background: linear-gradient(135deg, #1C1917 0%, #0F172A 100%);
   color: #FFF;
-  border-color: #1C1917;
+  border-color: var(--gold);
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.22);
 }
 
 
-.field {
+.field, .input-group {
   margin-bottom: 24px;
 }
 
-.field label {
+.field label, .input-group label {
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--gold-light);
   font-size: 0.94rem;
   margin-bottom: 8px;
   letter-spacing: 0.3px;
 }
 
-.field label::before {
+.field label::before, .input-group label::before {
   content: "✦";
   color: var(--gold);
   font-size: 0.85rem;
@@ -186,9 +198,9 @@ body {
   width: 100%;
   padding: 16px 20px;
   border-radius: 12px;
-  background: #FFFFFF;
-  border: 1.5px solid #E5E7EB;
-  color: #1E293B;
+  background: var(--navy);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  color: var(--white);
   font-size: 0.98rem;
   font-family: inherit;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -200,11 +212,12 @@ body {
   outline: none;
   border-color: var(--gold);
   box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15), 0 4px 12px rgba(197, 160, 89, 0.1);
-  background: #FFFFFF;
+  background: var(--navy);
 }
 
 
 input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
   cursor: pointer;
   opacity: 0.85;
   transition: opacity 0.2s;
@@ -214,21 +227,34 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 }
 
 select option {
-  background: #FFFFFF;
-  color: #1C1917;
+  background: var(--navy);
+  color: #FFFFFF;
 }
 
-.muted-small { font-size: 0.85rem; color: var(--text-muted); }
+.muted-small { font-size: 0.85rem; color: #94A3B8; }
 
 
-.search-dates-grid {
+.form-section-header h3 {
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-section-header h3::before {
+  content: "✦";
+  color: var(--gold);
+}
+
+.form-grid, .search-dates-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr auto;
   gap: 16px;
-  background: #F8F6F0;
+  background: rgba(255, 255, 255, 0.03);
   padding: 22px;
   border-radius: 18px;
-  border: 1px solid #EBE5DB;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   margin-bottom: 26px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
@@ -247,11 +273,11 @@ select option {
   gap: 20px;
 }
 
-.room-card {
+.room-card, .room-catalog-card {
   border-radius: 20px;
   padding: 16px;
-  background: #FFFFFF;
-  border: 1.5px solid #EBE5DB;
+  background: var(--navy);
+  border: 1.5px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -263,15 +289,15 @@ select option {
   box-shadow: 0 6px 20px rgba(0,0,0,0.03);
 }
 
-.room-card:hover {
+.room-card:hover, .room-catalog-card:hover {
   transform: translateY(-4px);
   border-color: var(--gold);
   box-shadow: 0 16px 35px rgba(197, 160, 89, 0.16);
 }
 
-.room-card.selected {
+.room-card.selected, .room-catalog-card.selected {
   border: 2px solid var(--gold);
-  background: #FDFBF7;
+  background: rgba(197, 160, 89, 0.05);
   box-shadow: 0 18px 40px rgba(197, 160, 89, 0.22);
 }
 
@@ -294,7 +320,8 @@ select option {
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.room-card.selected .badge-selected {
+.room-card.selected .badge-selected,
+.room-catalog-card.selected .badge-selected {
   display: inline-flex;
 }
 
@@ -308,14 +335,14 @@ select option {
 
 .room-info h4 {
   margin: 0 0 6px;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-serif);
   font-size: 1.35rem;
-  color: var(--navy);
+  color: var(--white);
   font-weight: 700;
 }
 
 .room-info .price {
-  color: var(--gold-dark);
+  color: var(--gold-light);
   font-weight: 700;
   font-size: 1.15rem;
   margin: 6px 0;
@@ -327,7 +354,7 @@ select option {
 .room-info .muted-small {
   display: flex;
   gap: 14px;
-  color: #78716C;
+  color: #94A3B8;
   margin-top: 8px;
   font-size: 0.86rem;
   flex-wrap: wrap;
@@ -343,22 +370,22 @@ select option {
   margin-top: auto;
 }
 
-.qty-counter {
+.qty-counter, .guest-control {
   display: inline-flex;
   align-items: center;
-  background: #F8F6F0;
-  border: 1.5px solid #D6D2C4;
+  background: var(--navy);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 2px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
-.qty-counter button {
+.qty-counter button, .guest-btn {
   width: 32px;
   height: 32px;
   border: none;
-  background: #FFFFFF;
-  color: var(--navy);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
   font-size: 1.1rem;
   font-weight: 700;
   border-radius: 9px;
@@ -370,23 +397,22 @@ select option {
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
-.qty-counter button:hover {
+.qty-counter button:hover, .guest-btn:hover {
   background: var(--gold);
   color: #FFF;
   transform: scale(1.05);
 }
 
-.qty-counter .qty-num {
+.qty-counter .qty-num, .guest-count {
   min-width: 44px;
   text-align: center;
   font-weight: 700;
   font-size: 0.95rem;
-  color: var(--navy);
+  color: var(--white);
 }
 
 .room-action .btn-select-room {
   padding: 11px 20px;
-  background: #F8F6F0;
   color: var(--navy);
   border: 1.5px solid #D6D2C4;
   border-radius: 12px;

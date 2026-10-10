@@ -23,8 +23,8 @@
                 <img src="{{ asset($img->file_path) }}" alt="{{ $room->name }}" />
               @endforeach
             </div>
-            <button type="button" class="arrow prev" onclick="event.preventDefault(); event.stopPropagation(); prevSlide('slider{{ $room->id }}')">&#10094;</button>
-            <button type="button" class="arrow next" onclick="event.preventDefault(); event.stopPropagation(); nextSlide('slider{{ $room->id }}')">&#10095;</button>
+            <button type="button" class="arrow prev">&#10094;</button>
+            <button type="button" class="arrow next">&#10095;</button>
             <div class="dots" id="dots-slider{{ $room->id }}"></div>
           </div>
         </div>
@@ -80,8 +80,8 @@
                   <img src="{{ asset($img->file_path) }}" alt="{{ $room->name }}" loading="lazy" />
                 @endforeach
               </div>
-              <button type="button" class="arrow prev" onclick="event.preventDefault(); event.stopPropagation(); prevSlide('modal-slider{{ $room->id }}')">&#10094;</button>
-              <button type="button" class="arrow next" onclick="event.preventDefault(); event.stopPropagation(); nextSlide('modal-slider{{ $room->id }}')">&#10095;</button>
+              <button type="button" class="arrow prev">&#10094;</button>
+              <button type="button" class="arrow next">&#10095;</button>
             </div>
 
             <div class="slide-counter" id="counter-modal-slider{{ $room->id }}">
