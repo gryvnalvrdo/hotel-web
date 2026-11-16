@@ -4,7 +4,7 @@
 @section('description', 'Welcome to Web Hotel. Experience luxury and comfort in every detail.')
 
 @push('styles')
-  <link rel="stylesheet" href="{{ asset('css/home.css') }}?v={{ time() }}" />
+  <link rel="stylesheet" href="{{ asset('css/home.css') }}?v=20261116" />
 @endpush
 
 @section('content')
@@ -150,11 +150,11 @@
   <section class="location">
     <div class="section-head">
       <h2 class="section-title">Our Location</h2>
-      <p class="tagline">Find us at Web Hotel</p>
+      <p class="tagline">Makassar, Sulawesi Selatan, Indonesia</p>
     </div>
     <div class="map-container">
       <iframe
-        src="https://www.google.com/maps?q=Hotel+Hotel+Makassar&output=embed"
+        src="https://www.google.com/maps?q=Hotel+Claro+Makassar&output=embed"
         width="100%"
         height="400"
         style="border:0;"

@@ -4,8 +4,8 @@
 @section('description', 'Explore our luxury rooms at Web Hotel. Book your stay today.')
 
 @push('styles')
-  <link rel="stylesheet" href="{{ asset('css/rooms.css') }}?v={{ time() }}" />
-  <link rel="stylesheet" href="{{ asset('css/rooms-modal.css') }}?v={{ time() }}" />
+  <link rel="stylesheet" href="{{ asset('css/rooms.css') }}?v=20261116" />
+  <link rel="stylesheet" href="{{ asset('css/rooms-modal.css') }}?v=20261116" />
 @endpush
 
 @section('content')

@@ -56,12 +56,17 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-main);
   color: var(--white);
-  /* Rich multi-stop background gradient — smooth depth without being flat black */
+  max-width: 100%;
+  overflow-x: clip;
+  /* Rich multi-stop background gradient */
   background: linear-gradient(160deg,
     #060E1A 0%,
     #091628 20%,
@@ -83,10 +88,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 50px;
+  padding: 14px 48px;
   z-index: 1300;
-  background: var(--navy-dark);
-  backdrop-filter: blur(12px);
+  background: #08101E;
+  border-bottom: 1px solid rgba(201, 150, 42, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   transition: background var(--transition), padding var(--transition);
 }
 
@@ -131,6 +137,23 @@ body {
   transition: width var(--transition);
 }
 .nav-links li a:hover::after { width: 100%; }
+
+.nav-admin-link {
+  color: var(--gold) !important;
+  border: 1px solid rgba(201, 150, 42, 0.65);
+  border-radius: 7px;
+  padding: 5px 12px !important;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-admin-link:hover {
+  background: rgba(201, 150, 42, 0.12);
+}
+.nav-admin-link::after {
+  display: none !important;
+}
 
 .menu-toggle {
   display: none;
@@ -882,6 +905,12 @@ body.menu-open { overflow: hidden; }
   .nav-links li a.active::before { height: 60%; }
 
   
+  .nav-admin-link {
+    margin-left: 0;
+    padding: 8px 14px !important;
+    width: fit-content;
+  }
+
   .drawer-header { display: flex; }
 
   
@@ -935,10 +964,10 @@ body.menu-open { overflow: hidden; }
   .whatsapp-float i { font-size: 1.4rem; }
 
   .back-to-top {
-    bottom: 80px;
-    right: 16px;
-    width: 42px;
-    height: 42px;
+    bottom: 24px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
     font-size: 1.2rem;
   }
 

@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap&font-display=swap" rel="stylesheet" />
 
   
-  <link rel="stylesheet" href="{{ asset('css/global.css') }}?v={{ time() }}" />
+  <link rel="stylesheet" href="{{ asset('css/global.css') }}?v=20261116" />
 
   
   @stack('styles')
@@ -42,14 +42,14 @@
 
   
   <header class="navbar-modern" id="navbar">
-    <div class="logo">Web <span>Hotel</span></div>
+    <a href="{{ route('home') }}" class="logo" style="text-decoration:none; color:inherit;">Web <span>Hotel</span></a>
     <nav>
       <ul class="nav-links">
-        <div class="drawer-header">
+        <li class="drawer-header">
           <span class="drawer-title">
             <span class="hotel" style="color:var(--gold);">Web</span> <span class="Hotel" style="color:white;">Hotel</span>
           </span>
-        </div>
+        </li>
         <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
         <li><a href="{{ route('rooms') }}" class="{{ request()->routeIs('rooms') ? 'active' : '' }}">Rooms</a></li>
         <li><a href="{{ route('home') }}#facilities">Facilities</a></li>
@@ -57,13 +57,13 @@
         <li><a href="#footer">About</a></li>
         <li><a href="{{ route('booking') }}" class="{{ request()->routeIs('booking*') ? 'active' : '' }}">Book Now</a></li>
         <li>
-          <a href="{{ route('admin.login') }}" style="color: var(--gold); border: 1px solid var(--gold); border-radius: 6px; padding: 4px 12px; margin-left: 10px;" onmouseover="this.style.background='rgba(197, 160, 89, 0.1)'" onmouseout="this.style.background='transparent'">
+          <a href="{{ route('admin.login') }}" class="nav-admin-link">
             <i class="bi bi-shield-lock-fill"></i> Admin
           </a>
         </li>
       </ul>
     </nav>
-    <div class="menu-toggle"><i class="bi bi-list"></i></div>
+    <div class="menu-toggle" role="button" tabindex="0" aria-label="Toggle Menu" aria-expanded="false"><i class="bi bi-list"></i></div>
   </header>
 
   <div class="drawer-overlay"></div>
@@ -98,15 +98,15 @@
       <div class="footer-contact">
         <h3>Contact Us</h3>
         <ul>
-            <li><i class="bi bi-geo-alt-fill"></i> Jl. Fiktif Utama No. 123, Jakarta Selatan, 12345 (Fictitious Location)</li>
-            <li><i class="bi bi-telephone-fill"></i> +62 811 0000 0000</li>
-            <li><i class="bi bi-envelope-fill"></i> hello@webhotel.local</li>
+            <li><i class="bi bi-geo-alt-fill"></i> Makassar, Sulawesi Selatan, Indonesia</li>
+            <li><i class="bi bi-telephone-fill"></i> +62 411 0000 000</li>
+            <li><i class="bi bi-envelope-fill"></i> reservasi@webhotel-claro.demo</li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© {{ date('Y') }} Web Hotel Project. All rights reserved. (Not a real hotel)</p>
+      <p>© {{ date('Y') }} Web Hotel. Built with Laravel 11.</p>
     </div>
   </footer>
 
@@ -126,18 +126,19 @@
       var ls = document.getElementById('loading-screen');
       if (!ls) return;
 
-      if (sessionStorage.getItem('hotel_Hotel_loaded') === 'true') {
+      if (sessionStorage.getItem('hotel_claro_loaded') === 'true') {
         ls.style.display = 'none';
         return;
       }
 
       var hide = function () {
         ls.style.opacity = '0';
-        ls.style.transition = 'opacity 0.3s ease';
+        ls.style.pointerEvents = 'none';
+        ls.style.transition = 'opacity 0.25s ease';
         setTimeout(function () {
           ls.style.display = 'none';
-          sessionStorage.setItem('hotel_Hotel_loaded', 'true');
-        }, 150);
+          sessionStorage.setItem('hotel_claro_loaded', 'true');
+        }, 120);
       };
       
       if (document.readyState === 'complete') {

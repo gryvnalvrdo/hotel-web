@@ -4,7 +4,7 @@
 @section('description', 'Book our premium conference rooms at Web Hotel.')
 
 @push('styles')
-  <link rel="stylesheet" href="{{ asset('css/conference.css') }}?v={{ time() }}" />
+  <link rel="stylesheet" href="{{ asset('css/conference.css') }}?v=20261116" />
 @endpush
 
 @section('content')
