@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Room;
 use App\Models\Booking;
+use App\Services\HotelShowcaseService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -13,6 +14,8 @@ class InventoryController extends Controller
     
     public function index(Request $request)
     {
+        HotelShowcaseService::ensureSampleAdminData();
+
         $date = $request->get('date', now()->format('Y-m-d'));
         $nextDate = Carbon::parse($date)->addDay()->format('Y-m-d');
 

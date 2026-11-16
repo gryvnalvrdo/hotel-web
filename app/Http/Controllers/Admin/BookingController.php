@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Services\HotelShowcaseService;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
     public function index(Request $request)
     {
+        HotelShowcaseService::ensureSampleAdminData();
+
         $query = Booking::with('room')->orderBy('id', 'desc');
 
         if ($request->has('status') && $request->status !== '') {

@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Room;
 use App\Models\RoomImage;
 use App\Models\RoomFacility;
+use App\Services\HotelShowcaseService;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
     public function index()
     {
+        HotelShowcaseService::ensureSampleAdminData();
+
         $rooms = Room::with(['images', 'facilities'])->orderBy('id')->get();
         return view('admin.rooms.index', compact('rooms'));
     }

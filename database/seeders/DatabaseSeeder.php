@@ -179,21 +179,39 @@ class DatabaseSeeder extends Seeder
 
         // 14. Conference Rooms
         $conf1 = \App\Models\ConferenceRoom::create([
-            'name' => 'Grand Ballroom',
-            'description' => 'The perfect venue for large corporate events and grand weddings.',
-            'width' => 30,
-            'length' => 45,
-            'capacity' => 1000
+            'name' => 'Sandeq Grand Ballroom',
+            'description' => 'Grand column-free ballroom ideal for large corporate events, conventions, and weddings.',
+            'width' => 32,
+            'length' => 48,
+            'capacity' => 1200
         ]);
-        \App\Models\ConferenceRoomImage::create(['room_id' => $conf1->id, 'image_path' => 'img/sample-room-1.jpg', 'display_order' => 1]);
+        \App\Models\ConferenceRoomImage::create(['room_id' => $conf1->id, 'image_path' => 'images/conferences/sandeq1.jpg', 'display_order' => 1]);
+        \App\Models\ConferenceRoomImage::create(['room_id' => $conf1->id, 'image_path' => 'images/conferences/sandeq2.jpg', 'display_order' => 2]);
 
         $conf2 = \App\Models\ConferenceRoom::create([
-            'name' => 'Executive Meeting Room',
-            'description' => 'An elegant space for board meetings and executive discussions.',
-            'width' => 10,
-            'length' => 15,
-            'capacity' => 25
+            'name' => 'Jasmine Meeting Hall',
+            'description' => 'An elegant space for board meetings, workshops, and executive discussions.',
+            'width' => 16,
+            'length' => 22,
+            'capacity' => 180
         ]);
-        \App\Models\ConferenceRoomImage::create(['room_id' => $conf2->id, 'image_path' => 'img/sample-room-2.jpg', 'display_order' => 1]);
+        \App\Models\ConferenceRoomImage::create(['room_id' => $conf2->id, 'image_path' => 'images/conferences/jasmine1.jpg', 'display_order' => 1]);
+        \App\Models\ConferenceRoomImage::create(['room_id' => $conf2->id, 'image_path' => 'images/conferences/jasmine2.jpg', 'display_order' => 2]);
+
+        $conf3 = \App\Models\ConferenceRoom::create([
+            'name' => 'Phinisi Executive Boardroom',
+            'description' => 'Private boardroom suite equipped for executive meetings and hybrid video sessions.',
+            'width' => 10,
+            'length' => 14,
+            'capacity' => 30
+        ]);
+        \App\Models\ConferenceRoomImage::create([
+            'room_id' => $conf3->id,
+            'image_path' => 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+            'display_order' => 1
+        ]);
+
+        // 15. Demo Bookings & Revenue Data for Admin Showcase
+        \App\Services\HotelShowcaseService::ensureSampleAdminData();
     }
 }

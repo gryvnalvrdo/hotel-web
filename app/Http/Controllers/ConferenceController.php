@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ConferenceRoom;
+use App\Services\HotelShowcaseService;
 use App\Models\FooterBranding;
 use App\Models\FooterSocial;
 use App\Models\FooterPartner;
@@ -13,7 +13,7 @@ class ConferenceController extends Controller
 {
     public function index()
     {
-        $conferenceRooms = ConferenceRoom::with('images')->orderBy('id')->get();
+        $conferenceRooms = HotelShowcaseService::resolveConferenceRooms();
 
         $branding     = FooterBranding::first();
         $socials      = FooterSocial::orderBy('display_order')->get();

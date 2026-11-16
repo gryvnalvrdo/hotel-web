@@ -136,12 +136,6 @@
       margin-bottom: 8px;
     }
 
-    .form-group label::before {
-      content: "✦";
-      color: var(--gold);
-      font-size: 0.8rem;
-    }
-
     .input-wrapper {
       position: relative;
     }
@@ -321,9 +315,12 @@
       </form>
 
       <div class="login-info">
-        <strong>Akses Default Admin:</strong><br>
+        <strong>Akses Demo Admin Portal:</strong><br>
         Username: <code>admin</code> (atau <code>Hotel</code>)<br>
-        Password: <code>adminHotel123</code> (atau <code>admin</code>)
+        Password: <code>adminHotel123</code> (atau <code>admin</code>)<br>
+        <span style="display:block; margin-top:6px; color:#64748b;">
+          Form sudah terisi otomatis. Klik <strong>Masuk ke Console</strong> untuk melihat Dashboard analitik, daftar reservasi demo, matriks stok kamar, dan fasilitas.
+        </span>
       </div>
     </div>
 

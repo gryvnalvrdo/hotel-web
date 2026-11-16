@@ -7,12 +7,15 @@ use App\Models\Booking;
 use App\Models\Room;
 use App\Models\HomeFacility;
 use App\Models\RoomFacility;
+use App\Services\HotelShowcaseService;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        HotelShowcaseService::ensureSampleAdminData();
+
         $totalBookings   = Booking::count();
         $totalRevenue    = Booking::where('payment_status', '!=', 'cancelled')->sum('total_price');
         $totalRooms      = Room::count();

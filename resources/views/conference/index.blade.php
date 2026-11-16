@@ -19,15 +19,21 @@
 
           
           <div class="room-slider" id="slider{{ $room->id }}">
-            <button class="prev" onclick="prevSlide({{ $index }})">&#10094;</button>
+            <button type="button" class="prev" aria-label="Previous slide">&#10094;</button>
             <div class="slides">
               @foreach($room->images as $img)
-                <img src="{{ asset($img->image_path) }}"
+                @php
+                  $imgSrc = \Illuminate\Support\Str::startsWith($img->image_path, ['http://', 'https://'])
+                      ? $img->image_path
+                      : asset($img->image_path);
+                @endphp
+                <img src="{{ $imgSrc }}"
                      alt="{{ $room->name }}"
-                     onclick="openPopup(this)">
+                     loading="lazy"
+                     onerror="this.onerror=null;this.src='{{ asset('images/conferences/sandeq1.jpg') }}';">
               @endforeach
             </div>
-            <button class="next" onclick="nextSlide({{ $index }})">&#10095;</button>
+            <button type="button" class="next" aria-label="Next slide">&#10095;</button>
             <div class="slider-dots" id="dots-slider{{ $room->id }}"></div>
           </div>
 
@@ -58,8 +64,8 @@
       <div class="image-wrapper">
         <div class="popup-slides" id="popupSlides"></div>
         <span class="image-popup-close" id="popupClose">&times;</span>
-        <span class="image-popup-prev" onclick="prevPopup()">&#10094;</span>
-        <span class="image-popup-next" onclick="nextPopup()">&#10095;</span>
+        <span class="image-popup-prev">&#10094;</span>
+        <span class="image-popup-next">&#10095;</span>
       </div>
     </div>
   </div>

@@ -114,8 +114,12 @@ function prevPopup() {
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("imagePopup");
   const closeBtn = document.getElementById("popupClose");
+  const prevPopupBtn = popup.querySelector(".image-popup-prev");
+  const nextPopupBtn = popup.querySelector(".image-popup-next");
 
   closeBtn.addEventListener("click", closePopup);
+  if (prevPopupBtn) prevPopupBtn.addEventListener("click", prevPopup);
+  if (nextPopupBtn) nextPopupBtn.addEventListener("click", nextPopup);
 
   popup.addEventListener("click", (e) => {
     if (e.target === popup) closePopup();
