@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Web Hotel — Reservasi & Booking Resmi')
+@section('title', 'Web Hotel | Reservasi & Booking Resmi')
 @section('description', 'Reservasi kamar mewah di Web Hotel. Proses cepat, aman, dan bergaransi harga terbaik.')
 
 @push('styles')

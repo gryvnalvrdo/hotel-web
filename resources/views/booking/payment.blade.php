@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Web Hotel — Pembayaran & Konfirmasi')
+@section('title', 'Web Hotel | Pembayaran & Konfirmasi')
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('css/booking.css') }}" />
@@ -156,7 +156,7 @@
       <p><strong>Tipe Kamar:</strong> <span>{{ $booking->room?->name }} ({{ $booking->room_count }} Kamar)</span></p>
       <p><strong>Jadwal Check-in:</strong> <span>{{ \Carbon\Carbon::parse($booking->checkin)->format('d M Y') }} (14:00 WIB)</span></p>
       <p><strong>Jadwal Check-out:</strong> <span>{{ \Carbon\Carbon::parse($booking->checkout)->format('d M Y') }} (12:00 WIB)</span></p>
-      <p><strong>Durasi Menginap:</strong> <span>{{ $booking->nights }} Malam · {{ $booking->guests }} Tamu</span></p>
+      <p><strong>Durasi Menginap:</strong> <span>{{ $booking->nights }} Malam, {{ $booking->guests }} Tamu</span></p>
       <div class="total-price">
         <span>Total Pembayaran</span>
         <span>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</span>

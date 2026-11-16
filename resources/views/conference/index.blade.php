@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Web Hotel — Conference Rooms')
+@section('title', 'Web Hotel | Conference Rooms')
 @section('description', 'Book our premium conference rooms at Web Hotel.')
 
 @push('styles')
