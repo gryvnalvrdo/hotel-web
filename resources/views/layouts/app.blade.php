@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@yield('title', 'Web Hotel')</title>
-  <meta name="description" content="@yield('description', 'Web Hotel — Experience luxury and comfort in every detail.')">
+  <meta name="description" content="@yield('description', 'Web Hotel: Experience luxury and comfort in every detail.')">
 
   
   <!-- Performance: preconnect to CDN origins -->
@@ -32,7 +32,7 @@
   <div id="loading-screen">
     <div class="loading-logo">
       <h1>Web Hotel</h1>
-      <p>Makassar · Sulawesi Selatan</p>
+      <p>Makassar, Sulawesi Selatan</p>
     </div>
     <div class="loading-divider"></div>
     <div class="loading-bar-wrap">
