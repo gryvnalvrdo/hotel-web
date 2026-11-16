@@ -38,7 +38,7 @@
   ],
   "env": {
     "APP_ENV": "production",
-    "APP_DEBUG": "true",
+    "APP_DEBUG": "false",
     "APP_URL": "https://hotel-web-iota-pink.vercel.app",
     "LOG_CHANNEL": "stderr",
     "DB_CONNECTION": "pgsql",
